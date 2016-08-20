@@ -1,10 +1,10 @@
 # Errors
 
-Each API call returns an HTTP status code that reflects the nature of the response. We have done our best to follow the [HTTP status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) conventions.
+Each API call returns an HTTP status code that reflects the nature of the response. We follow the [HTTP status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) conventions.
 
 Codes in the 2xx range indicate success, instead any request that did not succeed will return a 4xx or 5xx error. The 4xx range means there was a problem with the request. The 5xx range means that something went wrong on our end.
 
-The Sellf APIs use the following error codes:
+Specificall, the Sellf API uses the following error codes:
 
 Error Code | Meaning
 ---------- | -------

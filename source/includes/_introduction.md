@@ -18,7 +18,7 @@ We have language bindings in Shell ([cURL](https://en.wikipedia.org/wiki/CURL)).
 
 The API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). All requests should be made over SSL. All request and response bodies, including errors, are encoded in [JSON](https://en.wikipedia.org/wiki/JSON). Please specify the `Accept` and `Content-Type` header as `application/json`.
 
-In the API dates are represented in UTC following the [ISO 8601](https://it.wikipedia.org/wiki/ISO_8601) industry-adopted standard.
+The API dates are represented in UTC following the [ISO 8601](https://it.wikipedia.org/wiki/ISO_8601) industry-adopted standard.
 Each entity has a unique integer ID.
 
 <aside class="notice">
