@@ -12,7 +12,7 @@ includes:
   - authentication
   - errors
   - pagination
-  - kittens
+  - rates
   - people
   - companies
   - deals

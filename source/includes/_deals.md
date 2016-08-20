@@ -31,7 +31,7 @@ This endpoint retrieves all deals.
 
 ### HTTP Request
 
-`GET https://api.sellf.io/v1/deals`
+`GET /deals`
 
 ### Query Parameters
 
@@ -62,7 +62,7 @@ This endpoint retrieves a specific deal.
 
 ### HTTP Request
 
-`GET https://api.sellf.io/v1/deals/:id`
+`GET /deals/:id`
 
 ### URL Parameters
 

@@ -9,6 +9,6 @@ The API is organized around [REST](http://en.wikipedia.org/wiki/Representational
 In the API dates are represented in UTC following the [ISO 8601](https://it.wikipedia.org/wiki/ISO_8601) standard.
 Each entity has a unique integer ID.
 
-All API calls must be made to `https://api.sellf.io/v1/`, where `v1` is the (current) version of the APIs.
+All API calls must be made to `https://api.sellf.io/v1`, where `v1` is the (current) version of the APIs.
 
 Please report any issues to <a href="mailto:support@sellfapp.com">support@sellfapp.com</a> or leave any feedback [here](https://sellf.uservoice.com).
