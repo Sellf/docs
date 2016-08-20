@@ -1,7 +1,13 @@
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the Sellf API! You can use our API to access Sellf API endpoints, which can get information on [contacts](#contacts) and [deals](#deals) in our database.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+We have language bindings in Shell ([cURL](https://en.wikipedia.org/wiki/CURL)). You can view code examples in the dark area to the right.
 
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+The API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). All requests should be made over SSL. All request and response bodies, including errors, are encoded in [JSON](https://en.wikipedia.org/wiki/JSON). Please specify the Content-Type header as application/json.
+
+In the API dates are represented as UNIX timestamps. Each entity like customers or invoices has a unique integer ID.
+
+All API calls must be made to https://api.invoiced.com.
+
+Please report any issues or feedbacks to.
