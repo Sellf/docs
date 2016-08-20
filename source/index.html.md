@@ -10,6 +10,7 @@ toc_footers:
 includes:
   - introduction
   - authentication
+  - errors
   - kittens
   - people
   - companies
@@ -19,7 +20,6 @@ includes:
   - sources
   - margins
   - users
-  - errors
 
 search: true
 ---
