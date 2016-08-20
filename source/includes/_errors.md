@@ -1,20 +1,17 @@
 # Errors
 
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files...just save them to the `includes` folder and add them to the top of your `index.md`'s frontmatter. Files are included in the order listed.</aside>
+Each API call returns an HTTP status code that reflects the nature of the response. We have done our best to follow the [HTTP status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) conventions.
 
-The Kittn API uses the following error codes:
+Any request that did not succeed will return a 4xx or 5xx error. The 4xx range means there was a problem with the request. The 5xx range means that something went wrong on our end.
 
+The Sellf APIs use the following error codes:
 
 Error Code | Meaning
 ---------- | -------
-400 | Bad Request -- Your request sucks
-401 | Unauthorized -- Your API key is wrong
-403 | Forbidden -- The kitten requested is hidden for administrators only
-404 | Not Found -- The specified kitten could not be found
-405 | Method Not Allowed -- You tried to access a kitten with an invalid method
-406 | Not Acceptable -- You requested a format that isn't json
-410 | Gone -- The kitten requested has been removed from our servers
-418 | I'm a teapot
-429 | Too Many Requests -- You're requesting too many kittens! Slow down!
-500 | Internal Server Error -- We had a problem with our server. Try again later.
-503 | Service Unavailable -- We're temporarially offline for maintanance. Please try again later.
+400 | Bad Request --  Invalid request parameters
+401 | Unauthorized -- API key is missing or wrong (it can be invalid)
+403 | Forbidden -- The entity requested is not accessibile due to hierarchy policies or Sellf permissions
+404 | Not Found -- The specified entity could not be found
+429 | Too Many Requests -- You're requesting too many entities!
+500 | Internal Server Error -- We had a problem with our server. Try again later and if the problem persists please contact us
+502 | Service Unavailable -- We're temporarially offline for maintanance. Please try again later

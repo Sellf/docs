@@ -11,6 +11,7 @@ includes:
   - introduction
   - authentication
   - errors
+  - pagination
   - kittens
   - people
   - companies
