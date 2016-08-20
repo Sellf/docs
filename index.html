@@ -128,7 +128,9 @@
 <p>In the API dates are represented in UTC following the <a href="https://it.wikipedia.org/wiki/ISO_8601">ISO 8601</a> standard.
 Each entity has a unique integer ID.</p>
 
-<p>All API calls must be made to <code class="prettyprint">https://api.sellf.io/v1/</code>, where <code class="prettyprint">v1</code> is the (current) version of the APIs.</p>
+<aside class="notice">
+All API calls must be made to `https://api.sellf.io/v1`, where `v1` is the (current) version of the APIs.
+</aside>
 
 <p>Please report any issues to <a href="mailto:support@sellfapp.com">support@sellfapp.com</a> or leave any feedback <a href="https://sellf.uservoice.com">here</a>.</p>
 
@@ -156,9 +158,11 @@ You must replace <code>{YOUR_API_KEY}</code> with your personal API key.
 
           <h1 id="errors">Errors</h1>
 
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
+<p>Each API call returns an HTTP status code that reflects the nature of the response. We have done our best to follow the <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">HTTP status code</a> conventions.</p>
 
-<p>The Kittn API uses the following error codes:</p>
+<p>Codes in the 2xx range indicate success, instead any request that did not succeed will return a 4xx or 5xx error. The 4xx range means there was a problem with the request. The 5xx range means that something went wrong on our end.</p>
+
+<p>The Sellf APIs use the following error codes:</p>
 
 <table><thead>
 <tr>
@@ -168,51 +172,61 @@ You must replace <code>{YOUR_API_KEY}</code> with your personal API key.
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>Bad Request &ndash; Your request sucks</td>
+<td>Bad Request &ndash;  Invalid request parameters</td>
 </tr>
 <tr>
 <td>401</td>
-<td>Unauthorized &ndash; Your API key is wrong</td>
+<td>Unauthorized &ndash; API key is missing or wrong (it can be invalid)</td>
+</tr>
+<tr>
+<td>402</td>
+<td>Payment Required &ndash;   Subscription payment is required</td>
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
+<td>Forbidden &ndash; The entity requested is not accessibile due to hierarchy policies or Sellf permissions</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found &ndash; The specified kitten could not be found</td>
+<td>Not Found &ndash; The specified entity could not be found</td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
+<td>409</td>
+<td>Conflict  &ndash; The request could not be completed due to a conflict with the current state of the resource</td>
 </tr>
 <tr>
-<td>406</td>
-<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone &ndash; The kitten requested has been removed from our servers</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&rsquo;m a teapot</td>
+<td>422</td>
+<td>Unprocessable Entity &ndash;   The request is well-formed but cannot be processed due to validation issues with the payload</td>
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
+<td>Too Many Requests &ndash; You&rsquo;re requesting too many entities!</td>
 </tr>
 <tr>
 <td>500</td>
-<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
+<td>Internal Server Error &ndash; We had a problem with our server. Try again later and if the problem persists please contact us</td>
 </tr>
 <tr>
-<td>503</td>
-<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
+<td>502</td>
+<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later</td>
 </tr>
 </tbody></table>
 
-          
+          <h1 id="pagination">Pagination</h1>
+
+<p>Most of the list operations will be paginated. You can control pagination with the <code class="prettyprint">page</code> parameter. Pages start at <code class="prettyprint">1</code> and the first page will be returned if no page is specified. Data is limited to twenty elements per page.</p>
+
+<p>The depicted example shows how to get the third page of all the team deals.</p>
+<pre class="highlight shell"><code>curl https://api.sellf.io/v1/deals?page<span class="o">=</span>3 <span class="se">\</span>
+    -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+
+          <h1 id="rate-limits">Rate limits</h1>
+
+<p>To prevent API abuse or overlad, Sellf APIs are rate limited. The rate limit is considered per API token. API allows to perform 10 requests/second.</p>
+
+<p>If your limits reaches zero, subsequent requests will receive the <code class="prettyprint">429 Too Many Requests</code> response code until the request reset time has been reached.</p>
+
           <h1 id="people"><a name="peoples"></a>People</h1>
 
 <p>[//]: &lt;&gt; GET http|https://tapi.sellf.io/v1/contacts -&gt; puborg_v1_contacts.index
@@ -252,7 +266,8 @@ You must replace <code>{YOUR_API_KEY}</code> with your personal API key.
     </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
     </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
@@ -260,7 +275,7 @@ You must replace <code>{YOUR_API_KEY}</code> with your personal API key.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.sellf.io/v1/deals</code></p>
+<p><code class="prettyprint">GET /deals</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -272,14 +287,49 @@ You must replace <code>{YOUR_API_KEY}</code> with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>sort</td>
+<td>name</td>
+<td>Column to sort by, e.g. name</td>
 </tr>
+</tbody></table>
+
+<h2 id="create-a-deal">Create a Deal</h2>
+<pre class="highlight shell"><code>curl https://api.sellf.io/v1/deals <span class="se">\</span>
+  -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
+  -X POST
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint allows to create a deal.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /deals</code></p>
+
+<h3 id="attributes">Attributes</h3>
+
+<table><thead>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Description of the deal</td>
 </tr>
 </tbody></table>
 
@@ -303,7 +353,7 @@ You must replace <code>{YOUR_API_KEY}</code> with your personal API key.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.sellf.io/v1/deals/:id</code></p>
+<p><code class="prettyprint">GET /deals/:id</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -319,9 +369,73 @@ You must replace <code>{YOUR_API_KEY}</code> with your personal API key.
 </tr>
 </tbody></table>
 
-<p>[//]: &lt;&gt; POST http|https://tapi.sellf.io/v1/deals -&gt; puborg_v1_deals.create_deal
-[//]: &lt;&gt; PUT|PATCH http|https://tapi.sellf.io/v1/deals/<a href="int:rid">int:rid</a> -&gt; puborg_v1_deals.update
-[//]: &lt;&gt; DELETE http|https://tapi.sellf.io/v1/deals/<a href="int:rid">int:rid</a> -&gt; puborg_v1_deals.delete</p>
+<h2 id="update-a-specific-deal">Update a Specific Deal</h2>
+<pre class="highlight shell"><code>curl https://api.sellf.io/v1/deals/83 <span class="se">\</span>
+  -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
+  -X PUT
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint allows to update a specific deal.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT /deals/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the deal to retrieve</td>
+</tr>
+</tbody></table>
+
+<h2 id="delete-a-specific-deal">Delete a Specific Deal</h2>
+<pre class="highlight shell"><code>curl https://api.sellf.io/v1/deals/83 <span class="se">\</span>
+  -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
+  -X DELETE
+</code></pre>
+
+<blockquote>
+<p>The above command returns 200 with no content.</p>
+</blockquote>
+
+<p>This endpoint deletes a specific deal.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE /deals/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the deal to retrieve</td>
+</tr>
+</tbody></table>
 
           <h1 id="pipelines"><a name="pipelines"></a>Pipelines</h1>
 
