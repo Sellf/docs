@@ -110,7 +110,7 @@
       <div id="toc">
       </div>
         <ul class="toc-footer">
-            <li><a href='https://app.sellf.io/'>Sign Up for a Developer Key</a></li>
+            <li><a href='https://app.sellf.io/signup'>Sign Up for an API Key</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -282,9 +282,73 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 </tbody></table>
 
-          <h1 id="contacts"><a name="contacts"></a>Contacts</h1>
+          <h1 id="people"><a name="peoples"></a>People</h1>
+
+<!--
+GET http|https://tapi.sellf.io/v1/contacts -> puborg_v1_contacts.index
+POST http|https://tapi.sellf.io/v1/contacts -> puborg_v1_contacts.create
+GET http|https://tapi.sellf.io/v1/contacts/<int:rid> -> puborg_v1_contacts.read
+PUT|PATCH http|https://tapi.sellf.io/v1/contacts/<int:rid> -> puborg_v1_contacts.update
+DELETE http|https://tapi.sellf.io/v1/contacts/<int:rid> -> puborg_v1_contacts.delete
+POST http|https://tapi.sellf.io/v1/contacts -> puborg_v1_contacts.create_contact
+ &ndash;>
+
+          <h1 id="companies"><a name="companies"></a>Companies</h1>
+
+<!--
+GET http|https://tapi.sellf.io/v1/companies -> puborg_v1_companies.index
+POST http|https://tapi.sellf.io/v1/companies -> puborg_v1_companies.create
+GET http|https://tapi.sellf.io/v1/companies/<int:rid> -> puborg_v1_companies.read
+PUT|PATCH http|https://tapi.sellf.io/v1/companies/<int:rid> -> puborg_v1_companies.update
+DELETE http|https://tapi.sellf.io/v1/companies/<int:rid> -> puborg_v1_companies.delete
+POST http|https://tapi.sellf.io/v1/companies -> puborg_v1_companies.create_company
+ &ndash;>
 
           <h1 id="deals"><a name="deals"></a>Deals</h1>
+
+<!--
+GET http|https://tapi.sellf.io/v1/deals -> puborg_v1_deals.index
+POST http|https://tapi.sellf.io/v1/deals -> puborg_v1_deals.create
+GET http|https://tapi.sellf.io/v1/deals/<int:rid> -> puborg_v1_deals.read
+PUT|PATCH http|https://tapi.sellf.io/v1/deals/<int:rid> -> puborg_v1_deals.update
+DELETE http|https://tapi.sellf.io/v1/deals/<int:rid> -> puborg_v1_deals.delete
+POST http|https://tapi.sellf.io/v1/deals -> puborg_v1_deals.create_deal
+&ndash;>
+
+          <h1 id="pipelines"><a name="pipelines"></a>Pipelines</h1>
+
+<!--
+GET http|https://tapi.sellf.io/v1/pipelines -> puborg_v1_pipelines.index
+GET http|https://tapi.sellf.io/v1/pipelines/<int:rid> -> puborg_v1_pipelines.read
+ &ndash;>
+
+          <h1 id="stages"><a name="stages"></a>Stages</h1>
+
+<!--
+GET http|https://tapi.sellf.io/v1/stages -> puborg_v1_stadia.index
+GET http|https://tapi.sellf.io/v1/stages/<int:rid> -> puborg_v1_stadia.read
+ &ndash;>
+
+          <h1 id="sources"><a name="sources"></a>Sources</h1>
+
+<!--
+GET http|https://tapi.sellf.io/v1/sources -> puborg_v1_sources.index
+GET http|https://tapi.sellf.io/v1/sources/<int:rid> -> puborg_v1_sources.read
+ &ndash;>
+
+          <h1 id="margins"><a name="margins"></a>Margins</h1>
+
+<!--
+GET http|https://tapi.sellf.io/v1/products -> puborg_v1_products.index
+GET http|https://tapi.sellf.io/v1/products/<int:rid> -> puborg_v1_products.read
+ &ndash;>
+
+          <h1 id="users"><a name="users"></a>Users</h1>
+
+<!--
+GET http|https://tapi.sellf.io/v1/users -> puborg_v1_users.index
+GET http|https://tapi.sellf.io/v1/users/<int:rid> -> puborg_v1_users.read
+ &ndash;>
 
           <h1 id="errors">Errors</h1>
 
