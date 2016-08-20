@@ -10,9 +10,9 @@ toc_footers:
 includes:
   - introduction
   - authentication
-  - errors
-  - pagination
+  - requests
   - rates
+  - errors
   - people
   - companies
   - deals
