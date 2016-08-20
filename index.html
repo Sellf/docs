@@ -120,12 +120,18 @@
           <h1 id="introduction">Introduction</h1>
 
 <p>Welcome to the Sellf API! You can use our API to access Sellf API endpoints, which can get information on <a href="#contacts">contacts</a> and <a href="#deals">deals</a> in our database.</p>
+<pre class="highlight ruby"><code><span class="c1"># To have a response in JSON</span>
+<span class="no">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="c1"># To send a JSON request</span>
+<span class="no">Content</span><span class="o">-</span><span class="no">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+</code></pre>
 
 <p>We have language bindings in Shell (<a href="https://en.wikipedia.org/wiki/CURL">cURL</a>). You can view code examples in the dark area to the right.</p>
 
-<p>The API is organized around <a href="http://en.wikipedia.org/wiki/Representational_State_Transfer">REST</a>. All requests should be made over SSL. All request and response bodies, including errors, are encoded in <a href="https://en.wikipedia.org/wiki/JSON">JSON</a>. Please specify the <code class="prettyprint">Content-Type</code> header as <code class="prettyprint">application/json</code>.</p>
+<p>The API is organized around <a href="http://en.wikipedia.org/wiki/Representational_State_Transfer">REST</a>. All requests should be made over SSL. All request and response bodies, including errors, are encoded in <a href="https://en.wikipedia.org/wiki/JSON">JSON</a>. Please specify the <code class="prettyprint">Accept</code> and <code class="prettyprint">Content-Type</code> header as <code class="prettyprint">application/json</code>.</p>
 
-<p>In the API dates are represented in UTC following the <a href="https://it.wikipedia.org/wiki/ISO_8601">ISO 8601</a> standard.
+<p>In the API dates are represented in UTC following the <a href="https://it.wikipedia.org/wiki/ISO_8601">ISO 8601</a> industry-adopted standard.
 Each entity has a unique integer ID.</p>
 
 <aside class="notice">
@@ -155,6 +161,35 @@ You must replace <code>{YOUR_API_KEY}</code> with your personal API key.
 <aside class="warning">
 <strong>Use HTTPS only!</strong> Any HTTP requests will be ignored.
 </aside>
+
+          <h1 id="requests">Requests</h1>
+
+<p>As stated before, the Sellf API is accessed from the secure domain <code class="prettyprint">https://api.sellf.io</code>. All data is sent and received in the JSON format.</p>
+
+<h3 id="pagination">Pagination</h3>
+<pre class="highlight shell"><code>curl https://api.sellf.io/v1/deals?page<span class="o">=</span>3 <span class="se">\</span>
+    -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+
+<p>Most of the list operations are paginated. You can control it with the <code class="prettyprint">page</code> parameter. Pages start at <code class="prettyprint">1</code> and the first page will be returned if no page is specified. Data is limited to <code class="prettyprint">20</code> elements per page.</p>
+
+<p>The depicted example shows how to get the third page of all the team deals.</p>
+
+<h3 id="sorting">Sorting</h3>
+<pre class="highlight shell"><code><span class="c"># To get a list of deals sorted by estimated value in descending order</span>
+curl https://api.sellf.io/v1/deals?sort_by<span class="o">=</span>-estimated_value <span class="se">\</span>
+    -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+
+<p>You can control in what order, according to a criteria, how to sort listed elements using the query parameter <code class="prettyprint">sort_by</code>.</p>
+
+<p>The default sort order is ascending. If you want to sort the elements in descending order, append a minus sign to the field.</p>
+
+          <h1 id="rate-limits">Rate limits</h1>
+
+<p>To prevent API abuse or overlad, Sellf APIs are rate limited. The rate limit is considered per API token. API allows to perform 10 requests/second.</p>
+
+<p>If your limits reaches zero, subsequent requests will receive the <code class="prettyprint">429 Too Many Requests</code> response code until the request reset time has been reached.</p>
 
           <h1 id="errors">Errors</h1>
 
@@ -211,21 +246,6 @@ You must replace <code>{YOUR_API_KEY}</code> with your personal API key.
 <td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later</td>
 </tr>
 </tbody></table>
-
-          <h1 id="pagination">Pagination</h1>
-
-<p>Most of the list operations will be paginated. You can control pagination with the <code class="prettyprint">page</code> parameter. Pages start at <code class="prettyprint">1</code> and the first page will be returned if no page is specified. Data is limited to twenty elements per page.</p>
-
-<p>The depicted example shows how to get the third page of all the team deals.</p>
-<pre class="highlight shell"><code>curl https://api.sellf.io/v1/deals?page<span class="o">=</span>3 <span class="se">\</span>
-    -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
-</code></pre>
-
-          <h1 id="rate-limits">Rate limits</h1>
-
-<p>To prevent API abuse or overlad, Sellf APIs are rate limited. The rate limit is considered per API token. API allows to perform 10 requests/second.</p>
-
-<p>If your limits reaches zero, subsequent requests will receive the <code class="prettyprint">429 Too Many Requests</code> response code until the request reset time has been reached.</p>
 
           <h1 id="people"><a name="peoples"></a>People</h1>
 
