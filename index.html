@@ -123,48 +123,35 @@
 
 <p>We have language bindings in Shell (<a href="https://en.wikipedia.org/wiki/CURL">cURL</a>). You can view code examples in the dark area to the right.</p>
 
-<p>The API is organized around <a href="http://en.wikipedia.org/wiki/Representational_State_Transfer">REST</a>. All requests should be made over SSL. All request and response bodies, including errors, are encoded in <a href="https://en.wikipedia.org/wiki/JSON">JSON</a>. Please specify the Content-Type header as application/json.</p>
+<p>The API is organized around <a href="http://en.wikipedia.org/wiki/Representational_State_Transfer">REST</a>. All requests should be made over SSL. All request and response bodies, including errors, are encoded in <a href="https://en.wikipedia.org/wiki/JSON">JSON</a>. Please specify the <code class="prettyprint">Content-Type</code> header as <code class="prettyprint">application/json</code>.</p>
 
-<p>In the API dates are represented as UNIX timestamps. Each entity like customers or invoices has a unique integer ID.</p>
+<p>In the API dates are represented as <a href="https://en.wikipedia.org/wiki/Unix_time">UNIX timestamps</a>. Each entity like customers or invoices has a unique integer ID.</p>
 
-<p>All API calls must be made to https://api.invoiced.com.</p>
+<p>All API calls must be made to <code class="prettyprint">https://api.invoiced.com</code>.</p>
 
 <p>Please report any issues or feedbacks to.</p>
 
           <h1 id="authentication">Authentication</h1>
 
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<p>Sellf uses API keys to allow access to the API. Each Sellf team has its own API key that gives full access to the data of the team.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<p>An API key can be obtained by (registering or) signing in to <a href="https://www.sellf.io">sellf.io</a>, and then going to <code class="prettyprint">Settings &gt; API</code>. If no API key exists, you can generate one clickin on the <code class="prettyprint">GENERATE</code> button.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
+<aside class="warning">
+<strong>Use HTTPS only!</strong> Any HTTP requests will be ignored.
+</aside>
+
+<p>Sellf expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
 <pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+curl <span class="s2">"api_endpoint_here"</span> -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
 </code></pre>
 
 <blockquote>
 <p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
 </blockquote>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code class="prettyprint">Authorization: meowmeowmeow</code></p>
-
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>{API_KEY}</code> with your personal API key.
 </aside>
 
           <h1 id="kittens">Kittens</h1>
