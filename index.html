@@ -101,7 +101,7 @@
     <div class="tocify-wrapper">
       <img src="images/logo.png" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="shell">cURL</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -119,11 +119,17 @@
         
           <h1 id="introduction">Introduction</h1>
 
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>Welcome to the Sellf API! You can use our API to access Sellf API endpoints, which can get information on <a href="#contacts">contacts</a> and <a href="#deals">deals</a> in our database.</p>
 
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>We have language bindings in Shell (<a href="https://en.wikipedia.org/wiki/CURL">cURL</a>). You can view code examples in the dark area to the right.</p>
 
-<p>This example API documentation page was created with <a href="https://github.com/tripit/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&rsquo;s documentation.</p>
+<p>The API is organized around <a href="http://en.wikipedia.org/wiki/Representational_State_Transfer">REST</a>. All requests should be made over SSL. All request and response bodies, including errors, are encoded in <a href="https://en.wikipedia.org/wiki/JSON">JSON</a>. Please specify the Content-Type header as application/json.</p>
+
+<p>In the API dates are represented as UNIX timestamps. Each entity like customers or invoices has a unique integer ID.</p>
+
+<p>All API calls must be made to https://api.invoiced.com.</p>
+
+<p>Please report any issues or feedbacks to.</p>
 
           <h1 id="authentication">Authentication</h1>
 
@@ -289,6 +295,10 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 </tbody></table>
 
+          <h1 id="contacts"><a name="contacts"></a>Contacts</h1>
+
+          <h1 id="deals"><a name="deals"></a>Deals</h1>
+
           <h1 id="errors">Errors</h1>
 
 <aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
@@ -350,7 +360,7 @@ Remember — a happy kitten is an authenticated kitten!
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="shell">cURL</a>
           </div>
       </div>
     </div>
