@@ -212,26 +212,27 @@ You must replace <code>{YOUR_API_KEY}</code> with your personal API key.
 </tr>
 </tbody></table>
 
-          <h1 id="kittens">Kittens</h1>
+          
+          <h1 id="people"><a name="peoples"></a>People</h1>
 
-<h2 id="get-all-kittens">Get All Kittens</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<p>[//]: &lt;&gt; GET http|https://tapi.sellf.io/v1/contacts -&gt; puborg_v1_contacts.index
+[//]: &lt;&gt; GET http|https://tapi.sellf.io/v1/contacts/<a href="int:rid">int:rid</a> -&gt; puborg_v1_contacts.read
+[//]: &lt;&gt; PUT|PATCH http|https://tapi.sellf.io/v1/contacts/<a href="int:rid">int:rid</a> -&gt; puborg_v1_contacts.update
+[//]: &lt;&gt; DELETE http|https://tapi.sellf.io/v1/contacts/<a href="int:rid">int:rid</a> -&gt; puborg_v1_contacts.delete
+[//]: &lt;&gt; POST http|https://tapi.sellf.io/v1/contacts -&gt; puborg_v1_contacts.create_contact</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+          <h1 id="companies"><a name="companies"></a>Companies</h1>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+<p>[//]: &lt;&gt; GET http|https://tapi.sellf.io/v1/companies -&gt; puborg_v1_companies.index
+[//]: &lt;&gt; GET http|https://tapi.sellf.io/v1/companies/<a href="int:rid">int:rid</a> -&gt; puborg_v1_companies.read
+[//]: &lt;&gt; PUT|PATCH http|https://tapi.sellf.io/v1/companies/<a href="int:rid">int:rid</a> -&gt; puborg_v1_companies.update
+[//]: &lt;&gt; DELETE http|https://tapi.sellf.io/v1/companies/<a href="int:rid">int:rid</a> -&gt; puborg_v1_companies.delete
+[//]: &lt;&gt; POST http|https://tapi.sellf.io/v1/companies -&gt; puborg_v1_companies.create_company</p>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
+          <h1 id="deals"><a name="deals"></a>Deals</h1>
+
+<h2 id="get-all-deals">Get All Deals</h2>
+<pre class="highlight shell"><code>curl https://api.sellf.io/v1/deals -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
 </code></pre>
 
 <blockquote>
@@ -255,11 +256,11 @@ You must replace <code>{YOUR_API_KEY}</code> with your personal API key.
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves all kittens.</p>
+<p>This endpoint retrieves all deals.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/api/kittens</code></p>
+<p><code class="prettyprint">GET https://api.sellf.io/v1/deals</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -282,28 +283,8 @@ You must replace <code>{YOUR_API_KEY}</code> with your personal API key.
 </tr>
 </tbody></table>
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-<h2 id="get-a-specific-kitten">Get a Specific Kitten</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<h2 id="get-a-specific-deal">Get a Specific Deal</h2>
+<pre class="highlight shell"><code>curl https://api.sellf.io/v1/deals/83 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
 </code></pre>
 
 <blockquote>
@@ -318,13 +299,11 @@ Remember — a happy kitten is an authenticated kitten!
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can&rsquo;t use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<p>This endpoint retrieves a specific deal.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">GET https://api.sellf.io/v1/deals/:id</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -336,33 +315,13 @@ Remember — a happy kitten is an authenticated kitten!
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>The ID of the deal to retrieve</td>
 </tr>
 </tbody></table>
 
-          <h1 id="people"><a name="peoples"></a>People</h1>
-
-<p>[//]: &lt;&gt; GET http|https://tapi.sellf.io/v1/contacts -&gt; puborg_v1_contacts.index
-[//]: &lt;&gt; GET http|https://tapi.sellf.io/v1/contacts/<a href="int:rid">int:rid</a> -&gt; puborg_v1_contacts.read
-[//]: &lt;&gt; PUT|PATCH http|https://tapi.sellf.io/v1/contacts/<a href="int:rid">int:rid</a> -&gt; puborg_v1_contacts.update
-[//]: &lt;&gt; DELETE http|https://tapi.sellf.io/v1/contacts/<a href="int:rid">int:rid</a> -&gt; puborg_v1_contacts.delete
-[//]: &lt;&gt; POST http|https://tapi.sellf.io/v1/contacts -&gt; puborg_v1_contacts.create_contact</p>
-
-          <h1 id="companies"><a name="companies"></a>Companies</h1>
-
-<p>[//]: &lt;&gt; GET http|https://tapi.sellf.io/v1/companies -&gt; puborg_v1_companies.index
-[//]: &lt;&gt; GET http|https://tapi.sellf.io/v1/companies/<a href="int:rid">int:rid</a> -&gt; puborg_v1_companies.read
-[//]: &lt;&gt; PUT|PATCH http|https://tapi.sellf.io/v1/companies/<a href="int:rid">int:rid</a> -&gt; puborg_v1_companies.update
-[//]: &lt;&gt; DELETE http|https://tapi.sellf.io/v1/companies/<a href="int:rid">int:rid</a> -&gt; puborg_v1_companies.delete
-[//]: &lt;&gt; POST http|https://tapi.sellf.io/v1/companies -&gt; puborg_v1_companies.create_company</p>
-
-          <h1 id="deals"><a name="deals"></a>Deals</h1>
-
-<p>[//]: &lt;&gt; GET http|https://tapi.sellf.io/v1/deals -&gt; puborg_v1_deals.index
-[//]: &lt;&gt; GET http|https://tapi.sellf.io/v1/deals/<a href="int:rid">int:rid</a> -&gt; puborg_v1_deals.read
+<p>[//]: &lt;&gt; POST http|https://tapi.sellf.io/v1/deals -&gt; puborg_v1_deals.create_deal
 [//]: &lt;&gt; PUT|PATCH http|https://tapi.sellf.io/v1/deals/<a href="int:rid">int:rid</a> -&gt; puborg_v1_deals.update
-[//]: &lt;&gt; DELETE http|https://tapi.sellf.io/v1/deals/<a href="int:rid">int:rid</a> -&gt; puborg_v1_deals.delete
-[//]: &lt;&gt; POST http|https://tapi.sellf.io/v1/deals -&gt; puborg_v1_deals.create_deal</p>
+[//]: &lt;&gt; DELETE http|https://tapi.sellf.io/v1/deals/<a href="int:rid">int:rid</a> -&gt; puborg_v1_deals.delete</p>
 
           <h1 id="pipelines"><a name="pipelines"></a>Pipelines</h1>
 
