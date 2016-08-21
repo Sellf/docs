@@ -10,6 +10,9 @@ TODO LIST - BEGIN
 4. vanno passati al setaccio sia tutti gli attributi elencati in tabella, sia tutti i query params sia tutti gli esempi json di responses per vedere se sono congruenti con le apis
 5. la get della lista degli stadi ritorna tutti gli stadi di tutte le pipelines? non vengono filtrati per pipeline? forse è meglio fare una call del tipo pipeline/:id/stages
 6. sistemare wp negli stadi. per i won/lost/abandoned che wp mettiamo adesso? n/a?
+7. nella creazione di deal e contatti o nella get, va specificato lo user id? e l'id dell'area?
+8. controllare i query params della get di deal e contatti (serve il suid?)
+9. completare documentazione delle aziende
 
 <aside class="warning">
 TODO LIST - END
