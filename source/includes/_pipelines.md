@@ -13,7 +13,7 @@ name | string | Name of the pipeline
 type | string | Pipeline type <br> (i.e. `money`, `quantity`)
 
 
-## Get All pipelines
+## Get All Pipelines
 
 ```shell
 curl https://api.sellf.io/v1/pipelines -H "Api-Key: {YOUR_API_KEY}"
@@ -46,7 +46,7 @@ This endpoint retrieves all pipelines.
 
 
 
-## Get a Specific pipeline
+## Get a Specific Pipeline
 
 ```shell
 # Retrieve a pipeline with ID 3
@@ -73,4 +73,4 @@ This endpoint retrieves a specific pipeline according to the ID provided.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the pipeline to retrieve
+ID | The unique identifier of the pipeline to retrieve

@@ -1,5 +1,20 @@
 # Introduction
 
+<aside class="warning">
+TODO LIST - BEGIN
+</aside>
+
+1. al posto dei codici numerici usare etichette come ruolo utente (e.g. 0 diventa "administrator") e tipo di pipeline (e.g. 0 è "money") e tipo di stadio (e.g. 1 è "won")
+2. i "products" sono in realtà i "margins" sia per esser congruenti con l'uso lato app sia perché i products se li introdurremmo in futuro sono una altra cosa
+3. andrebbero rinominati i "contacts" in "people" perché propriamente i contatti sono sia persone che aziende (e infatti anche nelle app si chiamano cosi)
+4. vanno passati al setaccio sia tutti gli attributi elencati in tabella, sia tutti i query params sia tutti gli esempi json di responses per vedere se sono congruenti con le apis
+5. la get della lista degli stadi ritorna tutti gli stadi di tutte le pipelines? non vengono filtrati per pipeline? forse è meglio fare una call del tipo pipeline/:id/stages
+6. sistemare wp negli stadi. per i won/lost/abandoned che wp mettiamo adesso? n/a?
+
+<aside class="warning">
+TODO LIST - END
+</aside>
+
 Welcome to the Sellf API! You can use our API to access Sellf API endpoints, which can get information on [contacts](#contacts) and [deals](#deals) in our database.
 
 

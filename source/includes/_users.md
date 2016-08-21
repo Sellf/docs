@@ -77,4 +77,4 @@ This endpoint retrieves a specific user according to the ID provided.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the user to retrieve
+ID | The unique identifier of the user to retrieve

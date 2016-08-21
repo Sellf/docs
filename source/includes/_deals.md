@@ -106,7 +106,7 @@ This endpoint retrieves a specific deal.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the deal to retrieve
+ID | The unique identifier of the deal to retrieve
 
 
 
@@ -141,7 +141,7 @@ This endpoint allows to update a specific deal.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the deal to retrieve
+ID | The unique identifier of the deal to retrieve
 
 
 
@@ -166,4 +166,4 @@ This endpoint deletes a specific deal.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the deal to retrieve
+ID | The unique identifier of the deal to retrieve
