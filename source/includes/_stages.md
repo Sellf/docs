@@ -40,12 +40,16 @@ curl https://api.sellf.io/v1/stages -H "Api-Key: {YOUR_API_KEY}"
 [
   {
 	  "id": 1,
-	  "name": "In progress",
+	  "name": "Lead",
+	  "win_probability": "10",
+	  "position": 1,
 	  "pipeline_id": 2
   },
   {
-	  "id": 2,
+	  "id": 9,
 	  "name": "Won",
+	  "win_probability": "100",
+	  "position": 6,
 	  "pipeline_id": 2
   },
   { ... }
@@ -72,8 +76,10 @@ curl https://api.sellf.io/v1/stages/3 -H "Api-Key: {YOUR_API_KEY}"
 
 ```json
   {
-	  "id": 1,
-	  "name": "In progress",
+	  "id": 3,
+	  "name": "Identified needs",
+	  "win_probability": "35",
+	  "position": 3,
 	  "pipeline_id": 2
   }
 ```
