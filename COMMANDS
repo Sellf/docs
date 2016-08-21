@@ -1,0 +1,6 @@
+# Start server
+
+	bundle exec middleman server
+
+# Deploy
+	./deploy.sh
