@@ -40,6 +40,9 @@ Parameter | Default | Description
 --------- | ------- | -----------
 sort | name | Column to sort by, e.g. name
 
+
+
+
 ## Create a Deal
 
 ```shell
@@ -72,6 +75,9 @@ Parameter | Type | Description
 --------- | ------- | -----------
 name | string | Description of the deal
 
+
+
+
 ## Get a Specific Deal
 
 ```shell
@@ -101,6 +107,9 @@ This endpoint retrieves a specific deal.
 Parameter | Description
 --------- | -----------
 ID | The ID of the deal to retrieve
+
+
+
 
 ## Update a Specific Deal
 
@@ -133,6 +142,9 @@ This endpoint allows to update a specific deal.
 Parameter | Description
 --------- | -----------
 ID | The ID of the deal to retrieve
+
+
+
 
 ## Delete a Specific Deal
 
