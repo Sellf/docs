@@ -60,7 +60,7 @@ curl https://api.sellf.io/v1/users/3 -H "Api-Key: {YOUR_API_KEY}"
 
 ```json
 {
-  "id": 1,
+  "id": 3,
   "email": "filippo@sellfapp.com",
   "role": 0,
   "name": "Filippo Zanella"
