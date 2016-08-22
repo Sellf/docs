@@ -119,6 +119,26 @@
         
           <h1 id="introduction">Introduction</h1>
 
+<aside class="warning">
+TODO LIST - BEGIN
+</aside>
+
+<ol>
+<li>al posto dei codici numerici usare etichette come ruolo utente (e.g. 0 diventa &ldquo;administrator&rdquo;) e tipo di pipeline (e.g. 0 è &ldquo;money&rdquo;) e tipo di stadio (e.g. 1 è &ldquo;won&rdquo;)</li>
+<li>i &ldquo;products&rdquo; sono in realtà i &ldquo;margins&rdquo; sia per esser congruenti con l&#39;uso lato app sia perché i products se li introdurremmo in futuro sono una altra cosa</li>
+<li>andrebbero rinominati i &ldquo;contacts&rdquo; in &ldquo;people&rdquo; perché propriamente i contatti sono sia persone che aziende (e infatti anche nelle app si chiamano cosi)</li>
+<li>vanno passati al setaccio sia tutti gli attributi elencati in tabella, sia tutti i query params sia tutti gli esempi json di responses per vedere se sono congruenti con le apis</li>
+<li>la get della lista degli stadi ritorna tutti gli stadi di tutte le pipelines? non vengono filtrati per pipeline? forse è meglio fare una call del tipo pipeline/:id/stages</li>
+<li>sistemare wp negli stadi. per i won/lost/abandoned che wp mettiamo adesso? n/a?</li>
+<li>nella creazione di deal e contatti o nella get, va specificato lo user id? e l&#39;id dell&#39;area?</li>
+<li>controllare i query params della get di deal e contatti (serve il suid?)</li>
+<li>completare documentazione delle aziende</li>
+</ol>
+
+<aside class="warning">
+TODO LIST - END
+</aside>
+
 <p>Welcome to the Sellf API! You can use our API to access Sellf API endpoints, which can get information on <a href="#contacts">contacts</a> and <a href="#deals">deals</a> in our database.</p>
 <pre class="highlight ruby"><code><span class="c1"># To have a response in JSON</span>
 <span class="no">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
@@ -131,7 +151,7 @@
 
 <p>The API is organized around <a href="http://en.wikipedia.org/wiki/Representational_State_Transfer">REST</a>. All requests should be made over SSL. All request and response bodies, including errors, are encoded in <a href="https://en.wikipedia.org/wiki/JSON">JSON</a>. Please specify the <code class="prettyprint">Accept</code> and <code class="prettyprint">Content-Type</code> header as <code class="prettyprint">application/json</code>.</p>
 
-<p>In the API dates are represented in UTC following the <a href="https://it.wikipedia.org/wiki/ISO_8601">ISO 8601</a> industry-adopted standard.
+<p>The API dates are represented in UTC following the <a href="https://it.wikipedia.org/wiki/ISO_8601">ISO 8601</a> industry-adopted standard.
 Each entity has a unique integer ID.</p>
 
 <aside class="notice">
@@ -187,17 +207,17 @@ curl https://api.sellf.io/v1/deals?sort_by<span class="o">=</span>-estimated_val
 
           <h1 id="rate-limits">Rate limits</h1>
 
-<p>To prevent API abuse or overlad, Sellf APIs are rate limited. The rate limit is considered per API token. API allows to perform 10 requests/second.</p>
+<p>To prevent API abuse or overload, Sellf APIs are rate limited. The rate limit is considered per API token. The Sellf API allows to perform 10 requests/second.</p>
 
-<p>If your limits reaches zero, subsequent requests will receive the <code class="prettyprint">429 Too Many Requests</code> response code until the request reset time has been reached.</p>
+<p>If your limit reaches zero, subsequent requests will receive the <code class="prettyprint">429 Too Many Requests</code> response code until the request reset time has been reached.</p>
 
           <h1 id="errors">Errors</h1>
 
-<p>Each API call returns an HTTP status code that reflects the nature of the response. We have done our best to follow the <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">HTTP status code</a> conventions.</p>
+<p>Each API call returns an HTTP status code that reflects the nature of the response. We follow the <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">HTTP status code</a> conventions.</p>
 
 <p>Codes in the 2xx range indicate success, instead any request that did not succeed will return a 4xx or 5xx error. The 4xx range means there was a problem with the request. The 5xx range means that something went wrong on our end.</p>
 
-<p>The Sellf APIs use the following error codes:</p>
+<p>Specificall, the Sellf API uses the following error codes:</p>
 
 <table><thead>
 <tr>
@@ -249,21 +269,366 @@ curl https://api.sellf.io/v1/deals?sort_by<span class="o">=</span>-estimated_val
 
           <h1 id="people"><a name="peoples"></a>People</h1>
 
-<p>[//]: &lt;&gt; GET http|https://tapi.sellf.io/v1/contacts -&gt; puborg_v1_contacts.index
-[//]: &lt;&gt; GET http|https://tapi.sellf.io/v1/contacts/<a href="int:rid">int:rid</a> -&gt; puborg_v1_contacts.read
-[//]: &lt;&gt; PUT|PATCH http|https://tapi.sellf.io/v1/contacts/<a href="int:rid">int:rid</a> -&gt; puborg_v1_contacts.update
-[//]: &lt;&gt; DELETE http|https://tapi.sellf.io/v1/contacts/<a href="int:rid">int:rid</a> -&gt; puborg_v1_contacts.delete
-[//]: &lt;&gt; POST http|https://tapi.sellf.io/v1/contacts -&gt; puborg_v1_contacts.create_contact</p>
+<p>The People API allows you to get, create, update and delete your people. Each person can be associated to a <a href="#companies">Company</a> and one or more <a href="#deals">Deals</a>.</p>
+
+<h3 id="attributes">Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>Unique identifier of the person</td>
+</tr>
+<tr>
+<td>first_name</td>
+<td>string</td>
+<td>First name of the person</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string</td>
+<td>Last name of the person</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>Role in the company</td>
+</tr>
+<tr>
+<td>website</td>
+<td>string</td>
+<td>Website</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Primary email</td>
+</tr>
+<tr>
+<td>email_secondary</td>
+<td>string</td>
+<td>Secondary email</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>string</td>
+<td>Office or home number</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>string</td>
+<td>Mobile phone number</td>
+</tr>
+<tr>
+<td>fax</td>
+<td>string</td>
+<td>Fax number</td>
+</tr>
+<tr>
+<td>facebook</td>
+<td>string</td>
+<td>Facebook page</td>
+</tr>
+<tr>
+<td>skype</td>
+<td>string</td>
+<td>Skype nickname</td>
+</tr>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>Office or home address of the person</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>integer</td>
+<td>Unique identifier of the user that the person is assigned to</td>
+</tr>
+<tr>
+<td>company_id</td>
+<td>integer</td>
+<td>Unique identifier of the person&rsquo;s company</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>array</td>
+<td>An array of tags for a person</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-all-people">Get All People</h2>
+<pre class="highlight shell"><code>curl https://api.sellf.io/v1/people -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anthony"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mc Gregor"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CEO"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"anthony@acme.org"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paul"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hogan"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manager"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paul.hogan@comma.com"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves all people.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /people</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sort</td>
+<td>name</td>
+<td>Column to sort by <br> e.g. name</td>
+</tr>
+<tr>
+<td>suid</td>
+<td>?</td>
+<td>Unique identifier of the user the person is owned by</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-a-person">Create a Person</h2>
+<pre class="highlight shell"><code><span class="c"># Create a new person</span>
+curl https://api.sellf.io/v1/people <span class="se">\</span>
+  -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -X POST -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">first_name</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Filippo</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">last_name</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Zanella</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">title</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Founder of Sellf</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">email</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">filippo@sellfapp.com</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">tags</span><span class="se">\"</span><span class="s2">: [</span><span class="se">\"</span><span class="s2">Italy</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">Treviso</span><span class="se">\"</span><span class="s2">]}"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Filippo"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zanella"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Founder of Sellf"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filippo@sellfapp.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Italy"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Treviso"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint allows to create a person.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /people</code></p>
+
+<h2 id="get-a-specific-person">Get a Specific Person</h2>
+<pre class="highlight shell"><code><span class="c"># Retrieve a person with ID 3</span>
+curl https://api.sellf.io/v1/people/3 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Filippo"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zanella"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Founder of Sellf"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filippo@sellfapp.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Italy"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Treviso"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a specific person.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /people/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The unique identifier of the person to retrieve</td>
+</tr>
+</tbody></table>
+
+<h2 id="update-a-specific-person">Update a Specific Person</h2>
+<pre class="highlight shell"><code><span class="c"># Update a person with ID 3</span>
+curl https://api.sellf.io/v1/people/3 <span class="se">\</span>
+  -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -X PUT -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">title</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Ruby on Rails Developer</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">email</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">support@sellfapp.com</span><span class="se">\"</span><span class="s2">}"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Filippo"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zanella"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ruby on Rails Developer"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"support@sellfapp.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Italy"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Treviso"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint allows to update a specific person.</p>
+
+<aside class="warning">
+In order to modify tags associated to a person, you need to supply the entire set. Tags are replaced every time they are part of a request.
+</aside>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT /people/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The unique identifier of the person to retrieve</td>
+</tr>
+</tbody></table>
+
+<h2 id="delete-a-specific-person">Delete a Specific Person</h2>
+<pre class="highlight shell"><code><span class="c"># Delete a person with ID 3</span>
+curl https://api.sellf.io/v1/people/3 <span class="se">\</span>
+  -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
+  -X DELETE
+</code></pre>
+
+<blockquote>
+<p>The above command returns 200 with no content.</p>
+</blockquote>
+
+<p>This endpoint deletes a specific person. Deleting a person implies that even all the associated entities are deleted, except for the associated company.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE /people/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The unique identifier of the person to retrieve</td>
+</tr>
+</tbody></table>
 
           <h1 id="companies"><a name="companies"></a>Companies</h1>
 
-<p>[//]: &lt;&gt; GET http|https://tapi.sellf.io/v1/companies -&gt; puborg_v1_companies.index
-[//]: &lt;&gt; GET http|https://tapi.sellf.io/v1/companies/<a href="int:rid">int:rid</a> -&gt; puborg_v1_companies.read
-[//]: &lt;&gt; PUT|PATCH http|https://tapi.sellf.io/v1/companies/<a href="int:rid">int:rid</a> -&gt; puborg_v1_companies.update
-[//]: &lt;&gt; DELETE http|https://tapi.sellf.io/v1/companies/<a href="int:rid">int:rid</a> -&gt; puborg_v1_companies.delete
-[//]: &lt;&gt; POST http|https://tapi.sellf.io/v1/companies -&gt; puborg_v1_companies.create_company</p>
-
           <h1 id="deals"><a name="deals"></a>Deals</h1>
+
+<p>The Deals API allows you to get, create, update and delete your deals.</p>
+
+<h3 id="attributes">Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>Unique identifier of the deal</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Brief description of the deal</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>integer</td>
+<td>Unique identifier of the user that the deal is assigned to</td>
+</tr>
+<tr>
+<td>estimated_value</td>
+<td>float</td>
+<td>Value of the deal, with decimal part if needed</td>
+</tr>
+<tr>
+<td>is_hot</td>
+<td>boolean</td>
+<td>To point if the deal is important or not</td>
+</tr>
+<tr>
+<td>stage_id</td>
+<td>integer</td>
+<td>Unique identifier of the deal’s current stage in the pipeline</td>
+</tr>
+<tr>
+<td>source_id</td>
+<td>integer</td>
+<td>Unique identifier of the deal source</td>
+</tr>
+<tr>
+<td>main_contact_id</td>
+<td>integer</td>
+<td>Unique identifier of a primary person</td>
+</tr>
+<tr>
+<td>main_company_id</td>
+<td>integer</td>
+<td>Unique identifier of a primary company</td>
+</tr>
+<tr>
+<td>estimated_close_at</td>
+<td>datetime</td>
+<td>Estimated close date of the deal</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>array</td>
+<td>An array of tags for a deal</td>
+</tr>
+</tbody></table>
 
 <h2 id="get-all-deals">Get All Deals</h2>
 <pre class="highlight shell"><code>curl https://api.sellf.io/v1/deals -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
@@ -275,17 +640,16 @@ curl https://api.sellf.io/v1/deals?sort_by<span class="o">=</span>-estimated_val
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"First deal"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"estimated_value"</span><span class="p">:</span><span class="w"> </span><span class="mf">1234.56</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"is_hot"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Italy"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Treviso"</span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Second deal"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"estimated_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"is_hot"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
@@ -309,25 +673,33 @@ curl https://api.sellf.io/v1/deals?sort_by<span class="o">=</span>-estimated_val
 <tr>
 <td>sort</td>
 <td>name</td>
-<td>Column to sort by, e.g. name</td>
+<td>Column to sort by <br> e.g. name</td>
+</tr>
+<tr>
+<td>suid</td>
+<td>?</td>
+<td>Unique identifier of the user the deal is owned by</td>
 </tr>
 </tbody></table>
 
 <h2 id="create-a-deal">Create a Deal</h2>
-<pre class="highlight shell"><code>curl https://api.sellf.io/v1/deals <span class="se">\</span>
+<pre class="highlight shell"><code><span class="c"># Create a new deal</span>
+curl https://api.sellf.io/v1/deals <span class="se">\</span>
   -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
-  -X POST
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -X POST -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">New deal</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">estimated_value</span><span class="se">\"</span><span class="s2">: 0, </span><span class="se">\"</span><span class="s2">is_hot</span><span class="se">\"</span><span class="s2">: true, </span><span class="se">\"</span><span class="s2">tags</span><span class="se">\"</span><span class="s2">: [</span><span class="se">\"</span><span class="s2">Italy</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">Treviso</span><span class="se">\"</span><span class="s2">]}"</span>
 </code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New deal"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"estimated_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"is_hot"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Italy"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Treviso"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -337,35 +709,20 @@ curl https://api.sellf.io/v1/deals?sort_by<span class="o">=</span>-estimated_val
 
 <p><code class="prettyprint">POST /deals</code></p>
 
-<h3 id="attributes">Attributes</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>name</td>
-<td>string</td>
-<td>Description of the deal</td>
-</tr>
-</tbody></table>
-
 <h2 id="get-a-specific-deal">Get a Specific Deal</h2>
-<pre class="highlight shell"><code>curl https://api.sellf.io/v1/deals/83 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+<pre class="highlight shell"><code><span class="c"># Retrieve a deal with ID 3</span>
+curl https://api.sellf.io/v1/deals/3 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
 </code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New deal"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"estimated_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"is_hot"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Italy"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Treviso"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -385,29 +742,36 @@ curl https://api.sellf.io/v1/deals?sort_by<span class="o">=</span>-estimated_val
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>The ID of the deal to retrieve</td>
+<td>The unique identifier of the deal to retrieve</td>
 </tr>
 </tbody></table>
 
 <h2 id="update-a-specific-deal">Update a Specific Deal</h2>
-<pre class="highlight shell"><code>curl https://api.sellf.io/v1/deals/83 <span class="se">\</span>
+<pre class="highlight shell"><code><span class="c"># Update a deal with ID 3</span>
+curl https://api.sellf.io/v1/deals/3 <span class="se">\</span>
   -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
-  -X PUT
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -X PUT -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Modified deal</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">estimated_value</span><span class="se">\"</span><span class="s2">: null, </span><span class="se">\"</span><span class="s2">tags</span><span class="se">\"</span><span class="s2">: [</span><span class="se">\"</span><span class="s2">Italy</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">Treviso</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">Roncade</span><span class="se">\"</span><span class="s2">]}"</span>
 </code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Modified deal"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"estimated_value"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"is_hot"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Italy"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Treviso"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Roncade"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>This endpoint allows to update a specific deal.</p>
+
+<aside class="warning">
+In order to modify tags associated to a deal, you need to supply the entire set. Tags are replaced every time they are part of a request.
+</aside>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -423,12 +787,13 @@ curl https://api.sellf.io/v1/deals?sort_by<span class="o">=</span>-estimated_val
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>The ID of the deal to retrieve</td>
+<td>The unique identifier of the deal to retrieve</td>
 </tr>
 </tbody></table>
 
 <h2 id="delete-a-specific-deal">Delete a Specific Deal</h2>
-<pre class="highlight shell"><code>curl https://api.sellf.io/v1/deals/83 <span class="se">\</span>
+<pre class="highlight shell"><code><span class="c"># Delete a deal with ID 3</span>
+curl https://api.sellf.io/v1/deals/3 <span class="se">\</span>
   -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
   -X DELETE
 </code></pre>
@@ -437,7 +802,7 @@ curl https://api.sellf.io/v1/deals?sort_by<span class="o">=</span>-estimated_val
 <p>The above command returns 200 with no content.</p>
 </blockquote>
 
-<p>This endpoint deletes a specific deal.</p>
+<p>This endpoint deletes a specific deal. Deleting a deal implies that even all the associated entities are deleted, except for people and companies.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -453,34 +818,560 @@ curl https://api.sellf.io/v1/deals?sort_by<span class="o">=</span>-estimated_val
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>The ID of the deal to retrieve</td>
+<td>The unique identifier of the deal to retrieve</td>
 </tr>
 </tbody></table>
 
           <h1 id="pipelines"><a name="pipelines"></a>Pipelines</h1>
 
-<p>[//]: &lt;&gt; GET http|https://tapi.sellf.io/v1/pipelines -&gt; puborg_v1_pipelines.index
-[//]: &lt;&gt; GET http|https://tapi.sellf.io/v1/pipelines/<a href="int:rid">int:rid</a> -&gt; puborg_v1_pipelines.read</p>
+<p>The Pipelines API gives you access to your team&rsquo;s pipelines, in read-only mode. You can retrieve a single pipeline as well as list of all pipelines associated with your team.</p>
+
+<p>Sales pipelines consist of a sequence of <a href="#stages">Stages</a> in which the deals can be placed. Once you sign up in Sellf, we create a primary pipeline by default, associated with four standard stages: <code class="prettyprint">In progress</code>, <code class="prettyprint">Won</code>, <code class="prettyprint">Lost</code>, <code class="prettyprint">Abandoned</code>. You can add as many pipelines as you want. Pipelines can be characterized by monetary or quantitative values based on you needs.</p>
+
+<h3 id="attributes">Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>Unique identifier of the pipeline</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Name of the pipeline</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Pipeline type <br> (i.e. <code class="prettyprint">money</code>, <code class="prettyprint">quantity</code>)</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-all-pipelines">Get All Pipelines</h2>
+<pre class="highlight shell"><code>curl https://api.sellf.io/v1/pipelines -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sales Pipeline"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"money"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stocks Placed"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"quantity"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves all pipelines.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /pipelines</code></p>
+
+<h2 id="get-a-specific-pipeline">Get a Specific Pipeline</h2>
+<pre class="highlight shell"><code><span class="c"># Retrieve a pipeline with ID 3</span>
+curl https://api.sellf.io/v1/pipelines/3 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sales Pipeline"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"money"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a specific pipeline according to the ID provided.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /pipelines/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The unique identifier of the pipeline to retrieve</td>
+</tr>
+</tbody></table>
 
           <h1 id="stages"><a name="stages"></a>Stages</h1>
 
-<p>[//]: &lt;&gt; GET http|https://tapi.sellf.io/v1/stages -&gt; puborg_v1_stadia.index
-[//]: &lt;&gt; GET http|https://tapi.sellf.io/v1/stages/<a href="int:rid">int:rid</a> -&gt; puborg_v1_stadia.read</p>
+<p>The Stages API gives you access to your team&rsquo;s stages, in read-only mode. You can retrieve a single stage as well as list of all stages associated with your team.</p>
+
+<p>Sales stages are related to a specific pipeline and you can associate any number of <a href="#deals">Deals</a>. Once you sign up in Sellf, we create a primary stage by default, associated with four standard stages, editable based on your needs. You can add as many <em>active</em> stages as you want to each pipeline. The <em>active</em> stages concern deals that are still on going, i.e. neither won or lost/abandoned. Stages are sequentially positioned, following the flow of your sales process. Moreover, each stage is linked to a <em>win probability</em>, i.e. the likelihood (from 0 to 100) that a deal in that stage will be won.</p>
+
+<p>In the <code class="prettyprint">Settings &gt; Deal &gt; Pipelines</code> section of Sellf web app you can turn on the possibility of adding more pipelines and working with the probability of closing deals successfully. In this case, the default stages are automatically modified as stated in the table below:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Status</th>
+<th>Position</th>
+<th>Win Probability</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Lead</td>
+<td>active</td>
+<td>1</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Established contact</td>
+<td>active</td>
+<td>2</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Identified needs</td>
+<td>active</td>
+<td>3</td>
+<td>35</td>
+</tr>
+<tr>
+<td>Proposal</td>
+<td>active</td>
+<td>4</td>
+<td>50</td>
+</tr>
+<tr>
+<td>Negotiation</td>
+<td>active</td>
+<td>5</td>
+<td>75</td>
+</tr>
+<tr>
+<td>Won</td>
+<td>won</td>
+<td>6</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>Lost</td>
+<td>lost</td>
+<td>7</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>Abandoned</td>
+<td>abandoned</td>
+<td>8</td>
+<td>n/a</td>
+</tr>
+</tbody></table>
+
+<h3 id="attributes">Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>Unique identifier of the stage</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Name of the stage</td>
+</tr>
+<tr>
+<td>win_probability</td>
+<td>integer</td>
+<td>The likelihood that a deal will be won, as percentage</td>
+</tr>
+<tr>
+<td>position</td>
+<td>integer</td>
+<td>The position of the stage in the pipeline</td>
+</tr>
+<tr>
+<td>pipeline_id</td>
+<td>integer</td>
+<td>Unique identifier of the associated pipeline</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-all-stages">Get All Stages</h2>
+<pre class="highlight shell"><code>curl https://api.sellf.io/v1/stages -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lead"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"win_probability"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"pipeline_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Won"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"win_probability"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"pipeline_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves all stages of all pipelines.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /stages</code></p>
+
+<h2 id="get-a-specific-stage">Get a Specific Stage</h2>
+<pre class="highlight shell"><code><span class="c"># Retrieve a stage with ID 3</span>
+curl https://api.sellf.io/v1/stages/3 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Identified needs"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"win_probability"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"pipeline_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a specific stage according to the ID provided.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /stages/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The unique identifier of the stage to retrieve</td>
+</tr>
+</tbody></table>
 
           <h1 id="sources"><a name="sources"></a>Sources</h1>
 
-<p>[//]: &lt;&gt; GET http|https://tapi.sellf.io/v1/sources -&gt; puborg_v1_sources.index
-[//]: &lt;&gt; GET http|https://tapi.sellf.io/v1/sources/<a href="int:rid">int:rid</a> -&gt; puborg_v1_sources.read</p>
+<p>The Sources API gives you access to your team&rsquo;s sources, in read-only mode. You can retrieve a single source as well as list of all sources associated with your team.</p>
+
+<p>Sources can be associated with any number of <a href="#deals">Deals</a>. Once you sign up in Sellf, we suggests a bunch of common sources, it&rsquo;s up to up enable this feature or not. In the <code class="prettyprint">Settings &gt; Deal &gt; Sources</code> section of Sellf web app you can turn on the possibility of adding more sources (e.g. <code class="prettyprint">Newsletter</code>, <code class="prettyprint">Word of mouth</code>, <code class="prettyprint">Referral</code>, <code class="prettyprint">Website</code>, &hellip;). You can add as many deals&rsquo; sources as you want.</p>
+
+<h3 id="attributes">Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>Unique identifier of the source</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Name of the source</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-all-sources">Get All Sources</h2>
+<pre class="highlight shell"><code>curl https://api.sellf.io/v1/sources -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Newsletter"</span><span class="p">,</span><span class="w">
+  </span><span class="err">}</span><span class="p">,</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Referral"</span><span class="p">,</span><span class="w">
+  </span><span class="err">}</span><span class="p">,</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves all deals&rsquo; sources.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /sources</code></p>
+
+<h2 id="get-a-specific-source">Get a Specific Source</h2>
+<pre class="highlight shell"><code><span class="c"># Retrieve a deal source with ID 3</span>
+curl https://api.sellf.io/v1/sources/3 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Word of mouth"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a specific source according to the ID provided.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /sources/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The unique identifier of the source to retrieve</td>
+</tr>
+</tbody></table>
 
           <h1 id="margins"><a name="margins"></a>Margins</h1>
 
-<p>[//]: &lt;&gt; GET http|https://tapi.sellf.io/v1/products -&gt; puborg_v1_products.index
-[//]: &lt;&gt; GET http|https://tapi.sellf.io/v1/products/<a href="int:rid">int:rid</a> -&gt; puborg_v1_products.read</p>
+<p>The Margins API gives you access to your team&rsquo;s margins, in read-only mode. You can retrieve a single margin as well as list of all margins associated with your team. Margins are useful when you want to monitor not only the estimated value of a deal but also the profit that is going to be generated when the deal is successfully closed.</p>
+
+<p>Margins can be associated with any number of <a href="#deals">Deals</a>. In the <code class="prettyprint">Settings &gt; Deal &gt; Margins</code> section of Sellf web app you can turn on the possibility of creating a new margin, associating to it a label and a <em>net value</em>. The <em>net value</em> is the percentage of a deal&rsquo;s estimated value that is considered a net profit.</p>
+
+<h3 id="attributes">Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>Unique identifier of the margin</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Name of the margin</td>
+</tr>
+<tr>
+<td>net_rate</td>
+<td>integer</td>
+<td>A percentage applied to the estimated value of a deal</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-all-margins">Get All Margins</h2>
+<pre class="highlight shell"><code>curl https://api.sellf.io/v1/margins -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wild animals insurance"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"net_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">90</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Car insurance"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"net_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves all margins of the team.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /margins</code></p>
+
+<h2 id="get-a-specific-margin">Get a Specific Margin</h2>
+<pre class="highlight shell"><code><span class="c"># Retrieve a margin with ID 3</span>
+curl https://api.sellf.io/v1/margins/3 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Life insurance"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"net_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a specific margin according to the ID provided.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /margins/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The unique identifier of the margin to retrieve</td>
+</tr>
+</tbody></table>
 
           <h1 id="users"><a name="users"></a>Users</h1>
 
-<p>[//]: &lt;&gt; GET http|https://tapi.sellf.io/v1/users -&gt; puborg_v1_users.index
-[//]: &lt;&gt; GET http|https://tapi.sellf.io/v1/users/<a href="int:rid">int:rid</a> -&gt; puborg_v1_users.read</p>
+<p>The Users API gives you access to your team&rsquo;s users, in read-only mode. You can retrieve a single user as well as list of all users associated with your team.</p>
+
+<p>Once you sign up in Sellf, we create a team by default, and a user with team management privileges (i.e. an administrator). By logging in as the team administrator, you can invite as many additional users as you need, if you purchase at least a <a href="https://app.sellf.io/plans">business</a> plan.</p>
+
+<h3 id="attributes">Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>Unique identifier of the user</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Email address of the user</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Name of the user</td>
+</tr>
+<tr>
+<td>role</td>
+<td>string</td>
+<td>Role of the user <br> (i.e. <code class="prettyprint">administrator</code>, <code class="prettyprint">manager</code>, <code class="prettyprint">collaborator</code>)</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-all-users">Get All Users</h2>
+<pre class="highlight shell"><code>curl https://api.sellf.io/v1/users -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filippo@sellfapp.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Filippo Zanella"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"giovanni@sellfapp.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Giovanni Barillari"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves all users.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /users</code></p>
+
+<h2 id="get-a-specific-user">Get a Specific User</h2>
+<pre class="highlight shell"><code><span class="c"># Retrieve a user with ID 3</span>
+curl https://api.sellf.io/v1/users/3 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filippo@sellfapp.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Filippo Zanella"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a specific user according to the ID provided.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /users/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The unique identifier of the user to retrieve</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">
