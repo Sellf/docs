@@ -4,15 +4,38 @@
 TODO LIST - BEGIN
 </aside>
 
-1. al posto dei codici numerici usare etichette come ruolo utente (e.g. 0 diventa "administrator") e tipo di pipeline (e.g. 0 è "money") e tipo di stadio (e.g. 1 è "won")
-2. i "products" sono in realtà i "margins" sia per esser congruenti con l'uso lato app sia perché i products se li introdurremmo in futuro sono una altra cosa
-3. andrebbero rinominati i "contacts" in "people" perché propriamente i contatti sono sia persone che aziende (e infatti anche nelle app si chiamano cosi)
+1. al posto dei codici numerici usare etichette per il tipo di stadio (e.g. 1 è "won"). mettere nella doc il mapping tra codici numerici e status degli stadi
+
+2. specificare che i "products" delle apis fanno riferimento ai so-called margins
+
+3. andrebbero rinominati i "contacts" in "people" perché propriamente i contatti sono sia persone che aziende (e infatti anche nelle app si chiamano cosi). rimappiamoli sapendo che si chiama person_id
+
 4. vanno passati al setaccio sia tutti gli attributi elencati in tabella, sia tutti i query params sia tutti gli esempi json di responses per vedere se sono congruenti con le apis
-5. la get della lista degli stadi ritorna tutti gli stadi di tutte le pipelines? non vengono filtrati per pipeline? forse è meglio fare una call del tipo pipeline/:id/stages
-6. sistemare wp negli stadi. per i won/lost/abandoned che wp mettiamo adesso? n/a?
-7. nella creazione di deal e contatti o nella get, va specificato lo user id? e l'id dell'area?
-8. controllare i query params della get di deal e contatti (serve il suid?)
+5. la get della lista degli stadi ritorna tutti gli stadi di tutte le pipelines se non viene specificato il query param pipeline_id.
+6. sistemare wp negli stadi (valori di default). per i won/lost/abandoned mettiamo wp 100
+7. nella creazione di deal e contatti o nella get. lo user id va specificato, quello dell'area no
+8. controllare i query params della get di deal e contatti (non serve specificare lo user_id altrimenti ritorna tutti quelli che puoi vedere a seconda delle permission)
 9. completare documentazione delle aziende
+
+NOTE DI GIOVANNI:
+
+ho visto che hai segnato un po’ di robe per la documentazione delle api
+riguardo i query params, ti segnalo quelli che sono già implementati
+https://github.com/Sellf/sellf-moon/blob/master/sellf/apis/public/v1/common/contacts.py#L15
+per contatti e compagnie, ‘user_id’ e ‘name'
+https://github.com/Sellf/sellf-moon/blob/master/sellf/apis/public/v1/common/deals.py#L29
+pipeline ‘type' (monetaria o quantitativa)
+https://github.com/Sellf/sellf-moon/blob/master/sellf/apis/public/v1/common/deals.py#L44
+stadi ‘pipeline_id’ e ‘type' (il type è lo stage number)
+https://github.com/Sellf/sellf-moon/blob/master/sellf/apis/public/v1/common/deals.py#L103
+deals ‘user_id’, ‘stage_id’, ‘contact_id’, ‘company_id’, ‘source_id’, ‘product_id'
+praticamente ogni sezione di un controllore in cui vedi una chiamata a request.query_params o cast_qparam (che lo casta direttamente a intero)
+quindi per prendere gli stadi di una pipeline basta chiamare v1/stages?pipeline_id=123
+per il sort invece come ti ho detto ieri vedi in cima ai controllori una serie di variabili allowed_sorts
+https://github.com/Sellf/sellf-moon/blob/master/sellf/apis/public/v1/common/deals.py#L12
+occhio che alcuni sono rimappati: per ordinare per estimated_value, che nelle api pubbliche non esiste, va fatto sort_by=-value
+i campi serializzati sono tutti nei serializer: https://github.com/Sellf/sellf-moon/tree/master/sellf/apis/public/v1/serializers
+quelli accettati sono tutti nei filters: https://github.com/Sellf/sellf-moon/tree/master/sellf/apis/public/v1/filters
 
 <aside class="warning">
 TODO LIST - END
