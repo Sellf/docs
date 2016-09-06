@@ -4,12 +4,6 @@
 TODO LIST - BEGIN
 </aside>
 
-1. al posto dei codici numerici usare etichette per il tipo di stadio (e.g. 1 è "won"). mettere nella doc il mapping tra codici numerici e status degli stadi
-
-2. specificare che i "products" delle apis fanno riferimento ai so-called margins
-
-3. andrebbero rinominati i "contacts" in "people" perché propriamente i contatti sono sia persone che aziende (e infatti anche nelle app si chiamano cosi). rimappiamoli sapendo che si chiama person_id
-
 4. vanno passati al setaccio sia tutti gli attributi elencati in tabella, sia tutti i query params sia tutti gli esempi json di responses per vedere se sono congruenti con le apis
 5. la get della lista degli stadi ritorna tutti gli stadi di tutte le pipelines se non viene specificato il query param pipeline_id.
 6. sistemare wp negli stadi (valori di default). per i won/lost/abandoned mettiamo wp 100

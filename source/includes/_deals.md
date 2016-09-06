@@ -13,7 +13,7 @@ estimated_value | float | Value of the deal, with decimal part if needed
 is_hot | boolean | To point if the deal is important or not
 stage_id | integer | Unique identifier of the deal’s current stage in the pipeline
 source_id | integer | Unique identifier of the deal source
-main_contact_id | integer | Unique identifier of a primary person
+main_person_id | integer | Unique identifier of a primary person
 main_company_id | integer | Unique identifier of a primary company
 estimated_close_at | datetime | Estimated close date of the deal
 tags | array | An array of tags for a deal

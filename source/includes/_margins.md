@@ -1,22 +1,24 @@
-# <a name="margins"></a>Margins
+# <a name="margins"></a>Products
 
-The Margins API gives you access to your team's margins, in read-only mode. You can retrieve a single margin as well as list of all margins associated with your team. Margins are useful when you want to monitor not only the estimated value of a deal but also the profit that is going to be generated when the deal is successfully closed.
+The Products API gives you access to your team's [margins](https://app.sellf.io/settings/margins), in read-only mode. You can retrieve a single margin as well as list of all margins associated with your team. Margins are useful when you want to monitor not only the estimated value of a deal but also the profit that is going to be generated when the deal is successfully closed.
 
-Margins can be associated with any number of [Deals](#deals). In the `Settings > Deal > Margins` section of Sellf web app you can turn on the possibility of creating a new margin, associating to it a label and a *net value*. The *net value* is the percentage of a deal's estimated value that is considered a net profit.
+Margins can be associated with any number of [Deals](#deals). In the `Settings > Deal > Margins` [section](https://app.sellf.io/settings/margins) of Sellf web app you can turn on the possibility of creating a new margin, associating to it a label and a *net value*. The *net value* is the percentage of a deal's estimated value that is considered a net profit.
+
+Since margins are identified by labels and we want to extend it to let you manage products in Sellf, hereafter, as well in the API, we use the term *products* referring to the aforementioned margins.
 
 ### Attributes
 
 Parameter | Type | Description
 --------- | ------- | -----------
-id | integer | Unique identifier of the margin
-name | string | Name of the margin
+id | integer | Unique identifier of the product
+name | string | Name of the product
 net_rate | integer | A percentage applied to the estimated value of a deal
 
 
-## Get All Margins
+## Get All Products
 
 ```shell
-curl https://api.sellf.io/v1/margins -H "Api-Key: {YOUR_API_KEY}"
+curl https://api.sellf.io/v1/products -H "Api-Key: {YOUR_API_KEY}"
 ```
 
 > The above command returns JSON structured like this:
@@ -37,20 +39,20 @@ curl https://api.sellf.io/v1/margins -H "Api-Key: {YOUR_API_KEY}"
 ]
 ```
 
-This endpoint retrieves all margins of the team.
+This endpoint retrieves all products of the team.
 
 ### HTTP Request
 
-`GET /margins`
+`GET /products`
 
 
 
 
-## Get a Specific Margin
+## Get a Specific Product
 
 ```shell
-# Retrieve a margin with ID 3
-curl https://api.sellf.io/v1/margins/3 -H "Api-Key: {YOUR_API_KEY}"
+# Retrieve a product with ID 3
+curl https://api.sellf.io/v1/products/3 -H "Api-Key: {YOUR_API_KEY}"
 ```
 
 > The above command returns JSON structured like this:
@@ -63,14 +65,14 @@ curl https://api.sellf.io/v1/margins/3 -H "Api-Key: {YOUR_API_KEY}"
   }
 ```
 
-This endpoint retrieves a specific margin according to the ID provided.
+This endpoint retrieves a specific product according to the ID provided.
 
 ### HTTP Request
 
-`GET /margins/:id`
+`GET /products/:id`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The unique identifier of the margin to retrieve
+ID | The unique identifier of the product to retrieve
