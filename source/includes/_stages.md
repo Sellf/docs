@@ -68,7 +68,7 @@ curl https://api.sellf.io/v1/stages -H "Api-Key: 44O7IrHnf5eJFGfyA0UOun6r6LUMpA=
 ]
 ```
 
-This endpoint retrieves all stages of all pipelines.
+This endpoint retrieves all stages of all pipelines. If you want to get the stages of a specific pipeline, you need to specify the `pipeline_id` as query param.
 
 ### HTTP Request
 

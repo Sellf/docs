@@ -1,40 +1,5 @@
 # Introduction
 
-<aside class="warning">
-TODO LIST - BEGIN
-</aside>
-
-
-4. vanno passati al setaccio sia tutti gli attributi elencati in tabella, sia tutti i query params sia tutti gli esempi json di responses per vedere se sono congruenti con le apis
-5. la get della lista degli stadi ritorna tutti gli stadi di tutte le pipelines se non viene specificato il query param pipeline_id.
-9. completare documentazioune delle aziende
-8. controllare i query params della get di deal e contatti
-
-
-NOTE DI GIOVANNI:
-
-ho visto che hai segnato un po’ di robe per la documentazione delle api
-riguardo i query params, ti segnalo quelli che sono già implementati
-https://github.com/Sellf/sellf-moon/blob/master/sellf/apis/public/v1/common/contacts.py#L15
-per contatti e compagnie, ‘user_id’ e ‘name'
-https://github.com/Sellf/sellf-moon/blob/master/sellf/apis/public/v1/common/deals.py#L29
-pipeline ‘type' (monetaria o quantitativa)
-https://github.com/Sellf/sellf-moon/blob/master/sellf/apis/public/v1/common/deals.py#L44
-stadi ‘pipeline_id’ e ‘type' (il type è lo stage number)
-https://github.com/Sellf/sellf-moon/blob/master/sellf/apis/public/v1/common/deals.py#L103
-deals ‘user_id’, ‘stage_id’, ‘contact_id’, ‘company_id’, ‘source_id’, ‘product_id'
-praticamente ogni sezione di un controllore in cui vedi una chiamata a request.query_params o cast_qparam (che lo casta direttamente a intero)
-quindi per prendere gli stadi di una pipeline basta chiamare v1/stages?pipeline_id=123
-per il sort invece come ti ho detto ieri vedi in cima ai controllori una serie di variabili allowed_sorts
-https://github.com/Sellf/sellf-moon/blob/master/sellf/apis/public/v1/common/deals.py#L12
-occhio che alcuni sono rimappati: per ordinare per estimated_value, che nelle api pubbliche non esiste, va fatto sort_by=-value
-i campi serializzati sono tutti nei serializer: https://github.com/Sellf/sellf-moon/tree/master/sellf/apis/public/v1/serializers
-quelli accettati sono tutti nei filters: https://github.com/Sellf/sellf-moon/tree/master/sellf/apis/public/v1/filters
-
-<aside class="warning">
-TODO LIST - END
-</aside>
-
 Welcome to the Sellf API! You can use our API to access Sellf API endpoints, which can get information on [contacts](#contacts) and [deals](#deals) in our database.
 
 
