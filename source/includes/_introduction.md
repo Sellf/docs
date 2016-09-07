@@ -4,12 +4,12 @@
 TODO LIST - BEGIN
 </aside>
 
+
 4. vanno passati al setaccio sia tutti gli attributi elencati in tabella, sia tutti i query params sia tutti gli esempi json di responses per vedere se sono congruenti con le apis
 5. la get della lista degli stadi ritorna tutti gli stadi di tutte le pipelines se non viene specificato il query param pipeline_id.
-6. sistemare wp negli stadi (valori di default). per i won/lost/abandoned mettiamo wp 100
-7. nella creazione di deal e contatti o nella get. lo user id va specificato, quello dell'area no
-8. controllare i query params della get di deal e contatti (non serve specificare lo user_id altrimenti ritorna tutti quelli che puoi vedere a seconda delle permission)
-9. completare documentazione delle aziende
+9. completare documentazioune delle aziende
+8. controllare i query params della get di deal e contatti
+
 
 NOTE DI GIOVANNI:
 

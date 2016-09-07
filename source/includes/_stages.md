@@ -18,16 +18,13 @@ You can add as many *active* stages as you want to each pipeline. The *active* s
 
 In the `Settings > Deal > Pipelines` section of Sellf web app you can turn on the possibility of adding more pipelines and working with the probability of closing deals successfully. In this case, the default stages are automatically modified as stated in the table below:
 
-Name | Status | Position | Win Probability
+Name | Position | Win Probability
 --------- | ------- | ----------- | -----------
-Lead | active | 1 | 10
-Established contact | active | 2 | 25
-Identified needs | active | 3 | 35
-Proposal | active | 4 | 50
-Negotiation | active | 5 | 75
-Won | won | 6 | n/a
-Lost | lost | 7 | n/a
-Abandoned | abandoned | 8 | n/a
+Lead | 1 | 5
+Established contact | 2 | 10
+Identified needs | 3 | 30
+Proposal | 4 | 50
+Negotiation | 5 | 70
 
 ### Attributes
 
