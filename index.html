@@ -124,16 +124,31 @@ TODO LIST - BEGIN
 </aside>
 
 <ol>
-<li>al posto dei codici numerici usare etichette come ruolo utente (e.g. 0 diventa &ldquo;administrator&rdquo;) e tipo di pipeline (e.g. 0 è &ldquo;money&rdquo;) e tipo di stadio (e.g. 1 è &ldquo;won&rdquo;)</li>
-<li>i &ldquo;products&rdquo; sono in realtà i &ldquo;margins&rdquo; sia per esser congruenti con l&#39;uso lato app sia perché i products se li introdurremmo in futuro sono una altra cosa</li>
-<li>andrebbero rinominati i &ldquo;contacts&rdquo; in &ldquo;people&rdquo; perché propriamente i contatti sono sia persone che aziende (e infatti anche nelle app si chiamano cosi)</li>
 <li>vanno passati al setaccio sia tutti gli attributi elencati in tabella, sia tutti i query params sia tutti gli esempi json di responses per vedere se sono congruenti con le apis</li>
-<li>la get della lista degli stadi ritorna tutti gli stadi di tutte le pipelines? non vengono filtrati per pipeline? forse è meglio fare una call del tipo pipeline/:id/stages</li>
-<li>sistemare wp negli stadi. per i won/lost/abandoned che wp mettiamo adesso? n/a?</li>
-<li>nella creazione di deal e contatti o nella get, va specificato lo user id? e l&#39;id dell&#39;area?</li>
-<li>controllare i query params della get di deal e contatti (serve il suid?)</li>
-<li>completare documentazione delle aziende</li>
+<li>la get della lista degli stadi ritorna tutti gli stadi di tutte le pipelines se non viene specificato il query param pipeline_id.</li>
+<li>completare documentazioune delle aziende</li>
+<li>controllare i query params della get di deal e contatti</li>
 </ol>
+
+<p>NOTE DI GIOVANNI:</p>
+
+<p>ho visto che hai segnato un po’ di robe per la documentazione delle api
+riguardo i query params, ti segnalo quelli che sono già implementati
+https://github.com/Sellf/sellf-moon/blob/master/sellf/apis/public/v1/common/contacts.py#L15
+per contatti e compagnie, ‘user_id’ e ‘name&rsquo;
+https://github.com/Sellf/sellf-moon/blob/master/sellf/apis/public/v1/common/deals.py#L29
+pipeline ‘type&rsquo; (monetaria o quantitativa)
+https://github.com/Sellf/sellf-moon/blob/master/sellf/apis/public/v1/common/deals.py#L44
+stadi ‘pipeline_id’ e ‘type&rsquo; (il type è lo stage number)
+https://github.com/Sellf/sellf-moon/blob/master/sellf/apis/public/v1/common/deals.py#L103
+deals ‘user_id’, ‘stage_id’, ‘contact_id’, ‘company_id’, ‘source_id’, ‘product_id&rsquo;
+praticamente ogni sezione di un controllore in cui vedi una chiamata a request.query_params o cast_qparam (che lo casta direttamente a intero)
+quindi per prendere gli stadi di una pipeline basta chiamare v1/stages?pipeline_id=123
+per il sort invece come ti ho detto ieri vedi in cima ai controllori una serie di variabili allowed_sorts
+https://github.com/Sellf/sellf-moon/blob/master/sellf/apis/public/v1/common/deals.py#L12
+occhio che alcuni sono rimappati: per ordinare per estimated_value, che nelle api pubbliche non esiste, va fatto sort_by=-value
+i campi serializzati sono tutti nei serializer: https://github.com/Sellf/sellf-moon/tree/master/sellf/apis/public/v1/serializers
+quelli accettati sono tutti nei filters: https://github.com/Sellf/sellf-moon/tree/master/sellf/apis/public/v1/filters</p>
 
 <aside class="warning">
 TODO LIST - END
@@ -191,7 +206,7 @@ You must replace <code>{YOUR_API_KEY}</code> with your personal API key.
     -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
 </code></pre>
 
-<p>Most of the list operations are paginated. You can control it with the <code class="prettyprint">page</code> parameter. Pages start at <code class="prettyprint">1</code> and the first page will be returned if no page is specified. Data is limited to <code class="prettyprint">20</code> elements per page.</p>
+<p>Most of the list operations are paginated. You can control it with the <code class="prettyprint">page</code> parameter. Pages start at <code class="prettyprint">1</code> and the first page will be returned if no page is specified. Data is limited to <code class="prettyprint">20</code> entities per page.</p>
 
 <p>The depicted example shows how to get the third page of all the team deals.</p>
 
@@ -201,13 +216,45 @@ curl https://api.sellf.io/v1/deals?sort_by<span class="o">=</span>-estimated_val
     -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
 </code></pre>
 
-<p>You can control in what order, according to a criteria, how to sort listed elements using the query parameter <code class="prettyprint">sort_by</code>.</p>
+<p>You can control in what order, according to a criteria, how to sort listed entities using the query parameter <code class="prettyprint">sort_by</code>.</p>
 
-<p>The default sort order is ascending. If you want to sort the elements in descending order, append a minus sign to the field.</p>
+<p>The default sort order is ascending. If you want to sort the entities in descending order, append a minus sign to the field.</p>
+
+<h3 id="ownership">Ownership</h3>
+
+<p>In general, the identifier of a user needs to be specified when you want to add a new entity (e.g. a deal or a contact), via the <code class="prettyprint">user_id</code> field. If you want to list a set of entities (e.g. all the deals owned by a specific user) you can do that via the <code class="prettyprint">user_id</code> query parameter; be aware that if you do not specify any <code class="prettyprint">user_id</code>, the APIs will return all the entities in your team.</p>
 
           <h1 id="rate-limits">Rate limits</h1>
 
-<p>To prevent API abuse or overload, Sellf APIs are rate limited. The rate limit is considered per API token. The Sellf API allows to perform 10 requests/second.</p>
+<p>To prevent API abuse or overload, Sellf APIs are rate limited. The rate limit is considered per API token. The Sellf API has different rates depending on your Sellf plan, as stated in the table below.</p>
+
+<table><thead>
+<tr>
+<th>Plan</th>
+<th>Rate</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Free</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>Pro</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>Starter</td>
+<td>3/sec (100/min)</td>
+</tr>
+<tr>
+<td>Performance</td>
+<td>20/sec (600/min)</td>
+</tr>
+<tr>
+<td>Enterprise</td>
+<td>Dedicated</td>
+</tr>
+</tbody></table>
 
 <p>If your limit reaches zero, subsequent requests will receive the <code class="prettyprint">429 Too Many Requests</code> response code until the request reset time has been reached.</p>
 
@@ -609,7 +656,7 @@ curl https://api.sellf.io/v1/people/3 <span class="se">\</span>
 <td>Unique identifier of the deal source</td>
 </tr>
 <tr>
-<td>main_contact_id</td>
+<td>main_person_id</td>
 <td>integer</td>
 <td>Unique identifier of a primary person</td>
 </tr>
@@ -921,65 +968,69 @@ curl https://api.sellf.io/v1/pipelines/3 -H <span class="s2">"Api-Key: {YOUR_API
 
 <p>The Stages API gives you access to your team&rsquo;s stages, in read-only mode. You can retrieve a single stage as well as list of all stages associated with your team.</p>
 
-<p>Sales stages are related to a specific pipeline and you can associate any number of <a href="#deals">Deals</a>. Once you sign up in Sellf, we create a primary stage by default, associated with four standard stages, editable based on your needs. You can add as many <em>active</em> stages as you want to each pipeline. The <em>active</em> stages concern deals that are still on going, i.e. neither won or lost/abandoned. Stages are sequentially positioned, following the flow of your sales process. Moreover, each stage is linked to a <em>win probability</em>, i.e. the likelihood (from 0 to 100) that a deal in that stage will be won.</p>
+<p>Sales stages are related to a specific pipeline and you can associate any number of <a href="#deals">Deals</a>. Once you sign up in Sellf, we create a primary stage by default, associated with four standard stages, editable based on your needs.</p>
+
+<p>Sellf identify stages with an integer that determines their type: <em>active</em>, <em>won</em>, <em>lost</em>, <em>abandoned</em>. The match between the two follows the table below:</p>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>Active</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Won</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Lost</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Abandoned</td>
+</tr>
+</tbody></table>
+
+<p>You can add as many <em>active</em> stages as you want to each pipeline. The <em>active</em> stages concern deals that are still on going, i.e. neither won or lost/abandoned. Stages are sequentially positioned, following the flow of your sales process. Moreover, each stage is linked to a <em>win probability</em>, i.e. the likelihood (from 0 to 100) that a deal in that stage will be won.</p>
 
 <p>In the <code class="prettyprint">Settings &gt; Deal &gt; Pipelines</code> section of Sellf web app you can turn on the possibility of adding more pipelines and working with the probability of closing deals successfully. In this case, the default stages are automatically modified as stated in the table below:</p>
 
 <table><thead>
 <tr>
 <th>Name</th>
-<th>Status</th>
 <th>Position</th>
 <th>Win Probability</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>Lead</td>
-<td>active</td>
 <td>1</td>
-<td>10</td>
+<td>5</td>
 </tr>
 <tr>
 <td>Established contact</td>
-<td>active</td>
 <td>2</td>
-<td>25</td>
+<td>10</td>
 </tr>
 <tr>
 <td>Identified needs</td>
-<td>active</td>
 <td>3</td>
-<td>35</td>
+<td>30</td>
 </tr>
 <tr>
 <td>Proposal</td>
-<td>active</td>
 <td>4</td>
 <td>50</td>
 </tr>
 <tr>
 <td>Negotiation</td>
-<td>active</td>
 <td>5</td>
-<td>75</td>
-</tr>
-<tr>
-<td>Won</td>
-<td>won</td>
-<td>6</td>
-<td>n/a</td>
-</tr>
-<tr>
-<td>Lost</td>
-<td>lost</td>
-<td>7</td>
-<td>n/a</td>
-</tr>
-<tr>
-<td>Abandoned</td>
-<td>abandoned</td>
-<td>8</td>
-<td>n/a</td>
+<td>70</td>
 </tr>
 </tbody></table>
 
@@ -1017,10 +1068,25 @@ curl https://api.sellf.io/v1/pipelines/3 -H <span class="s2">"Api-Key: {YOUR_API
 <td>integer</td>
 <td>Unique identifier of the associated pipeline</td>
 </tr>
+<tr>
+<td>type</td>
+<td>integer</td>
+<td>Stage type (i.e. active, won, lost, abandoned)</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>datetime</td>
+<td>Date of creation</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>datetime</td>
+<td>Date of last edit</td>
+</tr>
 </tbody></table>
 
 <h2 id="get-all-stages">Get All Stages</h2>
-<pre class="highlight shell"><code>curl https://api.sellf.io/v1/stages -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+<pre class="highlight shell"><code>curl https://api.sellf.io/v1/stages -H <span class="s2">"Api-Key: 44O7IrHnf5eJFGfyA0UOun6r6LUMpA==QEBTM2xsRk9yQXBpVDE0MSEhMTI2ISE="</span>
 </code></pre>
 
 <blockquote>
@@ -1175,11 +1241,13 @@ curl https://api.sellf.io/v1/sources/3 -H <span class="s2">"Api-Key: {YOUR_API_K
 </tr>
 </tbody></table>
 
-          <h1 id="margins"><a name="margins"></a>Margins</h1>
+          <h1 id="products"><a name="margins"></a>Products</h1>
 
-<p>The Margins API gives you access to your team&rsquo;s margins, in read-only mode. You can retrieve a single margin as well as list of all margins associated with your team. Margins are useful when you want to monitor not only the estimated value of a deal but also the profit that is going to be generated when the deal is successfully closed.</p>
+<p>The Products API gives you access to your team&rsquo;s <a href="https://app.sellf.io/settings/margins">margins</a>, in read-only mode. You can retrieve a single margin as well as list of all margins associated with your team. Margins are useful when you want to monitor not only the estimated value of a deal but also the profit that is going to be generated when the deal is successfully closed.</p>
 
-<p>Margins can be associated with any number of <a href="#deals">Deals</a>. In the <code class="prettyprint">Settings &gt; Deal &gt; Margins</code> section of Sellf web app you can turn on the possibility of creating a new margin, associating to it a label and a <em>net value</em>. The <em>net value</em> is the percentage of a deal&rsquo;s estimated value that is considered a net profit.</p>
+<p>Margins can be associated with any number of <a href="#deals">Deals</a>. In the <code class="prettyprint">Settings &gt; Deal &gt; Margins</code> <a href="https://app.sellf.io/settings/margins">section</a> of Sellf web app you can turn on the possibility of creating a new margin, associating to it a label and a <em>net value</em>. The <em>net value</em> is the percentage of a deal&rsquo;s estimated value that is considered a net profit.</p>
+
+<p>Since margins are identified by labels and we want to extend it to let you manage products in Sellf, hereafter, as well in the API, we use the term <em>products</em> referring to the aforementioned margins.</p>
 
 <h3 id="attributes">Attributes</h3>
 
@@ -1193,12 +1261,12 @@ curl https://api.sellf.io/v1/sources/3 -H <span class="s2">"Api-Key: {YOUR_API_K
 <tr>
 <td>id</td>
 <td>integer</td>
-<td>Unique identifier of the margin</td>
+<td>Unique identifier of the product</td>
 </tr>
 <tr>
 <td>name</td>
 <td>string</td>
-<td>Name of the margin</td>
+<td>Name of the product</td>
 </tr>
 <tr>
 <td>net_rate</td>
@@ -1207,8 +1275,8 @@ curl https://api.sellf.io/v1/sources/3 -H <span class="s2">"Api-Key: {YOUR_API_K
 </tr>
 </tbody></table>
 
-<h2 id="get-all-margins">Get All Margins</h2>
-<pre class="highlight shell"><code>curl https://api.sellf.io/v1/margins -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+<h2 id="get-all-products">Get All Products</h2>
+<pre class="highlight shell"><code>curl https://api.sellf.io/v1/products -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
 </code></pre>
 
 <blockquote>
@@ -1229,15 +1297,15 @@ curl https://api.sellf.io/v1/sources/3 -H <span class="s2">"Api-Key: {YOUR_API_K
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves all margins of the team.</p>
+<p>This endpoint retrieves all products of the team.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET /margins</code></p>
+<p><code class="prettyprint">GET /products</code></p>
 
-<h2 id="get-a-specific-margin">Get a Specific Margin</h2>
-<pre class="highlight shell"><code><span class="c"># Retrieve a margin with ID 3</span>
-curl https://api.sellf.io/v1/margins/3 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+<h2 id="get-a-specific-product">Get a Specific Product</h2>
+<pre class="highlight shell"><code><span class="c"># Retrieve a product with ID 3</span>
+curl https://api.sellf.io/v1/products/3 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
 </code></pre>
 
 <blockquote>
@@ -1250,11 +1318,11 @@ curl https://api.sellf.io/v1/margins/3 -H <span class="s2">"Api-Key: {YOUR_API_K
   </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves a specific margin according to the ID provided.</p>
+<p>This endpoint retrieves a specific product according to the ID provided.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET /margins/:id</code></p>
+<p><code class="prettyprint">GET /products/:id</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -1266,7 +1334,7 @@ curl https://api.sellf.io/v1/margins/3 -H <span class="s2">"Api-Key: {YOUR_API_K
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>The unique identifier of the margin to retrieve</td>
+<td>The unique identifier of the product to retrieve</td>
 </tr>
 </tbody></table>
 
