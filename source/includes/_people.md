@@ -37,55 +37,39 @@ curl https://api.sellf.io/v1/people?sort_by=-name -H "Api-Key: {YOUR_API_KEY}"
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "website": null,
-    "company_id": 2,
-    "fax": null,
-    "first_name": "Alessia",
-    "user_id": 4,
-    "description": "Hi! I'm Alessia, head of Customer Support at Sellf.\nI am here to help you if you need anything at all. If you have any questions or problems using Sellf, don't hesitate to contact me at alessia@sellfapp.com",
-    "title": "Head of Customer Happiness",
-    "mobile": null,
-    "created_at": "2015-11-27T14:57:54.707662",
-    "skype": "sellfapp",
-    "updated_at": "2016-07-05T12:19:20",
-    "longitude": 12.4274592,
-    "id": 1,
-    "phone": null,
-    "last_name": "Bellon",
-    "address": "Via Sile, 41, 31056 Roncade (TV) Italia",
-    "latitude": 45.5648361,
-    "email_secondary": null,
-    "email": "alessia@sellfapp.com",
-    "tags": [
-      "customer",
-      "employee"
-    ]
+{
+  "meta": {
+    "has_more": false,
+    "object": "list"
   },
-  {
-    "website": null,
-    "company_id": null,
-    "fax": null,
-    "first_name": "Christopher I.",
-    "user_id": 4,
-    "description": "",
-    "title": "Payroll bookkeeper",
-    "mobile": null,
-    "created_at": "2015-12-01T12:46:19.908001",
-    "skype": "Presucest",
-    "updated_at": "2016-09-05T19:00:01.495364",
-    "longitude": null,
-    "id": 2,
-    "phone": "605-269-3493",
-    "last_name": "Woods",
-    "address": "1355 Elsie Drive Whitewood, SD 57793",
-    "latitude": null,
-    "email_secondary": null,
-    "email": "ChristopherIWoods@rhyta.com",
-    "tags": []
-  }
-]
+  "data": [
+    {
+      "website": null,
+      "company_id": 2,
+      "fax": null,
+      "first_name": "Alessia",
+      "user_id": 4,
+      "description": "Hi! I'm Alessia, head of Customer Support at Sellf",
+      "title": "Head of Customer Happiness",
+      "mobile": null,
+      "created_at": "2015-11-27T14:57:54.707662",
+      "skype": "sellfapp",
+      "updated_at": "2016-07-05T12:19:20",
+      "longitude": 12.4274592,
+      "id": 1,
+      "phone": null,
+      "last_name": "Bellon",
+      "address": "Via Sile, 41, 31056 Roncade (TV) Italia",
+      "latitude": 45.5648361,
+      "email_secondary": null,
+      "email": "alessia@sellf.be",
+      "tags": [
+        "customer",
+        "employee"
+      ]
+    }
+  ]
+}
 ```
 
 This endpoint retrieves all people.
@@ -114,19 +98,41 @@ curl https://api.sellf.io/v1/people \
   -H "Api-Key: {YOUR_API_KEY}" \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
-  -X POST -d "{\"first_name\": \"Filippo\", \"last_name\": \"Zanella\", \"title\": \"Founder of Sellf\", \"email\": \"filippo@sellfapp.com\", \"tags\": [\"Italy\", \"Treviso\"]}"
+  -X POST -d "{"first_name": "Filippo",
+               "last_name": "Zanella",
+               "title": "Founder of Sellf",
+               "email": "filippo@sellfapp.com",
+               "tags": ["Italy", "Treviso"],
+               "user_id": 4}"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 3,
+  "website": null,
+  "company_id": null,
+  "fax": null,
   "first_name": "Filippo",
-  "last_name": "Zanella",
+  "user_id": 4,
+  "description": null,
   "title": "Founder of Sellf",
-  "email": "filippo@sellfapp.com",
-  "tags": ["Italy", "Treviso"]
+  "mobile": null,
+  "created_at": "2016-09-08T16:36:52",
+  "skype": null,
+  "updated_at": "2016-09-08T16:36:52",
+  "longitude": null,
+  "id": 3,
+  "phone": null,
+  "last_name": "Zanella",
+  "address": null,
+  "latitude": null,
+  "email_secondary": null,
+  "email": "filippo@sellf.be",
+  "tags": [
+    "Italy",
+    "Treviso"
+  ]
 }
 ```
 
@@ -150,12 +156,29 @@ curl https://api.sellf.io/v1/people/3 -H "Api-Key: {YOUR_API_KEY}"
 
 ```json
 {
-  "id": 3,
+  "website": null,
+  "company_id": null,
+  "fax": null,
   "first_name": "Filippo",
-  "last_name": "Zanella",
+  "user_id": 4,
+  "description": null,
   "title": "Founder of Sellf",
-  "email": "filippo@sellfapp.com",
-  "tags": ["Italy", "Treviso"]
+  "mobile": null,
+  "created_at": "2016-09-08T16:36:52",
+  "skype": null,
+  "updated_at": "2016-09-08T16:36:52",
+  "longitude": null,
+  "id": 3,
+  "phone": null,
+  "last_name": "Zanella",
+  "address": null,
+  "latitude": null,
+  "email_secondary": null,
+  "email": "filippo@sellf.be",
+  "tags": [
+    "Italy",
+    "Treviso"
+  ]
 }
 ```
 
@@ -182,19 +205,37 @@ curl https://api.sellf.io/v1/people/3 \
   -H "Api-Key: {YOUR_API_KEY}" \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
-  -X PUT -d "{\"title\": \"Ruby on Rails Developer\", \"email\": \"support@sellfapp.com\"}"
+  -X PUT -d "{"title": "Ruby on Rails Developer",
+              "email": "support@sellfapp.com"}"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 3,
+  "website": null,
+  "company_id": null,
+  "fax": null,
   "first_name": "Filippo",
-  "last_name": "Zanella",
+  "user_id": 4,
+  "description": null,
   "title": "Ruby on Rails Developer",
+  "mobile": null,
+  "created_at": "2016-09-08T16:36:52",
+  "skype": null,
+  "updated_at": "2016-09-08T16:42:30",
+  "longitude": null,
+  "id": 3,
+  "phone": null,
+  "last_name": "Zanella",
+  "address": null,
+  "latitude": null,
+  "email_secondary": null,
   "email": "support@sellfapp.com",
-  "tags": ["Italy", "Treviso"]
+  "tags": [
+    "Italy",
+    "Treviso"
+  ]
 }
 ```
 

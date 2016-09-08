@@ -4,54 +4,62 @@ The Companies API allows you to get, create, update and delete your companies. E
 
 ### Attributes
 
-Parameter | Type | Description
---------- | ------- | -----------
-id | integer | Unique identifier of the company
-first_name | string | First name of the company
-last_name | string | Last name of the company
-title | string | Role in the company
-website | string | Website
-email | string | Primary email
-email_secondary | string | Secondary email
-phone | string | Office or home number
-mobile | string | Mobile phone number
-fax | string | Fax number
-facebook | string | Facebook page
-skype  | string | Skype nickname
-address | string | Office or home address of the company
-user_id | integer | Unique identifier of the user that the company is assigned to
-company_id | integer | Unique identifier of the company's company
-tags | array | An array of tags for a company
-
-
+Parameter | Type | Permission | Description
+--------- | ------- | ------- | -----------
+id | integer | read | Unique identifier of the company
+name | string | write | Name of the company
+industry | string | write |  Industry sector of the company
+website | string | write |  writeebsite
+email | string | write | Primary email
+email_secondary | string | write | Secondary email
+phone | string | write | Office or home number
+fax | string | write | Fax number
+address | string | write | Office or home address of the company
+latitude | float | write | Geographic coordinate of the company
+longitude | float | write | Geographic coordinate of the company
+description | string | write |
+tags | array | write | An array of tags for a company
+user_id | integer | write | Unique identifier of the user that the company is assigned to
+company_id | integer | write | Unique identifier of the company's company
+created_at | datetime | read | Date of creation
+updated_at | datetime | read | Date of last edit
 
 
 ## Get All Companies
 
 ```shell
-curl https://api.sellf.io/v1/companies -H "Api-Key: {YOUR_API_KEY}"
+curl https://api.sellf.io/v1/companies?sort_by=-name -H "Api-Key: {YOUR_API_KEY}"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": 1,
-	  "first_name": "Anthony",
-	  "last_name": "Mc Gregor",
-	  "title": "CEO",
-	  "email": "anthony@acme.org"
+{
+  "meta": {
+    "has_more": false,
+    "object": "list"
   },
-  {
-    "id": 2,
-	  "first_name": "Paul",
-	  "last_name": "Hogan",
-	  "title": "Manager",
-	  "email": "paul.hogan@comma.com"
-  },
-  { ... }
-]
+  "data": [
+    {
+      "website": "http://www.sellfapp.com",
+      "fax": null,
+      "user_id": 2869,
+      "description": null,
+      "tags": [],
+      "industry": "Mobile CRM",
+      "created_at": "2015-11-26T15:25:30.940731",
+      "updated_at": "2016-07-05T12:17:47",
+      "longitude": 12.4274592,
+      "id": 20991,
+      "phone": "+39 0422 789611",
+      "address": "Via Sile, 41, 31056 Roncade TV, Italia",
+      "latitude": 45.5648361,
+      "email_secondary": null,
+      "email": "hello@sellfapp.com",
+      "name": "Sellf s.r.l."
+    }
+  ]
+}
 ```
 
 This endpoint retrieves all companies.
@@ -64,8 +72,9 @@ This endpoint retrieves all companies.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-sort | name | Column to sort by <br> e.g. name
-suid | ? | Unique identifier of the user the company is owned by
+sort_by | name | Column to sort by <br> (i.e. `id`, `name`, `created_at`, `updated_at`)
+user_id |  | Unique identifier of the user the company is owned by
+name |  | A string containing or matching the name of the company
 
 
 
@@ -78,19 +87,33 @@ curl https://api.sellf.io/v1/companies \
   -H "Api-Key: {YOUR_API_KEY}" \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
-  -X POST -d "{\"first_name\": \"Filippo\", \"last_name\": \"Zanella\", \"title\": \"Founder of Sellf\", \"email\": \"filippo@sellfapp.com\", \"tags\": [\"Italy\", \"Treviso\"]}"
+  -X POST -d "{"name": "Acme Inc.",
+               "industry": "Semiconductor",
+               "email": "hey@acme.com",
+               "address": "Via Thomas Alva Edison, Padova, PD",
+               "user_id": 4}"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
+  "website": null,
+  "fax": null,
+  "user_id": 4,
+  "description": null,
+  "tags": [],
+  "industry": "Semiconductor",
+  "created_at": "2016-09-08T16:54:37",
+  "updated_at": "2016-09-08T16:54:37",
+  "longitude": null,
   "id": 3,
-  "first_name": "Filippo",
-  "last_name": "Zanella",
-  "title": "Founder of Sellf",
-  "email": "filippo@sellfapp.com",
-  "tags": ["Italy", "Treviso"]
+  "phone": null,
+  "address": "Via Thomas Alva Edison, Padova, PD",
+  "latitude": null,
+  "email_secondary": null,
+  "email": "hey@acme.com",
+  "name": "Acme Inc."
 }
 ```
 
@@ -114,12 +137,22 @@ curl https://api.sellf.io/v1/companies/3 -H "Api-Key: {YOUR_API_KEY}"
 
 ```json
 {
+  "website": null,
+  "fax": null,
+  "user_id": 4,
+  "description": null,
+  "tags": [],
+  "industry": "Semiconductor",
+  "created_at": "2016-09-08T16:54:37",
+  "updated_at": "2016-09-08T16:54:37",
+  "longitude": null,
   "id": 3,
-  "first_name": "Filippo",
-  "last_name": "Zanella",
-  "title": "Founder of Sellf",
-  "email": "filippo@sellfapp.com",
-  "tags": ["Italy", "Treviso"]
+  "phone": null,
+  "address": "Via Thomas Alva Edison, Padova, PD",
+  "latitude": null,
+  "email_secondary": null,
+  "email": "hey@acme.com",
+  "name": "Acme Inc."
 }
 ```
 
@@ -146,19 +179,31 @@ curl https://api.sellf.io/v1/companies/3 \
   -H "Api-Key: {YOUR_API_KEY}" \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
-  -X PUT -d "{\"title\": \"Ruby on Rails Developer\", \"email\": \"support@sellfapp.com\"}"
+  -X PUT -d "{"name": "Acme Holding",
+              "industry": "Semiconductor & Devices",
+              "email": "sales@acme.com"}"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
+  "website": null,
+  "fax": null,
+  "user_id": 4,
+  "description": null,
+  "tags": [],
+  "industry": "Semiconductor & Devices",
+  "created_at": "2016-09-08T16:54:37",
+  "updated_at": "2016-09-08T17:02:18",
+  "longitude": null,
   "id": 3,
-  "first_name": "Filippo",
-  "last_name": "Zanella",
-  "title": "Ruby on Rails Developer",
-  "email": "support@sellfapp.com",
-  "tags": ["Italy", "Treviso"]
+  "phone": null,
+  "address": "Via Thomas Alva Edison, Padova, PD",
+  "latitude": null,
+  "email_secondary": null,
+  "email": "sales@acme.com",
+  "name": "Acme Holding"
 }
 ```
 
@@ -184,7 +229,7 @@ ID | The unique identifier of the company to retrieve
 ## Delete a Specific Company
 
 ```shell
-# Delete a person with ID 3
+# Delete a company with ID 3
 curl https://api.sellf.io/v1/companies/3 \
   -H "Api-Key: {YOUR_API_KEY}" \
   -X DELETE
@@ -192,7 +237,7 @@ curl https://api.sellf.io/v1/companies/3 \
 
 > The above command returns 200 with no content.
 
-This endpoint deletes a specific person. Deleting a person implies that even all the associated entities are deleted, except for the associated company.
+This endpoint deletes a specific company. Deleting a company implies that even all the associated entities are deleted, except for the associated company.
 
 
 ### HTTP Request
@@ -203,4 +248,4 @@ This endpoint deletes a specific person. Deleting a person implies that even all
 
 Parameter | Description
 --------- | -----------
-ID | The unique identifier of the person to retrieve
+ID | The unique identifier of the company to retrieve
