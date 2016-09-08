@@ -49,23 +49,34 @@ curl https://api.sellf.io/v1/stages -H "Api-Key: 44O7IrHnf5eJFGfyA0UOun6r6LUMpA=
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-	  "id": 1,
-	  "name": "Lead",
-	  "win_probability": 10,
-	  "position": 1,
-	  "pipeline_id": 2
+{
+  "meta": {
+    "has_more": true,
+    "object": "list"
   },
-  {
-	  "id": 9,
-	  "name": "Won",
-	  "win_probability": 100,
-	  "position": 6,
-	  "pipeline_id": 2
-  },
-  { ... }
-]
+  "data": [
+    {
+      "name": "Qualified",
+      "created_at": "2015-11-26T15:25:30.399687",
+      "updated_at": "2016-04-28T10:40:00.508475",
+      "pipeline_id": 1,
+      "win_probability": 20,
+      "position": 1,
+      "type": 0,
+      "id": 3
+    },
+    {
+      "name": "Negotiation",
+      "created_at": "2015-11-26T15:25:30.409568",
+      "updated_at": "2016-05-11T11:58:02.441383",
+      "pipeline_id": 1,
+      "win_probability": 80,
+      "position": 6,
+      "type": 0,
+      "id": 9
+    }
+  ]
+}
 ```
 
 This endpoint retrieves all stages of all pipelines. If you want to get the stages of a specific pipeline, you need to specify the `pipeline_id` as query param.
@@ -74,26 +85,37 @@ This endpoint retrieves all stages of all pipelines. If you want to get the stag
 
 `GET /stages`
 
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+sort_by | Column to sort by <br> (i.e. `id`, `name`, `position`, `win_probability`, `created_at`, `updated_at`)
+pipeline_id | Unique identifier of the pipeline to which stages belongs
+type | Unique identifier of stage type (i.e. `0`, `1`, `2`, `3`)
+
 
 
 
 ## Get a Specific Stage
 
 ```shell
-# Retrieve a stage with ID 3
-curl https://api.sellf.io/v1/stages/3 -H "Api-Key: {YOUR_API_KEY}"
+# Retrieve a stage with ID 9
+curl https://api.sellf.io/v1/stages/9 -H "Api-Key: {YOUR_API_KEY}"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-  {
-	  "id": 3,
-	  "name": "Identified needs",
-	  "win_probability": 35,
-	  "position": 3,
-	  "pipeline_id": 2
-  }
+{
+  "name": "Negotiation",
+  "created_at": "2015-11-26T15:25:30.409568",
+  "updated_at": "2016-05-11T11:58:02.441383",
+  "pipeline_id": 1,
+  "win_probability": 80,
+  "position": 6,
+  "type": 0,
+  "id": 9
+}
 ```
 
 This endpoint retrieves a specific stage according to the ID provided.

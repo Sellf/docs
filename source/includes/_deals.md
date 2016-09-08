@@ -56,10 +56,12 @@ This endpoint retrieves all deals.
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-sort | name | Column to sort by <br> e.g. name
-suid | ? | Unique identifier of the user the deal is owned by
+Parameter| Description
+--------- | -----------
+sort_by | Column to sort by <br> (i.e. `id`, `name`, `value`, `estimated_close_at`, `stage_changed_at`, `created_at`, `updated_at`)
+user_id | Unique identifier of the user the person is owned by
+company_id | Unique identifier of the company with whom the person is associated
+name | A string containing or matching the name of the person
 
 
 
