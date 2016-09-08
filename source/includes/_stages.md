@@ -43,7 +43,7 @@ updated_at | datetime | read | Date of last edit
 ## Get All Stages
 
 ```shell
-curl https://api.sellf.io/v1/stages -H "Api-Key: 44O7IrHnf5eJFGfyA0UOun6r6LUMpA==QEBTM2xsRk9yQXBpVDE0MSEhMTI2ISE="
+curl https://api.sellf.io/v1/stages -H "Api-Key: {YOUR_API_KEY}"
 ```
 
 > The above command returns JSON structured like this:
