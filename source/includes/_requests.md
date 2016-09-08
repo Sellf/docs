@@ -30,3 +30,7 @@ The default sort order is ascending. If you want to sort the entities in descend
 ### Ownership
 
 In general, the identifier of a user needs to be specified when you want to add a new entity (e.g. a deal or a contact), via the `user_id` field. If you want to list a set of entities (e.g. all the deals owned by a specific user) you can do that via the `user_id` query parameter; be aware that if you do not specify any `user_id`, the APIs will return all the entities in your team.
+
+### Permission
+
+Each entity in Sellf has some attributes that are read-only and attributes that can be both retrieved and overwritten, via REST calls. In each section you'll find a table in which for each entity field is specified if it is possibile not only to read it but also sent it to Sellf through POST or PUT methods.

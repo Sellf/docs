@@ -4,32 +4,34 @@ The People API allows you to get, create, update and delete your people. Each pe
 
 ### Attributes
 
-Parameter | Type | Description
---------- | ------- | -----------
-id | integer | Unique identifier of the person
-first_name | string | First name of the person
-last_name | string | Last name of the person
-title | string | Role in the company
-website | string | Website
-email | string | Primary email
-email_secondary | string | Secondary email
-phone | string | Office or home number
-mobile | string | Mobile phone number
-fax | string | Fax number
-facebook | string | Facebook page
-skype  | string | Skype nickname
-address | string | Office or home address of the person
-user_id | integer | Unique identifier of the user that the person is assigned to
-company_id | integer | Unique identifier of the person's company
-tags | array | An array of tags for a person
-
-
+Parameter | Type | Permission | Description
+--------- | ------- | ------- | -----------
+id | integer | read | Unique identifier of the person
+first_name | string | write | First name of the person
+last_name | string | write | Last name of the person
+title | string | write |  Role in the company
+website | string | write |  writeebsite
+email | string | write | Primary email
+email_secondary | string | write | Secondary email
+phone | string | write | Office or home number
+mobile | string | write | Mobile phone number
+fax | string | write | Fax number
+skype  | string | write | Skype nickname
+address | string | write | Office or home address of the person
+latitude | float | write | Geographic coordinate of the person
+longitude | float | write | Geographic coordinate of the person
+description | string | write |
+tags | array | write | An array of tags for a person
+user_id | integer | write | Unique identifier of the user that the person is assigned to
+company_id | integer | write | Unique identifier of the person's company
+created_at | datetime | read | Date of creation
+updated_at | datetime | read | Date of last edit
 
 
 ## Get All People
 
 ```shell
-curl https://api.sellf.io/v1/people -H "Api-Key: {YOUR_API_KEY}"
+curl https://api.sellf.io/v1/people?sort_by=-name -H "Api-Key: {YOUR_API_KEY}"
 ```
 
 > The above command returns JSON structured like this:
@@ -37,20 +39,52 @@ curl https://api.sellf.io/v1/people -H "Api-Key: {YOUR_API_KEY}"
 ```json
 [
   {
+    "website": null,
+    "company_id": 2,
+    "fax": null,
+    "first_name": "Alessia",
+    "user_id": 4,
+    "description": "Hi! I'm Alessia, head of Customer Support at Sellf.\nI am here to help you if you need anything at all. If you have any questions or problems using Sellf, don't hesitate to contact me at alessia@sellfapp.com",
+    "title": "Head of Customer Happiness",
+    "mobile": null,
+    "created_at": "2015-11-27T14:57:54.707662",
+    "skype": "sellfapp",
+    "updated_at": "2016-07-05T12:19:20",
+    "longitude": 12.4274592,
     "id": 1,
-	  "first_name": "Anthony",
-	  "last_name": "Mc Gregor",
-	  "title": "CEO",
-	  "email": "anthony@acme.org"
+    "phone": null,
+    "last_name": "Bellon",
+    "address": "Via Sile, 41, 31056 Roncade (TV) Italia",
+    "latitude": 45.5648361,
+    "email_secondary": null,
+    "email": "alessia@sellfapp.com",
+    "tags": [
+      "customer",
+      "employee"
+    ]
   },
   {
+    "website": null,
+    "company_id": null,
+    "fax": null,
+    "first_name": "Christopher I.",
+    "user_id": 4,
+    "description": "",
+    "title": "Payroll bookkeeper",
+    "mobile": null,
+    "created_at": "2015-12-01T12:46:19.908001",
+    "skype": "Presucest",
+    "updated_at": "2016-09-05T19:00:01.495364",
+    "longitude": null,
     "id": 2,
-	  "first_name": "Paul",
-	  "last_name": "Hogan",
-	  "title": "Manager",
-	  "email": "paul.hogan@comma.com"
-  },
-  { ... }
+    "phone": "605-269-3493",
+    "last_name": "Woods",
+    "address": "1355 Elsie Drive Whitewood, SD 57793",
+    "latitude": null,
+    "email_secondary": null,
+    "email": "ChristopherIWoods@rhyta.com",
+    "tags": []
+  }
 ]
 ```
 
@@ -64,8 +98,10 @@ This endpoint retrieves all people.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-sort | name | Column to sort by <br> e.g. name
-suid | ? | Unique identifier of the user the person is owned by
+sort_by | name | Column to sort by <br> (i.e. `id`, `name`, `first_name`, `last_name`, `created_at`, `updated_at`)
+user_id |  | Unique identifier of the user the person is owned by
+company_id |  | Unique identifier of the company with whom the person is associated
+name |  | A string containing or matching the name of the person
 
 
 
