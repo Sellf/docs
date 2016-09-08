@@ -209,10 +209,6 @@ curl https://api.sellf.io/v1/companies/3 \
 
 This endpoint allows to update a specific company.
 
-<aside class="warning">
-In order to modify tags associated to a company, you need to supply the entire set. Tags are replaced every time they are part of a request.
-</aside>
-
 ### HTTP Request
 
 `PUT /companies/:id`

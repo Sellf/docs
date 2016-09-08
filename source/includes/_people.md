@@ -22,8 +22,8 @@ latitude | float | write | Geographic coordinate of the person
 longitude | float | write | Geographic coordinate of the person
 description | string | write |
 tags | array | write | An array of tags for a person
-user_id | integer | write | Unique identifier of the user that the person is assigned to
 company_id | integer | write | Unique identifier of the person's company
+user_id | integer | write | Unique identifier of the user that the person is assigned to
 created_at | datetime | read | Date of creation
 updated_at | datetime | read | Date of last edit
 
@@ -240,10 +240,6 @@ curl https://api.sellf.io/v1/people/3 \
 ```
 
 This endpoint allows to update a specific person.
-
-<aside class="warning">
-In order to modify tags associated to a person, you need to supply the entire set. Tags are replaced every time they are part of a request.
-</aside>
 
 ### HTTP Request
 

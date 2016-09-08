@@ -30,14 +30,14 @@ Negotiation | 5 | 70
 
 Parameter | Type | Permission | Description
 --------- | ------- | ------- | -----------
-id | integer | Unique identifier of the stage
-name | string | Name of the stage
-win_probability | integer | The likelihood that a deal will be won, as percentage
-position | integer | The position of the stage in the pipeline
-pipeline_id | integer | Unique identifier of the associated pipeline
-type | integer | Stage type (i.e. active, won, lost, abandoned)
-created_at | datetime | Date of creation
-updated_at | datetime | Date of last edit
+id | integer | read | Unique identifier of the stage
+name | string | read | Name of the stage
+win_probability | integer | read | The likelihood that a deal will be won, as percentage
+position | integer | read | The position of the stage in the pipeline
+pipeline_id | integer | read | Unique identifier of the associated pipeline
+type | integer | read | Stage type (i.e. active, won, lost, abandoned)
+created_at | datetime | read | Date of creation
+updated_at | datetime | read | Date of last edit
 
 
 ## Get All Stages
