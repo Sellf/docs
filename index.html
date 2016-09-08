@@ -189,6 +189,10 @@ curl https://api.sellf.io/v1/deals?sort_by<span class="o">=</span>-estimated_val
 
 <p>In general, the identifier of a user needs to be specified when you want to add a new entity (e.g. a deal or a contact), via the <code class="prettyprint">user_id</code> field. If you want to list a set of entities (e.g. all the deals owned by a specific user) you can do that via the <code class="prettyprint">user_id</code> query parameter; be aware that if you do not specify any <code class="prettyprint">user_id</code>, the APIs will return all the entities in your team.</p>
 
+<h3 id="permission">Permission</h3>
+
+<p>Each entity in Sellf has some attributes that are read-only and attributes that can be both retrieved and overwritten, via REST calls. In each section you&rsquo;ll find a table in which for each entity field is specified if it is possibile not only to read it but also sent it to Sellf through POST or PUT methods.</p>
+
           <h1 id="rate-limits">Rate limits</h1>
 
 <p>To prevent API abuse or overload, Sellf APIs are rate limited. The rate limit is considered per API token. The Sellf API has different rates depending on your Sellf plan, as stated in the table below.</p>
@@ -289,93 +293,134 @@ curl https://api.sellf.io/v1/deals?sort_by<span class="o">=</span>-estimated_val
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Permission</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id</td>
 <td>integer</td>
+<td>read</td>
 <td>Unique identifier of the person</td>
 </tr>
 <tr>
 <td>first_name</td>
 <td>string</td>
+<td>write</td>
 <td>First name of the person</td>
 </tr>
 <tr>
 <td>last_name</td>
 <td>string</td>
+<td>write</td>
 <td>Last name of the person</td>
 </tr>
 <tr>
 <td>title</td>
 <td>string</td>
+<td>write</td>
 <td>Role in the company</td>
 </tr>
 <tr>
 <td>website</td>
 <td>string</td>
-<td>Website</td>
+<td>write</td>
+<td>writeebsite</td>
 </tr>
 <tr>
 <td>email</td>
 <td>string</td>
+<td>write</td>
 <td>Primary email</td>
 </tr>
 <tr>
 <td>email_secondary</td>
 <td>string</td>
+<td>write</td>
 <td>Secondary email</td>
 </tr>
 <tr>
 <td>phone</td>
 <td>string</td>
+<td>write</td>
 <td>Office or home number</td>
 </tr>
 <tr>
 <td>mobile</td>
 <td>string</td>
+<td>write</td>
 <td>Mobile phone number</td>
 </tr>
 <tr>
 <td>fax</td>
 <td>string</td>
+<td>write</td>
 <td>Fax number</td>
-</tr>
-<tr>
-<td>facebook</td>
-<td>string</td>
-<td>Facebook page</td>
 </tr>
 <tr>
 <td>skype</td>
 <td>string</td>
+<td>write</td>
 <td>Skype nickname</td>
 </tr>
 <tr>
 <td>address</td>
 <td>string</td>
+<td>write</td>
 <td>Office or home address of the person</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>float</td>
+<td>write</td>
+<td>Geographic coordinate of the person</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>float</td>
+<td>write</td>
+<td>Geographic coordinate of the person</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>write</td>
+<td></td>
+</tr>
+<tr>
+<td>tags</td>
+<td>array</td>
+<td>write</td>
+<td>An array of tags for a person</td>
 </tr>
 <tr>
 <td>user_id</td>
 <td>integer</td>
+<td>write</td>
 <td>Unique identifier of the user that the person is assigned to</td>
 </tr>
 <tr>
 <td>company_id</td>
 <td>integer</td>
+<td>write</td>
 <td>Unique identifier of the person&rsquo;s company</td>
 </tr>
 <tr>
-<td>tags</td>
-<td>array</td>
-<td>An array of tags for a person</td>
+<td>created_at</td>
+<td>datetime</td>
+<td>read</td>
+<td>Date of creation</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>datetime</td>
+<td>read</td>
+<td>Date of last edit</td>
 </tr>
 </tbody></table>
 
 <h2 id="get-all-people">Get All People</h2>
-<pre class="highlight shell"><code>curl https://api.sellf.io/v1/people -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+<pre class="highlight shell"><code>curl https://api.sellf.io/v1/people?sort_by<span class="o">=</span>-name -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
 </code></pre>
 
 <blockquote>
@@ -383,20 +428,52 @@ curl https://api.sellf.io/v1/deals?sort_by<span class="o">=</span>-estimated_val
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"website"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fax"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alessia"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hi! I'm Alessia, head of Customer Support at Sellf.\nI am here to help you if you need anything at all. If you have any questions or problems using Sellf, don't hesitate to contact me at alessia@sellfapp.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Head of Customer Happiness"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-27T14:57:54.707662"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"skype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sellfapp"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-05T12:19:20"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.4274592</span><span class="p">,</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anthony"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mc Gregor"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CEO"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"anthony@acme.org"</span><span class="w">
+    </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bellon"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Via Sile, 41, 31056 Roncade (TV) Italia"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">45.5648361</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email_secondary"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"alessia@sellfapp.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"customer"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"employee"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"website"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fax"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Christopher I."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payroll bookkeeper"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-12-01T12:46:19.908001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"skype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Presucest"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-05T19:00:01.495364"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paul"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hogan"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manager"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paul.hogan@comma.com"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+    </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"605-269-3493"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Woods"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1355 Elsie Drive Whitewood, SD 57793"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email_secondary"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChristopherIWoods@rhyta.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
@@ -416,14 +493,24 @@ curl https://api.sellf.io/v1/deals?sort_by<span class="o">=</span>-estimated_val
 </tr>
 </thead><tbody>
 <tr>
-<td>sort</td>
+<td>sort_by</td>
 <td>name</td>
-<td>Column to sort by <br> e.g. name</td>
+<td>Column to sort by <br> (i.e. <code class="prettyprint">id</code>, <code class="prettyprint">name</code>, <code class="prettyprint">first_name</code>, <code class="prettyprint">last_name</code>, <code class="prettyprint">created_at</code>, <code class="prettyprint">updated_at</code>)</td>
 </tr>
 <tr>
-<td>suid</td>
-<td>?</td>
+<td>user_id</td>
+<td></td>
 <td>Unique identifier of the user the person is owned by</td>
+</tr>
+<tr>
+<td>company_id</td>
+<td></td>
+<td>Unique identifier of the company with whom the person is associated</td>
+</tr>
+<tr>
+<td>name</td>
+<td></td>
+<td>A string containing or matching the name of the person</td>
 </tr>
 </tbody></table>
 
@@ -571,6 +658,295 @@ curl https://api.sellf.io/v1/people/3 <span class="se">\</span>
 </tbody></table>
 
           <h1 id="companies"><a name="companies"></a>Companies</h1>
+
+<p>The Companies API allows you to get, create, update and delete your companies. Each company can be associated to a <a href="#companies">Company</a> and one or more <a href="#deals">Deals</a>.</p>
+
+<h3 id="attributes">Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>Unique identifier of the company</td>
+</tr>
+<tr>
+<td>first_name</td>
+<td>string</td>
+<td>First name of the company</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string</td>
+<td>Last name of the company</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>Role in the company</td>
+</tr>
+<tr>
+<td>website</td>
+<td>string</td>
+<td>Website</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Primary email</td>
+</tr>
+<tr>
+<td>email_secondary</td>
+<td>string</td>
+<td>Secondary email</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>string</td>
+<td>Office or home number</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>string</td>
+<td>Mobile phone number</td>
+</tr>
+<tr>
+<td>fax</td>
+<td>string</td>
+<td>Fax number</td>
+</tr>
+<tr>
+<td>facebook</td>
+<td>string</td>
+<td>Facebook page</td>
+</tr>
+<tr>
+<td>skype</td>
+<td>string</td>
+<td>Skype nickname</td>
+</tr>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>Office or home address of the company</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>integer</td>
+<td>Unique identifier of the user that the company is assigned to</td>
+</tr>
+<tr>
+<td>company_id</td>
+<td>integer</td>
+<td>Unique identifier of the company&rsquo;s company</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>array</td>
+<td>An array of tags for a company</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-all-companies">Get All Companies</h2>
+<pre class="highlight shell"><code>curl https://api.sellf.io/v1/companies -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anthony"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mc Gregor"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CEO"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"anthony@acme.org"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paul"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hogan"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manager"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paul.hogan@comma.com"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves all companies.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /companies</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sort</td>
+<td>name</td>
+<td>Column to sort by <br> e.g. name</td>
+</tr>
+<tr>
+<td>suid</td>
+<td>?</td>
+<td>Unique identifier of the user the company is owned by</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-a-company">Create a Company</h2>
+<pre class="highlight shell"><code><span class="c"># Create a new company</span>
+curl https://api.sellf.io/v1/companies <span class="se">\</span>
+  -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -X POST -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">first_name</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Filippo</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">last_name</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Zanella</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">title</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Founder of Sellf</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">email</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">filippo@sellfapp.com</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">tags</span><span class="se">\"</span><span class="s2">: [</span><span class="se">\"</span><span class="s2">Italy</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">Treviso</span><span class="se">\"</span><span class="s2">]}"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Filippo"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zanella"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Founder of Sellf"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filippo@sellfapp.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Italy"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Treviso"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint allows to create a company.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /companies</code></p>
+
+<h2 id="get-a-specific-company">Get a Specific Company</h2>
+<pre class="highlight shell"><code><span class="c"># Retrieve a company with ID 3</span>
+curl https://api.sellf.io/v1/companies/3 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Filippo"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zanella"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Founder of Sellf"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filippo@sellfapp.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Italy"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Treviso"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a specific company.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /companies/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The unique identifier of the company to retrieve</td>
+</tr>
+</tbody></table>
+
+<h2 id="update-a-specific-company">Update a Specific Company</h2>
+<pre class="highlight shell"><code><span class="c"># Update a company with ID 3</span>
+curl https://api.sellf.io/v1/companies/3 <span class="se">\</span>
+  -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -X PUT -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">title</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Ruby on Rails Developer</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">email</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">support@sellfapp.com</span><span class="se">\"</span><span class="s2">}"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Filippo"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zanella"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ruby on Rails Developer"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"support@sellfapp.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Italy"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Treviso"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint allows to update a specific company.</p>
+
+<aside class="warning">
+In order to modify tags associated to a company, you need to supply the entire set. Tags are replaced every time they are part of a request.
+</aside>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT /companies/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The unique identifier of the company to retrieve</td>
+</tr>
+</tbody></table>
+
+<h2 id="delete-a-specific-company">Delete a Specific Company</h2>
+<pre class="highlight shell"><code><span class="c"># Delete a person with ID 3</span>
+curl https://api.sellf.io/v1/companies/3 <span class="se">\</span>
+  -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
+  -X DELETE
+</code></pre>
+
+<blockquote>
+<p>The above command returns 200 with no content.</p>
+</blockquote>
+
+<p>This endpoint deletes a specific person. Deleting a person implies that even all the associated entities are deleted, except for the associated company.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE /companies/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The unique identifier of the person to retrieve</td>
+</tr>
+</tbody></table>
 
           <h1 id="deals"><a name="deals"></a>Deals</h1>
 
@@ -1076,7 +1452,7 @@ curl https://api.sellf.io/v1/pipelines/3 -H <span class="s2">"Api-Key: {YOUR_API
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves all stages of all pipelines.</p>
+<p>This endpoint retrieves all stages of all pipelines. If you want to get the stages of a specific pipeline, you need to specify the <code class="prettyprint">pipeline_id</code> as query param.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
