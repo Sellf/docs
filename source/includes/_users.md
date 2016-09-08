@@ -6,12 +6,12 @@ Once you sign up in Sellf, we create a team by default, and a user with team man
 
 ### Attributes
 
-Parameter | Type | Description
---------- | ------- | -----------
-id | integer | Unique identifier of the user
-email | string | Email address of the user
-name | string | Name of the user
-role | string | Role of the user <br> (i.e. `administrator`, `manager`, `collaborator`)
+Parameter | Type | Permission | Description
+--------- | ------- | ------- | -----------
+id | integer | read | Unique identifier of the user
+email | string | read | Email address of the user
+name | string | read | Name of the user
+created_at | datetime | read | Date of creation
 
 
 ## Get All Users
@@ -23,21 +23,26 @@ curl https://api.sellf.io/v1/users -H "Api-Key: {YOUR_API_KEY}"
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-	  "id": 1,
-	  "email": "filippo@sellfapp.com",
-	  "role": 0,
-	  "name": "Filippo Zanella"
+{
+  "meta": {
+    "has_more": false,
+    "object": "list"
   },
-  {
-	  "id": 2,
-	  "email": "giovanni@sellfapp.com",
-	  "role": 1,
-	  "name": "Giovanni Barillari"
-  },
-  { ... }
-]
+  "data": [
+    {
+      "created_at": "2015-11-26T15:25:29",
+      "id": 1,
+      "name": "Filippo Zanella",
+      "email": "filippo@sellf.be"
+    },
+    {
+      "created_at": "2016-08-24T18:25:13",
+      "id": 2,
+      "name": "Giovanni Barillari",
+      "email": "giovanni@sellf.be"
+    }
+  ]
+}
 ```
 
 This endpoint retrieves all users.
@@ -52,18 +57,18 @@ This endpoint retrieves all users.
 ## Get a Specific User
 
 ```shell
-# Retrieve a user with ID 3
-curl https://api.sellf.io/v1/users/3 -H "Api-Key: {YOUR_API_KEY}"
+# Retrieve a user with ID 2
+curl https://api.sellf.io/v1/users/2 -H "Api-Key: {YOUR_API_KEY}"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 3,
-  "email": "filippo@sellfapp.com",
-  "role": 0,
-  "name": "Filippo Zanella"
+  "created_at": "2016-08-24T18:25:13",
+  "id": 2,
+  "name": "Giovanni Barillari",
+  "email": "giovanni@sellf.be"
 }
 ```
 

@@ -6,10 +6,12 @@ Sources can be associated with any number of [Deals](#deals). Once you sign up i
 
 ### Attributes
 
-Parameter | Type | Description
---------- | ------- | -----------
-id | integer | Unique identifier of the source
-name | string | Name of the source
+Parameter | Type | Permission | Description
+--------- | ------- | ------- | -----------
+id | integer | read | Unique identifier of the source
+name | string | read | Name of the source
+created_at | datetime | read | Date of creation
+updated_at | datetime | read | Date of last edit
 
 
 ## Get All Sources
@@ -21,17 +23,26 @@ curl https://api.sellf.io/v1/sources -H "Api-Key: {YOUR_API_KEY}"
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-	  "id": 1,
-	  "name": "Newsletter",
+{
+  "meta": {
+    "has_more": false,
+    "object": "list"
   },
-  {
-	  "id": 2,
-	  "name": "Referral",
-  },
-  { ... }
-]
+  "data": [
+    {
+      "created_at": "2016-03-23T11:09:04.239262",
+      "id": 1,
+      "name": "Referral",
+      "updated_at": "2016-05-11T15:29:36.390240"
+    },
+    {
+      "created_at": "2016-03-23T11:09:04.257173",
+      "id": 2,
+      "name": "Word of mouth",
+      "updated_at": "2016-03-29T12:22:20.922757"
+    }
+  ]
+}
 ```
 
 This endpoint retrieves all deals' sources.
@@ -40,23 +51,31 @@ This endpoint retrieves all deals' sources.
 
 `GET /sources`
 
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+sort_by | Column to sort by <br> (i.e. `id`, `name`, `created_at`, `updated_at`)
+
 
 
 
 ## Get a Specific Source
 
 ```shell
-# Retrieve a deal source with ID 3
-curl https://api.sellf.io/v1/sources/3 -H "Api-Key: {YOUR_API_KEY}"
+# Retrieve a deal source with ID 2
+curl https://api.sellf.io/v1/sources/2 -H "Api-Key: {YOUR_API_KEY}"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-  {
-	  "id": 3,
-	  "name": "Word of mouth"
-  }
+{
+  "created_at": "2016-03-23T11:09:04.257173",
+  "id": 2,
+  "name": "Word of mouth",
+  "updated_at": "2016-03-29T12:22:20.922757"
+}
 ```
 
 This endpoint retrieves a specific source according to the ID provided.

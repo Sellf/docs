@@ -6,8 +6,8 @@ Sales pipelines consist of a sequence of [Stages](#stages) in which the deals ca
 
 ### Attributes
 
-Parameter | Type | Description
---------- | ------- | -----------
+Parameter | Type | Permission | Description
+--------- | ------- | ------- | -----------
 id | integer | Unique identifier of the pipeline
 name | string | Name of the pipeline
 type | string | Pipeline type <br> (i.e. `money`, `quantity`)
@@ -42,6 +42,10 @@ This endpoint retrieves all pipelines.
 ### HTTP Request
 
 `GET /pipelines`
+
+Parameter | Description
+--------- | -----------
+sort_by | Column to sort by <br> (i.e. `id`, `name`, `created_at`, `updated_at`)
 
 
 

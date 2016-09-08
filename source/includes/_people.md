@@ -80,12 +80,12 @@ This endpoint retrieves all people.
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-sort_by | name | Column to sort by <br> (i.e. `id`, `name`, `first_name`, `last_name`, `created_at`, `updated_at`)
-user_id |  | Unique identifier of the user the person is owned by
-company_id |  | Unique identifier of the company with whom the person is associated
-name |  | A string containing or matching the name of the person
+Parameter| Description
+--------- | -----------
+sort_by | Column to sort by <br> (i.e. `id`, `name`, `first_name`, `last_name`, `created_at`, `updated_at`)
+user_id | Unique identifier of the user the person is owned by
+company_id | Unique identifier of the company with whom the person is associated
+name | A string containing or matching the name of the person
 
 
 

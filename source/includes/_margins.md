@@ -8,12 +8,13 @@ Since margins are identified by labels and we want to extend it to let you manag
 
 ### Attributes
 
-Parameter | Type | Description
---------- | ------- | -----------
-id | integer | Unique identifier of the product
-name | string | Name of the product
-net_rate | integer | A percentage applied to the estimated value of a deal
-
+Parameter | Type | Permission | Description
+--------- | ------- | ------- | -----------
+id | integer | read | Unique identifier of the product
+name | string | read |Name of the product
+net_rate | integer | read | A percentage applied to the estimated value of a deal
+created_at | datetime | read | Date of creation
+updated_at | datetime | read | Date of last edit
 
 ## Get All Products
 
@@ -24,19 +25,28 @@ curl https://api.sellf.io/v1/products -H "Api-Key: {YOUR_API_KEY}"
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-	  "id": 1,
-	  "name": "Wild animals insurance",
-	  "net_rate": 90
+{
+  "meta": {
+    "has_more": false,
+    "object": "list"
   },
-  {
-	  "id": 2,
-	  "name": "Car insurance",
-	  "net_rate": 60
-  },
-  { ... }
-]
+  "data": [
+    {
+      "created_at": "2016-04-19T16:16:52.111686",
+      "net_rate": 80,
+      "id": 1,
+      "name": "Life insurance",
+      "updated_at": "2016-05-10T08:35:31.732557"
+    },
+    {
+      "created_at": "2016-04-19T16:26:37.789595",
+      "net_rate": 60,
+      "id": 2,
+      "name": "Car insurance",
+      "updated_at": "2016-05-03T13:55:13.897777"
+    }
+  ]
+}
 ```
 
 This endpoint retrieves all products of the team.
@@ -45,24 +55,30 @@ This endpoint retrieves all products of the team.
 
 `GET /products`
 
+Parameter | Description
+--------- | -----------
+sort_by | Column to sort by <br> (i.e. `id`, `name`, `created_at`, `updated_at`)
+
 
 
 
 ## Get a Specific Product
 
 ```shell
-# Retrieve a product with ID 3
-curl https://api.sellf.io/v1/products/3 -H "Api-Key: {YOUR_API_KEY}"
+# Retrieve a product with ID 2
+curl https://api.sellf.io/v1/products/2 -H "Api-Key: {YOUR_API_KEY}"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-  {
-	  "id": 3,
-	  "name": "Life insurance",
-	  "net_rate": 80
-  }
+{
+  "created_at": "2016-04-19T16:26:37.789595",
+  "net_rate": 60,
+  "id": 2,
+  "name": "Car insurance",
+  "updated_at": "2016-05-03T13:55:13.897777"
+}
 ```
 
 This endpoint retrieves a specific product according to the ID provided.

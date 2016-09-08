@@ -28,8 +28,8 @@ Negotiation | 5 | 70
 
 ### Attributes
 
-Parameter | Type | Description
---------- | ------- | -----------
+Parameter | Type | Permission | Description
+--------- | ------- | ------- | -----------
 id | integer | Unique identifier of the stage
 name | string | Name of the stage
 win_probability | integer | The likelihood that a deal will be won, as percentage

@@ -4,8 +4,8 @@ The Deals API allows you to get, create, update and delete your deals.
 
 ### Attributes
 
-Parameter | Type | Description
---------- | ------- | -----------
+Parameter | Type | Permission | Description
+--------- | ------- | ------- | -----------
 id | integer | Unique identifier of the deal
 name | string | Brief description of the deal
 user_id | integer | Unique identifier of the user that the deal is assigned to

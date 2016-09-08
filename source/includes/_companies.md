@@ -70,11 +70,11 @@ This endpoint retrieves all companies.
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-sort_by | name | Column to sort by <br> (i.e. `id`, `name`, `created_at`, `updated_at`)
-user_id |  | Unique identifier of the user the company is owned by
-name |  | A string containing or matching the name of the company
+Parameter | Description
+--------- | -----------
+sort_by | Column to sort by <br> (i.e. `id`, `name`, `created_at`, `updated_at`)
+user_id | Unique identifier of the user the company is owned by
+name | A string containing or matching the name of the company
 
 
 
