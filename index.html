@@ -394,16 +394,16 @@ curl https://api.sellf.io/v1/deals?sort_by<span class="o">=</span>-estimated_val
 <td>An array of tags for a person</td>
 </tr>
 <tr>
-<td>user_id</td>
-<td>integer</td>
-<td>write</td>
-<td>Unique identifier of the user that the person is assigned to</td>
-</tr>
-<tr>
 <td>company_id</td>
 <td>integer</td>
 <td>write</td>
 <td>Unique identifier of the person&rsquo;s company</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>integer</td>
+<td>write</td>
+<td>Unique identifier of the user that the person is assigned to</td>
 </tr>
 <tr>
 <td>created_at</td>
@@ -426,55 +426,39 @@ curl https://api.sellf.io/v1/deals?sort_by<span class="o">=</span>-estimated_val
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"website"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fax"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alessia"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hi! I'm Alessia, head of Customer Support at Sellf.\nI am here to help you if you need anything at all. If you have any questions or problems using Sellf, don't hesitate to contact me at alessia@sellfapp.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Head of Customer Happiness"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-27T14:57:54.707662"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"skype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sellfapp"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-05T12:19:20"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.4274592</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bellon"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Via Sile, 41, 31056 Roncade (TV) Italia"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">45.5648361</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"email_secondary"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"alessia@sellfapp.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"customer"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"employee"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"has_more"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"website"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fax"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Christopher I."</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payroll bookkeeper"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-12-01T12:46:19.908001"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"skype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Presucest"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-05T19:00:01.495364"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"605-269-3493"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Woods"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1355 Elsie Drive Whitewood, SD 57793"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"email_secondary"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChristopherIWoods@rhyta.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"website"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"fax"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alessia"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hi! I'm Alessia, head of Customer Support at Sellf"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Head of Customer Happiness"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-27T14:57:54.707662"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"skype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sellfapp"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-05T12:19:20"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.4274592</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bellon"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Via Sile, 41, 31056 Roncade (TV) Italia"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">45.5648361</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email_secondary"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"alessia@sellf.be"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"customer"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"employee"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>This endpoint retrieves all people.</p>
@@ -488,28 +472,23 @@ curl https://api.sellf.io/v1/deals?sort_by<span class="o">=</span>-estimated_val
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>sort_by</td>
-<td>name</td>
 <td>Column to sort by <br> (i.e. <code class="prettyprint">id</code>, <code class="prettyprint">name</code>, <code class="prettyprint">first_name</code>, <code class="prettyprint">last_name</code>, <code class="prettyprint">created_at</code>, <code class="prettyprint">updated_at</code>)</td>
 </tr>
 <tr>
 <td>user_id</td>
-<td></td>
 <td>Unique identifier of the user the person is owned by</td>
 </tr>
 <tr>
 <td>company_id</td>
-<td></td>
 <td>Unique identifier of the company with whom the person is associated</td>
 </tr>
 <tr>
 <td>name</td>
-<td></td>
 <td>A string containing or matching the name of the person</td>
 </tr>
 </tbody></table>
@@ -520,19 +499,41 @@ curl https://api.sellf.io/v1/people <span class="se">\</span>
   -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
-  -X POST -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">first_name</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Filippo</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">last_name</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Zanella</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">title</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Founder of Sellf</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">email</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">filippo@sellfapp.com</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">tags</span><span class="se">\"</span><span class="s2">: [</span><span class="se">\"</span><span class="s2">Italy</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">Treviso</span><span class="se">\"</span><span class="s2">]}"</span>
+  -X POST -d <span class="s2">"{"</span>first_name<span class="s2">": "</span>Filippo<span class="s2">",
+               "</span>last_name<span class="s2">": "</span>Zanella<span class="s2">",
+               "</span>title<span class="s2">": "</span>Founder of Sellf<span class="s2">",
+               "</span>email<span class="s2">": "</span>filippo@sellfapp.com<span class="s2">",
+               "</span>tags<span class="s2">": ["</span>Italy<span class="s2">", "</span>Treviso<span class="s2">"],
+               "</span>user_id<span class="s2">": 4}"</span>
 </code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"website"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"fax"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Filippo"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zanella"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Founder of Sellf"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filippo@sellfapp.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Italy"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Treviso"</span><span class="p">]</span><span class="w">
+  </span><span class="nt">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T16:36:52"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"skype"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T16:36:52"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zanella"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email_secondary"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filippo@sellf.be"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Italy"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Treviso"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -551,12 +552,29 @@ curl https://api.sellf.io/v1/people/3 -H <span class="s2">"Api-Key: {YOUR_API_KE
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"website"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"fax"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Filippo"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zanella"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Founder of Sellf"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filippo@sellfapp.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Italy"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Treviso"</span><span class="p">]</span><span class="w">
+  </span><span class="nt">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T16:36:52"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"skype"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T16:36:52"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zanella"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email_secondary"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filippo@sellf.be"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Italy"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Treviso"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -586,27 +604,41 @@ curl https://api.sellf.io/v1/people/3 <span class="se">\</span>
   -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
-  -X PUT -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">title</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Ruby on Rails Developer</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">email</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">support@sellfapp.com</span><span class="se">\"</span><span class="s2">}"</span>
+  -X PUT -d <span class="s2">"{"</span>title<span class="s2">": "</span>Ruby on Rails Developer<span class="s2">",
+              "</span>email<span class="s2">": "</span>support@sellfapp.com<span class="s2">"}"</span>
 </code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"website"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"fax"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Filippo"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zanella"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ruby on Rails Developer"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T16:36:52"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"skype"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T16:42:30"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zanella"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email_secondary"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"support@sellfapp.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Italy"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Treviso"</span><span class="p">]</span><span class="w">
+  </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Italy"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Treviso"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>This endpoint allows to update a specific person.</p>
-
-<aside class="warning">
-In order to modify tags associated to a person, you need to supply the entire set. Tags are replaced every time they are part of a request.
-</aside>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -667,115 +699,147 @@ curl https://api.sellf.io/v1/people/3 <span class="se">\</span>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Permission</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id</td>
 <td>integer</td>
+<td>read</td>
 <td>Unique identifier of the company</td>
 </tr>
 <tr>
-<td>first_name</td>
+<td>name</td>
 <td>string</td>
-<td>First name of the company</td>
+<td>write</td>
+<td>Name of the company</td>
 </tr>
 <tr>
-<td>last_name</td>
+<td>industry</td>
 <td>string</td>
-<td>Last name of the company</td>
-</tr>
-<tr>
-<td>title</td>
-<td>string</td>
-<td>Role in the company</td>
+<td>write</td>
+<td>Industry sector of the company</td>
 </tr>
 <tr>
 <td>website</td>
 <td>string</td>
-<td>Website</td>
+<td>write</td>
+<td>writeebsite</td>
 </tr>
 <tr>
 <td>email</td>
 <td>string</td>
+<td>write</td>
 <td>Primary email</td>
 </tr>
 <tr>
 <td>email_secondary</td>
 <td>string</td>
+<td>write</td>
 <td>Secondary email</td>
 </tr>
 <tr>
 <td>phone</td>
 <td>string</td>
+<td>write</td>
 <td>Office or home number</td>
-</tr>
-<tr>
-<td>mobile</td>
-<td>string</td>
-<td>Mobile phone number</td>
 </tr>
 <tr>
 <td>fax</td>
 <td>string</td>
+<td>write</td>
 <td>Fax number</td>
-</tr>
-<tr>
-<td>facebook</td>
-<td>string</td>
-<td>Facebook page</td>
-</tr>
-<tr>
-<td>skype</td>
-<td>string</td>
-<td>Skype nickname</td>
 </tr>
 <tr>
 <td>address</td>
 <td>string</td>
+<td>write</td>
 <td>Office or home address of the company</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>float</td>
+<td>write</td>
+<td>Geographic coordinate of the company</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>float</td>
+<td>write</td>
+<td>Geographic coordinate of the company</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>write</td>
+<td></td>
+</tr>
+<tr>
+<td>tags</td>
+<td>array</td>
+<td>write</td>
+<td>An array of tags for a company</td>
 </tr>
 <tr>
 <td>user_id</td>
 <td>integer</td>
+<td>write</td>
 <td>Unique identifier of the user that the company is assigned to</td>
 </tr>
 <tr>
 <td>company_id</td>
 <td>integer</td>
+<td>write</td>
 <td>Unique identifier of the company&rsquo;s company</td>
 </tr>
 <tr>
-<td>tags</td>
-<td>array</td>
-<td>An array of tags for a company</td>
+<td>created_at</td>
+<td>datetime</td>
+<td>read</td>
+<td>Date of creation</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>datetime</td>
+<td>read</td>
+<td>Date of last edit</td>
 </tr>
 </tbody></table>
 
 <h2 id="get-all-companies">Get All Companies</h2>
-<pre class="highlight shell"><code>curl https://api.sellf.io/v1/companies -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+<pre class="highlight shell"><code>curl https://api.sellf.io/v1/companies?sort_by<span class="o">=</span>-name -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
 </code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anthony"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mc Gregor"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CEO"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"anthony@acme.org"</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"has_more"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paul"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hogan"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manager"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paul.hogan@comma.com"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.sellfapp.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"fax"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2869</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nt">"industry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mobile CRM"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-26T15:25:30.940731"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-05T12:17:47"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.4274592</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20991</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+39 0422 789611"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Via Sile, 41, 31056 Roncade TV, Italia"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">45.5648361</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email_secondary"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hello@sellfapp.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sellf s.r.l."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>This endpoint retrieves all companies.</p>
@@ -789,19 +853,20 @@ curl https://api.sellf.io/v1/people/3 <span class="se">\</span>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>sort</td>
-<td>name</td>
-<td>Column to sort by <br> e.g. name</td>
+<td>sort_by</td>
+<td>Column to sort by <br> (i.e. <code class="prettyprint">id</code>, <code class="prettyprint">name</code>, <code class="prettyprint">created_at</code>, <code class="prettyprint">updated_at</code>)</td>
 </tr>
 <tr>
-<td>suid</td>
-<td>?</td>
+<td>user_id</td>
 <td>Unique identifier of the user the company is owned by</td>
+</tr>
+<tr>
+<td>name</td>
+<td>A string containing or matching the name of the company</td>
 </tr>
 </tbody></table>
 
@@ -811,19 +876,33 @@ curl https://api.sellf.io/v1/companies <span class="se">\</span>
   -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
-  -X POST -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">first_name</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Filippo</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">last_name</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Zanella</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">title</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Founder of Sellf</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">email</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">filippo@sellfapp.com</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">tags</span><span class="se">\"</span><span class="s2">: [</span><span class="se">\"</span><span class="s2">Italy</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">Treviso</span><span class="se">\"</span><span class="s2">]}"</span>
+  -X POST -d <span class="s2">"{"</span>name<span class="s2">": "</span>Acme Inc.<span class="s2">",
+               "</span>industry<span class="s2">": "</span>Semiconductor<span class="s2">",
+               "</span>email<span class="s2">": "</span>hey@acme.com<span class="s2">",
+               "</span>address<span class="s2">": "</span>Via Thomas Alva Edison, Padova, PD<span class="s2">",
+               "</span>user_id<span class="s2">": 4}"</span>
 </code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"website"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"fax"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nt">"industry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Semiconductor"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T16:54:37"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T16:54:37"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Filippo"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zanella"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Founder of Sellf"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filippo@sellfapp.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Italy"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Treviso"</span><span class="p">]</span><span class="w">
+  </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Via Thomas Alva Edison, Padova, PD"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email_secondary"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hey@acme.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Acme Inc."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -842,12 +921,22 @@ curl https://api.sellf.io/v1/companies/3 -H <span class="s2">"Api-Key: {YOUR_API
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"website"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"fax"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nt">"industry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Semiconductor"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T16:54:37"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T16:54:37"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Filippo"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zanella"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Founder of Sellf"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filippo@sellfapp.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Italy"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Treviso"</span><span class="p">]</span><span class="w">
+  </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Via Thomas Alva Edison, Padova, PD"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email_secondary"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hey@acme.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Acme Inc."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -877,27 +966,35 @@ curl https://api.sellf.io/v1/companies/3 <span class="se">\</span>
   -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
-  -X PUT -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">title</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Ruby on Rails Developer</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">email</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">support@sellfapp.com</span><span class="se">\"</span><span class="s2">}"</span>
+  -X PUT -d <span class="s2">"{"</span>name<span class="s2">": "</span>Acme Holding<span class="s2">",
+              "</span>industry<span class="s2">": "</span>Semiconductor &amp; Devices<span class="s2">",
+              "</span>email<span class="s2">": "</span>sales@acme.com<span class="s2">"}"</span>
 </code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"website"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"fax"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nt">"industry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Semiconductor &amp; Devices"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T16:54:37"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T17:02:18"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Filippo"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zanella"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ruby on Rails Developer"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"support@sellfapp.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Italy"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Treviso"</span><span class="p">]</span><span class="w">
+  </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Via Thomas Alva Edison, Padova, PD"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email_secondary"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sales@acme.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Acme Holding"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>This endpoint allows to update a specific company.</p>
-
-<aside class="warning">
-In order to modify tags associated to a company, you need to supply the entire set. Tags are replaced every time they are part of a request.
-</aside>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -918,7 +1015,7 @@ In order to modify tags associated to a company, you need to supply the entire s
 </tbody></table>
 
 <h2 id="delete-a-specific-company">Delete a Specific Company</h2>
-<pre class="highlight shell"><code><span class="c"># Delete a person with ID 3</span>
+<pre class="highlight shell"><code><span class="c"># Delete a company with ID 3</span>
 curl https://api.sellf.io/v1/companies/3 <span class="se">\</span>
   -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
   -X DELETE
@@ -928,7 +1025,7 @@ curl https://api.sellf.io/v1/companies/3 <span class="se">\</span>
 <p>The above command returns 200 with no content.</p>
 </blockquote>
 
-<p>This endpoint deletes a specific person. Deleting a person implies that even all the associated entities are deleted, except for the associated company.</p>
+<p>This endpoint deletes a specific company. Deleting a company implies that even all the associated entities are deleted, except for the associated company.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -944,7 +1041,7 @@ curl https://api.sellf.io/v1/companies/3 <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>The unique identifier of the person to retrieve</td>
+<td>The unique identifier of the company to retrieve</td>
 </tr>
 </tbody></table>
 
@@ -958,63 +1055,111 @@ curl https://api.sellf.io/v1/companies/3 <span class="se">\</span>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Permission</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id</td>
 <td>integer</td>
+<td>read</td>
 <td>Unique identifier of the deal</td>
 </tr>
 <tr>
 <td>name</td>
 <td>string</td>
+<td>write</td>
 <td>Brief description of the deal</td>
 </tr>
 <tr>
-<td>user_id</td>
-<td>integer</td>
-<td>Unique identifier of the user that the deal is assigned to</td>
-</tr>
-<tr>
-<td>estimated_value</td>
+<td>value</td>
 <td>float</td>
-<td>Value of the deal, with decimal part if needed</td>
+<td>write</td>
+<td>(Estimated) value of the deal, with decimal part if needed</td>
 </tr>
 <tr>
 <td>is_hot</td>
 <td>boolean</td>
+<td>write</td>
 <td>To point if the deal is important or not</td>
+</tr>
+<tr>
+<td>win_probability</td>
+<td>integer</td>
+<td>write</td>
+<td>Probability of closing the deal successfully</td>
+</tr>
+<tr>
+<td>estimated_close_at</td>
+<td>datetime</td>
+<td>write</td>
+<td>Estimated close date of the deal</td>
+</tr>
+<tr>
+<td>started_at</td>
+<td>datetime</td>
+<td>read</td>
+<td>Date in which the deal has been opened</td>
+</tr>
+<tr>
+<td>stage_changed_at</td>
+<td>datetime</td>
+<td>read</td>
+<td>Last date in which the deal has been moved into a stage</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>array</td>
+<td>write</td>
+<td>An array of tags for a deal</td>
+</tr>
+<tr>
+<td>person_id</td>
+<td>integer</td>
+<td>write</td>
+<td>Unique identifier of a primary person</td>
+</tr>
+<tr>
+<td>company_id</td>
+<td>integer</td>
+<td>write</td>
+<td>Unique identifier of a primary company</td>
 </tr>
 <tr>
 <td>stage_id</td>
 <td>integer</td>
+<td>write</td>
 <td>Unique identifier of the deal’s current stage in the pipeline</td>
 </tr>
 <tr>
 <td>source_id</td>
 <td>integer</td>
+<td>write</td>
 <td>Unique identifier of the deal source</td>
 </tr>
 <tr>
-<td>main_person_id</td>
+<td>product_id</td>
 <td>integer</td>
-<td>Unique identifier of a primary person</td>
+<td>write</td>
+<td>Unique identifier of the product (i.e. margin) associated to the deal</td>
 </tr>
 <tr>
-<td>main_company_id</td>
+<td>user_id</td>
 <td>integer</td>
-<td>Unique identifier of a primary company</td>
+<td>write</td>
+<td>Unique identifier of the user that the person is assigned to</td>
 </tr>
 <tr>
-<td>estimated_close_at</td>
+<td>created_at</td>
 <td>datetime</td>
-<td>Estimated close date of the deal</td>
+<td>read</td>
+<td>Date of creation</td>
 </tr>
 <tr>
-<td>tags</td>
-<td>array</td>
-<td>An array of tags for a deal</td>
+<td>updated_at</td>
+<td>datetime</td>
+<td>read</td>
+<td>Date of last edit</td>
 </tr>
 </tbody></table>
 
@@ -1025,22 +1170,55 @@ curl https://api.sellf.io/v1/companies/3 <span class="se">\</span>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"First deal"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"estimated_value"</span><span class="p">:</span><span class="w"> </span><span class="mf">1234.56</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"is_hot"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Italy"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Treviso"</span><span class="p">]</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"has_more"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Second deal"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"estimated_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"is_hot"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"stage_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"stage_changed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-01-05T16:02:41.058040"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rent in London"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"duplex"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"luxury"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-27T14:57:55.461828"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-05T12:21:24"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"person_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"win_probability"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"estimated_close_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-30T11:59:59"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"source_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"is_hot"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-27T14:57:55"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"stage_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"stage_changed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-28T07:34:13"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Venice villa"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-28T07:34:13.330420"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-05T12:21:24"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">370000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"person_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"win_probability"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"estimated_close_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"source_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"is_hot"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-30T13:08:49"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>This endpoint retrieves all deals.</p>
@@ -1054,19 +1232,36 @@ curl https://api.sellf.io/v1/companies/3 <span class="se">\</span>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>sort</td>
-<td>name</td>
-<td>Column to sort by <br> e.g. name</td>
+<td>sort_by</td>
+<td>Column to sort by <br> (i.e. <code class="prettyprint">id</code>, <code class="prettyprint">name</code>, <code class="prettyprint">value</code>, <code class="prettyprint">estimated_close_at</code>, <code class="prettyprint">stage_changed_at</code>, <code class="prettyprint">created_at</code>, <code class="prettyprint">updated_at</code>)</td>
 </tr>
 <tr>
-<td>suid</td>
-<td>?</td>
+<td>user_id</td>
 <td>Unique identifier of the user the deal is owned by</td>
+</tr>
+<tr>
+<td>stage_id</td>
+<td>Unique identifier of the stage in which the deal is placed</td>
+</tr>
+<tr>
+<td>contact_id</td>
+<td>Unique identifier of the main deal with whom the deal is associated</td>
+</tr>
+<tr>
+<td>company_id</td>
+<td>Unique identifier of the main company with whom the deal is associated</td>
+</tr>
+<tr>
+<td>source_id</td>
+<td>Unique identifier of the deal source</td>
+</tr>
+<tr>
+<td>product_id</td>
+<td>Unique identifier of the product related to the deal</td>
 </tr>
 </tbody></table>
 
@@ -1076,18 +1271,38 @@ curl https://api.sellf.io/v1/deals <span class="se">\</span>
   -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
-  -X POST -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">New deal</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">estimated_value</span><span class="se">\"</span><span class="s2">: 0, </span><span class="se">\"</span><span class="s2">is_hot</span><span class="se">\"</span><span class="s2">: true, </span><span class="se">\"</span><span class="s2">tags</span><span class="se">\"</span><span class="s2">: [</span><span class="se">\"</span><span class="s2">Italy</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">Treviso</span><span class="se">\"</span><span class="s2">]}"</span>
+  -X POST -d <span class="s2">"{"</span>name<span class="s2">": "</span>Apartment <span class="k">in </span>Berlin<span class="s2">",
+               "</span>value<span class="s2">": 265789,
+               "</span>is_hot<span class="s2">": true,
+               "</span>estimated_close_at<span class="s2">": "</span>2016-12-05T12:00:23<span class="s2">",
+               "</span>tags<span class="s2">": ["</span>Germany<span class="s2">"],
+               "</span>stage_id<span class="s2">": 10,
+               "</span>user_id<span class="s2">": 1}"</span>
 </code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New deal"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"estimated_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"stage_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"stage_changed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T18:14:06"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apartment in Berlin"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Germany"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T18:14:06"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T18:14:06"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">265789</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"person_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"win_probability"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"estimated_close_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-05T12:00:23"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"source_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"is_hot"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Italy"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Treviso"</span><span class="p">]</span><span class="w">
+  </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T18:14:06"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1098,19 +1313,33 @@ curl https://api.sellf.io/v1/deals <span class="se">\</span>
 <p><code class="prettyprint">POST /deals</code></p>
 
 <h2 id="get-a-specific-deal">Get a Specific Deal</h2>
-<pre class="highlight shell"><code><span class="c"># Retrieve a deal with ID 3</span>
-curl https://api.sellf.io/v1/deals/3 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+<pre class="highlight shell"><code><span class="c"># Retrieve a deal with ID 12</span>
+curl https://api.sellf.io/v1/deals/12 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
 </code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New deal"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"estimated_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"stage_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"stage_changed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T18:14:06"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apartment in Berlin"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Germany"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T18:14:06"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T18:14:06"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">265789</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"person_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"win_probability"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"estimated_close_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-05T12:00:23"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"source_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"is_hot"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Italy"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Treviso"</span><span class="p">]</span><span class="w">
+  </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T18:14:06"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1135,31 +1364,43 @@ curl https://api.sellf.io/v1/deals/3 -H <span class="s2">"Api-Key: {YOUR_API_KEY
 </tbody></table>
 
 <h2 id="update-a-specific-deal">Update a Specific Deal</h2>
-<pre class="highlight shell"><code><span class="c"># Update a deal with ID 3</span>
-curl https://api.sellf.io/v1/deals/3 <span class="se">\</span>
+<pre class="highlight shell"><code><span class="c"># Update a deal with ID 12</span>
+curl https://api.sellf.io/v1/deals/12 <span class="se">\</span>
   -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
-  -X PUT -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Modified deal</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">estimated_value</span><span class="se">\"</span><span class="s2">: null, </span><span class="se">\"</span><span class="s2">tags</span><span class="se">\"</span><span class="s2">: [</span><span class="se">\"</span><span class="s2">Italy</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">Treviso</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">Roncade</span><span class="se">\"</span><span class="s2">]}"</span>
+  -X PUT -d <span class="s2">"{"</span>value<span class="s2">": 470000,
+              "</span>win_probability<span class="s2">": 95,
+              "</span>estimated_close_at<span class="s2">": "</span>2016-12-23T01:45:00<span class="s2">"}"</span>
 </code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Modified deal"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"estimated_value"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"stage_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"stage_changed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T18:14:06"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apartment in Berlin"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Germany"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T18:14:06"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T18:14:06"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">470000</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"person_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"win_probability"</span><span class="p">:</span><span class="w"> </span><span class="mi">95</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"estimated_close_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-23T01:45:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"source_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"is_hot"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Italy"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Treviso"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Roncade"</span><span class="p">]</span><span class="w">
+  </span><span class="nt">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T18:14:06"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>This endpoint allows to update a specific deal.</p>
-
-<aside class="warning">
-In order to modify tags associated to a deal, you need to supply the entire set. Tags are replaced every time they are part of a request.
-</aside>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1222,22 +1463,26 @@ curl https://api.sellf.io/v1/deals/3 <span class="se">\</span>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Permission</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id</td>
 <td>integer</td>
+<td>read</td>
 <td>Unique identifier of the pipeline</td>
 </tr>
 <tr>
 <td>name</td>
 <td>string</td>
+<td>read</td>
 <td>Name of the pipeline</td>
 </tr>
 <tr>
 <td>type</td>
 <td>string</td>
+<td>read</td>
 <td>Pipeline type <br> (i.e. <code class="prettyprint">money</code>, <code class="prettyprint">quantity</code>)</td>
 </tr>
 </tbody></table>
@@ -1249,19 +1494,28 @@ curl https://api.sellf.io/v1/deals/3 <span class="se">\</span>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"has_more"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-26T15:25:30.389544"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cash"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sales Pipeline"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"money"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-03T14:19:53.605326"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-01-04T09:29:12.960430"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"quantity"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stocks Placed"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"quantity"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sold Items"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-01-25T10:55:13.818873"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>This endpoint retrieves all pipelines.</p>
@@ -1270,19 +1524,37 @@ curl https://api.sellf.io/v1/deals/3 <span class="se">\</span>
 
 <p><code class="prettyprint">GET /pipelines</code></p>
 
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sort_by</td>
+<td>Column to sort by <br> (i.e. <code class="prettyprint">id</code>, <code class="prettyprint">name</code>, <code class="prettyprint">created_at</code>, <code class="prettyprint">updated_at</code>)</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Type of pipeline in terms of being monetary or quantitative <br> (i.e. <code class="prettyprint">cash</code>, <code class="prettyprint">quantity</code>)</td>
+</tr>
+</tbody></table>
+
 <h2 id="get-a-specific-pipeline">Get a Specific Pipeline</h2>
-<pre class="highlight shell"><code><span class="c"># Retrieve a pipeline with ID 3</span>
-curl https://api.sellf.io/v1/pipelines/3 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+<pre class="highlight shell"><code><span class="c"># Retrieve a pipeline with ID 2</span>
+curl https://api.sellf.io/v1/pipelines/2 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
 </code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sales Pipeline"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"money"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-01-04T09:29:12.960430"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"quantity"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sold Items"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-01-25T10:55:13.818873"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>This endpoint retrieves a specific pipeline according to the ID provided.</p>
@@ -1381,47 +1653,56 @@ curl https://api.sellf.io/v1/pipelines/3 -H <span class="s2">"Api-Key: {YOUR_API
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Permission</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id</td>
 <td>integer</td>
+<td>read</td>
 <td>Unique identifier of the stage</td>
 </tr>
 <tr>
 <td>name</td>
 <td>string</td>
+<td>read</td>
 <td>Name of the stage</td>
 </tr>
 <tr>
 <td>win_probability</td>
 <td>integer</td>
+<td>read</td>
 <td>The likelihood that a deal will be won, as percentage</td>
 </tr>
 <tr>
 <td>position</td>
 <td>integer</td>
+<td>read</td>
 <td>The position of the stage in the pipeline</td>
 </tr>
 <tr>
 <td>pipeline_id</td>
 <td>integer</td>
+<td>read</td>
 <td>Unique identifier of the associated pipeline</td>
 </tr>
 <tr>
 <td>type</td>
 <td>integer</td>
+<td>read</td>
 <td>Stage type (i.e. active, won, lost, abandoned)</td>
 </tr>
 <tr>
 <td>created_at</td>
 <td>datetime</td>
+<td>read</td>
 <td>Date of creation</td>
 </tr>
 <tr>
 <td>updated_at</td>
 <td>datetime</td>
+<td>read</td>
 <td>Date of last edit</td>
 </tr>
 </tbody></table>
@@ -1433,23 +1714,34 @@ curl https://api.sellf.io/v1/pipelines/3 -H <span class="s2">"Api-Key: {YOUR_API
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lead"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"win_probability"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"has_more"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Qualified"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-26T15:25:30.399687"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-28T10:40:00.508475"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"pipeline_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"win_probability"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
       </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"pipeline_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Won"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"win_probability"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Negotiation"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-26T15:25:30.409568"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T11:58:02.441383"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"pipeline_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"win_probability"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w">
       </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"pipeline_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>This endpoint retrieves all stages of all pipelines. If you want to get the stages of a specific pipeline, you need to specify the <code class="prettyprint">pipeline_id</code> as query param.</p>
@@ -1458,21 +1750,46 @@ curl https://api.sellf.io/v1/pipelines/3 -H <span class="s2">"Api-Key: {YOUR_API
 
 <p><code class="prettyprint">GET /stages</code></p>
 
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sort_by</td>
+<td>Column to sort by <br> (i.e. <code class="prettyprint">id</code>, <code class="prettyprint">name</code>, <code class="prettyprint">position</code>, <code class="prettyprint">win_probability</code>, <code class="prettyprint">created_at</code>, <code class="prettyprint">updated_at</code>)</td>
+</tr>
+<tr>
+<td>pipeline_id</td>
+<td>Unique identifier of the pipeline to which stages belongs</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Unique identifier of stage type (i.e. <code class="prettyprint">0</code>, <code class="prettyprint">1</code>, <code class="prettyprint">2</code>, <code class="prettyprint">3</code>)</td>
+</tr>
+</tbody></table>
+
 <h2 id="get-a-specific-stage">Get a Specific Stage</h2>
-<pre class="highlight shell"><code><span class="c"># Retrieve a stage with ID 3</span>
-curl https://api.sellf.io/v1/stages/3 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+<pre class="highlight shell"><code><span class="c"># Retrieve a stage with ID 9</span>
+curl https://api.sellf.io/v1/stages/9 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
 </code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Identified needs"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"win_probability"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"pipeline_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Negotiation"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-26T15:25:30.409568"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T11:58:02.441383"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"pipeline_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"win_probability"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>This endpoint retrieves a specific stage according to the ID provided.</p>
@@ -1507,18 +1824,33 @@ curl https://api.sellf.io/v1/stages/3 -H <span class="s2">"Api-Key: {YOUR_API_KE
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Permission</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id</td>
 <td>integer</td>
+<td>read</td>
 <td>Unique identifier of the source</td>
 </tr>
 <tr>
 <td>name</td>
 <td>string</td>
+<td>read</td>
 <td>Name of the source</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>datetime</td>
+<td>read</td>
+<td>Date of creation</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>datetime</td>
+<td>read</td>
+<td>Date of last edit</td>
 </tr>
 </tbody></table>
 
@@ -1529,17 +1861,26 @@ curl https://api.sellf.io/v1/stages/3 -H <span class="s2">"Api-Key: {YOUR_API_KE
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"has_more"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-23T11:09:04.239262"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Newsletter"</span><span class="p">,</span><span class="w">
-  </span><span class="err">}</span><span class="p">,</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Referral"</span><span class="p">,</span><span class="w">
-  </span><span class="err">}</span><span class="p">,</span><span class="w">
-  </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T15:29:36.390240"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-23T11:09:04.257173"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Word of mouth"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-29T12:22:20.922757"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>This endpoint retrieves all deals&rsquo; sources.</p>
@@ -1548,18 +1889,34 @@ curl https://api.sellf.io/v1/stages/3 -H <span class="s2">"Api-Key: {YOUR_API_KE
 
 <p><code class="prettyprint">GET /sources</code></p>
 
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sort_by</td>
+<td>Column to sort by <br> (i.e. <code class="prettyprint">id</code>, <code class="prettyprint">name</code>, <code class="prettyprint">created_at</code>, <code class="prettyprint">updated_at</code>)</td>
+</tr>
+</tbody></table>
+
 <h2 id="get-a-specific-source">Get a Specific Source</h2>
-<pre class="highlight shell"><code><span class="c"># Retrieve a deal source with ID 3</span>
-curl https://api.sellf.io/v1/sources/3 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+<pre class="highlight shell"><code><span class="c"># Retrieve a deal source with ID 2</span>
+curl https://api.sellf.io/v1/sources/2 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
 </code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Word of mouth"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-23T11:09:04.257173"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Word of mouth"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-29T12:22:20.922757"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>This endpoint retrieves a specific source according to the ID provided.</p>
@@ -1596,23 +1953,39 @@ curl https://api.sellf.io/v1/sources/3 -H <span class="s2">"Api-Key: {YOUR_API_K
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Permission</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id</td>
 <td>integer</td>
+<td>read</td>
 <td>Unique identifier of the product</td>
 </tr>
 <tr>
 <td>name</td>
 <td>string</td>
+<td>read</td>
 <td>Name of the product</td>
 </tr>
 <tr>
 <td>net_rate</td>
 <td>integer</td>
+<td>read</td>
 <td>A percentage applied to the estimated value of a deal</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>datetime</td>
+<td>read</td>
+<td>Date of creation</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>datetime</td>
+<td>read</td>
+<td>Date of last edit</td>
 </tr>
 </tbody></table>
 
@@ -1623,19 +1996,28 @@ curl https://api.sellf.io/v1/sources/3 -H <span class="s2">"Api-Key: {YOUR_API_K
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wild animals insurance"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"net_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">90</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"has_more"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-19T16:16:52.111686"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"net_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Life insurance"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-10T08:35:31.732557"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-19T16:26:37.789595"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"net_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Car insurance"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"net_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-03T13:55:13.897777"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>This endpoint retrieves all products of the team.</p>
@@ -1644,19 +2026,33 @@ curl https://api.sellf.io/v1/sources/3 -H <span class="s2">"Api-Key: {YOUR_API_K
 
 <p><code class="prettyprint">GET /products</code></p>
 
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sort_by</td>
+<td>Column to sort by <br> (i.e. <code class="prettyprint">id</code>, <code class="prettyprint">name</code>, <code class="prettyprint">created_at</code>, <code class="prettyprint">updated_at</code>)</td>
+</tr>
+</tbody></table>
+
 <h2 id="get-a-specific-product">Get a Specific Product</h2>
-<pre class="highlight shell"><code><span class="c"># Retrieve a product with ID 3</span>
-curl https://api.sellf.io/v1/products/3 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+<pre class="highlight shell"><code><span class="c"># Retrieve a product with ID 2</span>
+curl https://api.sellf.io/v1/products/2 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
 </code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Life insurance"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"net_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-19T16:26:37.789595"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"net_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Car insurance"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-03T13:55:13.897777"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>This endpoint retrieves a specific product according to the ID provided.</p>
@@ -1691,28 +2087,33 @@ curl https://api.sellf.io/v1/products/3 -H <span class="s2">"Api-Key: {YOUR_API_
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Permission</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id</td>
 <td>integer</td>
+<td>read</td>
 <td>Unique identifier of the user</td>
 </tr>
 <tr>
 <td>email</td>
 <td>string</td>
+<td>read</td>
 <td>Email address of the user</td>
 </tr>
 <tr>
 <td>name</td>
 <td>string</td>
+<td>read</td>
 <td>Name of the user</td>
 </tr>
 <tr>
-<td>role</td>
-<td>string</td>
-<td>Role of the user <br> (i.e. <code class="prettyprint">administrator</code>, <code class="prettyprint">manager</code>, <code class="prettyprint">collaborator</code>)</td>
+<td>created_at</td>
+<td>datetime</td>
+<td>read</td>
+<td>Date of creation</td>
 </tr>
 </tbody></table>
 
@@ -1723,21 +2124,26 @@ curl https://api.sellf.io/v1/products/3 -H <span class="s2">"Api-Key: {YOUR_API_
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"has_more"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-26T15:25:29"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filippo@sellfapp.com"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Filippo Zanella"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Filippo Zanella"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filippo@sellf.be"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-24T18:25:13"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"giovanni@sellfapp.com"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Giovanni Barillari"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Giovanni Barillari"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"giovanni@sellf.be"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>This endpoint retrieves all users.</p>
@@ -1747,18 +2153,18 @@ curl https://api.sellf.io/v1/products/3 -H <span class="s2">"Api-Key: {YOUR_API_
 <p><code class="prettyprint">GET /users</code></p>
 
 <h2 id="get-a-specific-user">Get a Specific User</h2>
-<pre class="highlight shell"><code><span class="c"># Retrieve a user with ID 3</span>
-curl https://api.sellf.io/v1/users/3 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+<pre class="highlight shell"><code><span class="c"># Retrieve a user with ID 2</span>
+curl https://api.sellf.io/v1/users/2 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
 </code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filippo@sellfapp.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Filippo Zanella"</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-24T18:25:13"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Giovanni Barillari"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"giovanni@sellf.be"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
