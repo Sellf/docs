@@ -20,7 +20,6 @@ longitude | float | write | Geographic coordinate of the company
 description | string | write |
 tags | array | write | An array of tags for a company
 user_id | integer | write | Unique identifier of the user that the company is assigned to
-company_id | integer | write | Unique identifier of the company's company
 created_at | datetime | read | Date of creation
 updated_at | datetime | read | Date of last edit
 
