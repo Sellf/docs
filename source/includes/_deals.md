@@ -17,7 +17,7 @@ stage_changed_at | datetime | read | Last date in which the deal has been moved 
 tags | array | write | An array of tags for a deal
 person_id | integer | write | Unique identifier of a primary person
 company_id | integer | write | Unique identifier of a primary company
-stage_id | integer | write | Unique identifier of the deal’s current stage in the pipeline
+stage_id | integer | write | Unique identifier of the deal's current stage in the pipeline
 source_id | integer | write | Unique identifier of the deal source
 product_id | integer | write | Unique identifier of the product (i.e. margin) associated to the deal
 user_id | integer | write | Unique identifier of the user that the person is assigned to

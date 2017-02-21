@@ -13,6 +13,7 @@ includes:
   - requests
   - rates
   - errors
+  - users
   - people
   - companies
   - deals
@@ -20,7 +21,7 @@ includes:
   - stages
   - sources
   - margins
-  - users
+  - appointments
 
 search: true
 ---

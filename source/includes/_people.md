@@ -1,4 +1,4 @@
-# <a name="peoples"></a>People
+# <a name="people"></a>People
 
 The People API allows you to get, create, update and delete your people. Each person can be associated to a [Company](#companies) and one or more [Deals](#deals).
 
@@ -20,7 +20,7 @@ skype  | string | write | Skype nickname
 address | string | write | Office or home address of the person
 latitude | float | write | Geographic coordinate of the person
 longitude | float | write | Geographic coordinate of the person
-description | string | write |
+description | string | write |  A description of the person
 tags | array | write | An array of tags for a person
 company_id | integer | write | Unique identifier of the person's company
 user_id | integer | write | Unique identifier of the user that the person is assigned to
