@@ -283,6 +283,119 @@ curl https://api.sellf.io/v1/deals?sort_by<span class="o">=</span>-estimated_val
 </tr>
 </tbody></table>
 
+          <h1 id="users"><a name="users"></a>Users</h1>
+
+<p>The Users API gives you access to your team&rsquo;s users, in read-only mode. You can retrieve a single user as well as list of all users associated with your team.</p>
+
+<p>Once you sign up in Sellf, we create a team by default, and a user with team management privileges (i.e. an administrator). By logging in as the team administrator, you can invite as many additional users as you need, if you purchase at least a <a href="https://app.sellf.io/plans">business</a> plan.</p>
+
+<h3 id="attributes">Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Permission</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>read</td>
+<td>Unique identifier of the user</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>read</td>
+<td>Email address of the user</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>read</td>
+<td>Name of the user</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>datetime</td>
+<td>read</td>
+<td>Date of creation</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-all-users">Get All Users</h2>
+<pre class="highlight shell"><code>curl https://api.sellf.io/v1/users -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"has_more"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-26T15:25:29"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Filippo Zanella"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filippo@sellf.be"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-24T18:25:13"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Giovanni Barillari"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"giovanni@sellf.be"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves all users.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /users</code></p>
+
+<h2 id="get-a-specific-user">Get a Specific User</h2>
+<pre class="highlight shell"><code><span class="c"># Retrieve a user with ID 2</span>
+curl https://api.sellf.io/v1/users/2 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-24T18:25:13"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Giovanni Barillari"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"giovanni@sellf.be"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a specific user according to the ID provided.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /users/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The unique identifier of the user to retrieve</td>
+</tr>
+</tbody></table>
+
           <h1 id="people"><a name="people"></a>People</h1>
 
 <p>The People API allows you to get, create, update and delete your people. Each person can be associated to a <a href="#companies">Company</a> and one or more <a href="#deals">Deals</a>.</p>
@@ -2069,11 +2182,39 @@ curl https://api.sellf.io/v1/products/2 -H <span class="s2">"Api-Key: {YOUR_API_
 </tr>
 </tbody></table>
 
-          <h1 id="users"><a name="users"></a>Users</h1>
+          <h1 id="appointment"><a name="appointments"></a>Appointment</h1>
 
-<p>The Users API gives you access to your team&rsquo;s users, in read-only mode. You can retrieve a single user as well as list of all users associated with your team.</p>
+<p>The Appointment API allows you to get, create, update and delete your appointments. Each appointment can be associated to one or more <a href="#companies">Companies</a>, one or more <a href="#people">People</a>, one or more <a href="#users">Users</a> and one <a href="#deals">Deal</a>.</p>
 
-<p>Once you sign up in Sellf, we create a team by default, and a user with team management privileges (i.e. an administrator). By logging in as the team administrator, you can invite as many additional users as you need, if you purchase at least a <a href="https://app.sellf.io/plans">business</a> plan.</p>
+<p>Sellf identify the type of the appointment with a string that determines a corresponding action: <em>call</em>, <em>meeting</em>, <em>lunch</em>, <em>dinner</em>, <em>presentation</em>. The match between the two follows the table below:</p>
+
+<table><thead>
+<tr>
+<th>Action</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>call</td>
+<td>Phone call</td>
+</tr>
+<tr>
+<td>meeting</td>
+<td>Meeting</td>
+</tr>
+<tr>
+<td>lunch</td>
+<td>Lunch</td>
+</tr>
+<tr>
+<td>dinner</td>
+<td>Dinner</td>
+</tr>
+<tr>
+<td>presentation</td>
+<td>Presentation</td>
+</tr>
+</tbody></table>
 
 <h3 id="attributes">Attributes</h3>
 
@@ -2089,19 +2230,67 @@ curl https://api.sellf.io/v1/products/2 -H <span class="s2">"Api-Key: {YOUR_API_
 <td>id</td>
 <td>integer</td>
 <td>read</td>
-<td>Unique identifier of the user</td>
-</tr>
-<tr>
-<td>email</td>
-<td>string</td>
-<td>read</td>
-<td>Email address of the user</td>
+<td>Unique identifier of the appointment</td>
 </tr>
 <tr>
 <td>name</td>
 <td>string</td>
-<td>read</td>
-<td>Name of the user</td>
+<td>write</td>
+<td>Name of the appointment</td>
+</tr>
+<tr>
+<td>action</td>
+<td>string</td>
+<td>write</td>
+<td>Type of appointment</td>
+</tr>
+<tr>
+<td>start_at</td>
+<td>datetime</td>
+<td>Moment in which the appointment starts</td>
+<td></td>
+</tr>
+<tr>
+<td>end_at</td>
+<td>datetime</td>
+<td>Moment in which the appointment ends</td>
+<td></td>
+</tr>
+<tr>
+<td>remind_at</td>
+<td>datetime</td>
+<td>At what time the user needs to be notified of the upcoming appointment</td>
+<td></td>
+</tr>
+<tr>
+<td>is_all_day</td>
+<td>boolean</td>
+<td>It determines whether the appointment lasts all day or less</td>
+<td></td>
+</tr>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>write</td>
+<td>Place in which the appointment occurs</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>write</td>
+<td>Appointment&rsquo;s notes</td>
+</tr>
+<tr>
+<td>deal_id</td>
+<td>integer</td>
+<td>write</td>
+<td>Unique identifier of the deal concerning the appointment</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>integer</td>
+<td>write</td>
+<td>Unique identifier of the user that the appointment is assigned to</td>
 </tr>
 <tr>
 <td>created_at</td>
@@ -2109,10 +2298,16 @@ curl https://api.sellf.io/v1/products/2 -H <span class="s2">"Api-Key: {YOUR_API_
 <td>read</td>
 <td>Date of creation</td>
 </tr>
+<tr>
+<td>updated_at</td>
+<td>datetime</td>
+<td>read</td>
+<td>Date of last edit</td>
+</tr>
 </tbody></table>
 
-<h2 id="get-all-users">Get All Users</h2>
-<pre class="highlight shell"><code>curl https://api.sellf.io/v1/users -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+<h2 id="get-all-appointments">Get All Appointments</h2>
+<pre class="highlight shell"><code>curl https://api.sellf.io/v1/appointments?sort_by<span class="o">=</span>-name -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
 </code></pre>
 
 <blockquote>
@@ -2125,48 +2320,125 @@ curl https://api.sellf.io/v1/products/2 -H <span class="s2">"Api-Key: {YOUR_API_
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-26T15:25:29"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Filippo Zanella"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filippo@sellf.be"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-24T18:25:13"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Giovanni Barillari"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"giovanni@sellf.be"</span><span class="w">
+      </span><span class="nt">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-15T01:13:15.608045"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Contract negotiation"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deal_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-23T13:43:30.826603"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"via Sile 41, 31056, Roncade (TV)"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-23T13:43:30.826603"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"end_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-23T14:10:45.787592"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"remind_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"is_all_day"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"meeting"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves all users.</p>
+<p>This endpoint retrieves all appointments.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET /users</code></p>
+<p><code class="prettyprint">GET /appointments</code></p>
 
-<h2 id="get-a-specific-user">Get a Specific User</h2>
-<pre class="highlight shell"><code><span class="c"># Retrieve a user with ID 2</span>
-curl https://api.sellf.io/v1/users/2 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sort_by</td>
+<td>Column to sort by <br> (i.e. <code class="prettyprint">id</code>, <code class="prettyprint">name</code>, <code class="prettyprint">start_at</code>, <code class="prettyprint">end_at</code>, <code class="prettyprint">created_at</code>, <code class="prettyprint">updated_at</code>)</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>Unique identifier of the user the appointment is owned by</td>
+</tr>
+<tr>
+<td>deal_id</td>
+<td>Unique identifier of the deal with whom the appointment is associated</td>
+</tr>
+<tr>
+<td>name</td>
+<td>A string containing or matching the name of the appointment</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-an-appointment">Create an Appointment</h2>
+<pre class="highlight shell"><code><span class="c"># Create a new appointment</span>
+curl https://api.sellf.io/v1/appointments <span class="se">\</span>
+  -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -X POST -d <span class="s2">"{"</span>name<span class="s2">": "</span>Debriefing<span class="s2">",
+              "</span>start_at<span class="s2">": "</span>2016-09-08T16:25:00<span class="s2">",
+              "</span>end_at<span class="s2">": "</span>2016-09-08T16:50:00<span class="s2">",
+              "</span>deal_id<span class="s2">": 9
+              "</span>user_id<span class="s2">": 4}"</span>
 </code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-24T18:25:13"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Giovanni Barillari"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"giovanni@sellf.be"</span><span class="w">
+  </span><span class="nt">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T16:25:00.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Debriefing"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deal_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-21T10:32:49.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-21T10:32:49.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"end_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T16:50:00.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"remind_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"is_all_day"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves a specific user according to the ID provided.</p>
+<p>This endpoint allows to create a appointment.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET /users/:id</code></p>
+<p><code class="prettyprint">POST /appointments</code></p>
+
+<h2 id="get-a-specific-appointment">Get a Specific Appointment</h2>
+<pre class="highlight shell"><code><span class="c"># Retrieve a appointment with ID 7</span>
+curl https://api.sellf.io/v1/appointments/7 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T16:25:00.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Debriefing"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deal_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-21T10:32:49.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-21T10:32:49.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"end_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T16:50:00.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"remind_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"is_all_day"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a specific appointment.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /appointments/:id</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -2178,7 +2450,89 @@ curl https://api.sellf.io/v1/users/2 -H <span class="s2">"Api-Key: {YOUR_API_KEY
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>The unique identifier of the user to retrieve</td>
+<td>The unique identifier of the appointment to retrieve</td>
+</tr>
+</tbody></table>
+
+<h2 id="update-a-specific-appointment">Update a Specific Appointment</h2>
+<pre class="highlight shell"><code><span class="c"># Update a appointment with ID 7</span>
+curl https://api.sellf.io/v1/appointments/7 <span class="se">\</span>
+  -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -X PUT -d <span class="s2">"{"</span>name<span class="s2">": "</span>Debriefing with teammates<span class="s2">",
+              "</span>start_at<span class="s2">": "</span>2016-10-08T16:25:00<span class="s2">"}"</span>,
+              <span class="s2">"end_at"</span>: <span class="s2">"2016-10-08T16:50:00"</span><span class="o">}</span><span class="s2">"
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-08T16:25:00.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Debriefing with teammates"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deal_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-21T10:32:49.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-21T10:40:05.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"end_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-08T16:50:00.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"remind_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"is_all_day"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint allows to update a specific appointment.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT /appointments/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The unique identifier of the appointment to retrieve</td>
+</tr>
+</tbody></table>
+
+<h2 id="delete-a-specific-appointment">Delete a Specific Appointment</h2>
+<pre class="highlight shell"><code><span class="c"># Delete a appointment with ID 7</span>
+curl https://api.sellf.io/v1/appointments/7 <span class="se">\</span>
+  -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
+  -X DELETE
+</code></pre>
+
+<blockquote>
+<p>The above command returns 200 with no content.</p>
+</blockquote>
+
+<p>This endpoint deletes a specific appointment.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE /appointments/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The unique identifier of the appointment to retrieve</td>
 </tr>
 </tbody></table>
 
