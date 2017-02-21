@@ -22,6 +22,7 @@ includes:
   - sources
   - margins
   - appointments
+  - appointment_people
 
 search: true
 ---

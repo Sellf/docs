@@ -211,7 +211,7 @@ ID | The unique identifier of the deal to retrieve
 ## Update a Specific Deal
 
 ```shell
-# Update a deal with ID 12
+# Update the deal with ID 12
 curl https://api.sellf.io/v1/deals/12 \
   -H "Api-Key: {YOUR_API_KEY}" \
   -H 'Content-Type: application/json' \
@@ -265,7 +265,7 @@ ID | The unique identifier of the deal to retrieve
 ## Delete a Specific Deal
 
 ```shell
-# Delete a deal with ID 3
+# Delete the deal with ID 3
 curl https://api.sellf.io/v1/deals/3 \
   -H "Api-Key: {YOUR_API_KEY}" \
   -X DELETE
@@ -284,4 +284,4 @@ This endpoint deletes a specific deal. Deleting a deal implies that even all the
 
 Parameter | Description
 --------- | -----------
-ID | The unique identifier of the deal to retrieve
+ID | The unique identifier of the deal to be deleted

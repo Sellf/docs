@@ -1,6 +1,6 @@
-# <a name="appointments"></a>Appointment
+# <a name="appointments"></a>Appointments
 
-The Appointment API allows you to get, create, update and delete your appointments. Each appointment can be associated to one or more [Companies](#companies), one or more [People](#people), one or more [Users](#users) and one [Deal](#deals).
+The Appointments API allows you to get, create, update and delete your appointments. Each appointment can be associated to one or more [Companies](#companies), one or more [People](#people), one or more [Users](#users) and one [Deal](#deals).
 
 Sellf identify the type of the appointment with a string that determines a corresponding action: *call*, *meeting*, *lunch*, *dinner*, *presentation*. The match between the two follows the table below:
 
@@ -118,7 +118,7 @@ curl https://api.sellf.io/v1/appointments \
 }
 ```
 
-This endpoint allows to create a appointment.
+This endpoint allows to create an appointment.
 
 ### HTTP Request
 
@@ -220,7 +220,7 @@ ID | The unique identifier of the appointment to retrieve
 ## Delete a Specific Appointment
 
 ```shell
-# Delete a appointment with ID 7
+# Delete the appointment with ID 7
 curl https://api.sellf.io/v1/appointments/7 \
   -H "Api-Key: {YOUR_API_KEY}" \
   -X DELETE
@@ -239,4 +239,4 @@ This endpoint deletes a specific appointment.
 
 Parameter | Description
 --------- | -----------
-ID | The unique identifier of the appointment to retrieve
+ID | The unique identifier of the appointment to be deleted

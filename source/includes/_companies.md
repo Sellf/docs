@@ -173,7 +173,7 @@ ID | The unique identifier of the company to retrieve
 ## Update a Specific Company
 
 ```shell
-# Update a company with ID 3
+# Update the company with ID 3
 curl https://api.sellf.io/v1/companies/3 \
   -H "Api-Key: {YOUR_API_KEY}" \
   -H 'Content-Type: application/json' \
@@ -224,7 +224,7 @@ ID | The unique identifier of the company to retrieve
 ## Delete a Specific Company
 
 ```shell
-# Delete a company with ID 3
+# Delete the company with ID 3
 curl https://api.sellf.io/v1/companies/3 \
   -H "Api-Key: {YOUR_API_KEY}" \
   -X DELETE
@@ -243,4 +243,4 @@ This endpoint deletes a specific company. Deleting a company implies that even a
 
 Parameter | Description
 --------- | -----------
-ID | The unique identifier of the company to retrieve
+ID | The unique identifier of the company to be deleted

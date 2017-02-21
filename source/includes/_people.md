@@ -200,7 +200,7 @@ ID | The unique identifier of the person to retrieve
 ## Update a Specific Person
 
 ```shell
-# Update a person with ID 3
+# Update the person with ID 3
 curl https://api.sellf.io/v1/people/3 \
   -H "Api-Key: {YOUR_API_KEY}" \
   -H 'Content-Type: application/json' \
@@ -257,7 +257,7 @@ ID | The unique identifier of the person to retrieve
 ## Delete a Specific Person
 
 ```shell
-# Delete a person with ID 3
+# Delete the person with ID 3
 curl https://api.sellf.io/v1/people/3 \
   -H "Api-Key: {YOUR_API_KEY}" \
   -X DELETE
@@ -276,4 +276,4 @@ This endpoint deletes a specific person. Deleting a person implies that even all
 
 Parameter | Description
 --------- | -----------
-ID | The unique identifier of the person to retrieve
+ID | The unique identifier of the person to be deleted
