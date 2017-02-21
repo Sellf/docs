@@ -192,7 +192,7 @@ This endpoint retrieves a specific person.
 
 Parameter | Description
 --------- | -----------
-ID | The unique identifier of the person to retrieve
+id | The unique identifier of the person to retrieve
 
 
 
@@ -249,7 +249,7 @@ This endpoint allows to update a specific person.
 
 Parameter | Description
 --------- | -----------
-ID | The unique identifier of the person to retrieve
+id | The unique identifier of the person to retrieve
 
 
 
@@ -276,4 +276,4 @@ This endpoint deletes a specific person. Deleting a person implies that even all
 
 Parameter | Description
 --------- | -----------
-ID | The unique identifier of the person to be deleted
+id | The unique identifier of the person to be deleted

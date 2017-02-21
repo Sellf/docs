@@ -91,4 +91,4 @@ This endpoint retrieves a specific product according to the ID provided.
 
 Parameter | Description
 --------- | -----------
-ID | The unique identifier of the product to retrieve
+id | The unique identifier of the product to retrieve

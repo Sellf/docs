@@ -23,6 +23,8 @@ includes:
   - margins
   - appointments
   - appointment_people
+  - appointment_companies
+  - appointment_users
 
 search: true
 ---

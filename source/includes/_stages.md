@@ -128,4 +128,4 @@ This endpoint retrieves a specific stage according to the ID provided.
 
 Parameter | Description
 --------- | -----------
-ID | The unique identifier of the stage to retrieve
+id | The unique identifier of the stage to retrieve

@@ -164,7 +164,7 @@ This endpoint retrieves a specific appointment.
 
 Parameter | Description
 --------- | -----------
-ID | The unique identifier of the appointment to retrieve
+id | The unique identifier of the appointment to retrieve
 
 
 
@@ -212,7 +212,7 @@ This endpoint allows to update a specific appointment.
 
 Parameter | Description
 --------- | -----------
-ID | The unique identifier of the appointment to retrieve
+id | The unique identifier of the appointment to retrieve
 
 
 
@@ -239,4 +239,4 @@ This endpoint deletes a specific appointment.
 
 Parameter | Description
 --------- | -----------
-ID | The unique identifier of the appointment to be deleted
+id | The unique identifier of the appointment to be deleted

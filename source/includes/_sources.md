@@ -88,4 +88,4 @@ This endpoint retrieves a specific source according to the ID provided.
 
 Parameter | Description
 --------- | -----------
-ID | The unique identifier of the source to retrieve
+id | The unique identifier of the source to retrieve

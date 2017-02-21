@@ -203,7 +203,7 @@ This endpoint retrieves a specific deal.
 
 Parameter | Description
 --------- | -----------
-ID | The unique identifier of the deal to retrieve
+id | The unique identifier of the deal to retrieve
 
 
 
@@ -257,7 +257,7 @@ This endpoint allows to update a specific deal.
 
 Parameter | Description
 --------- | -----------
-ID | The unique identifier of the deal to retrieve
+id | The unique identifier of the deal to retrieve
 
 
 
@@ -284,4 +284,4 @@ This endpoint deletes a specific deal. Deleting a deal implies that even all the
 
 Parameter | Description
 --------- | -----------
-ID | The unique identifier of the deal to be deleted
+id | The unique identifier of the deal to be deleted

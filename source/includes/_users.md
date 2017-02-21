@@ -82,4 +82,4 @@ This endpoint retrieves a specific user according to the ID provided.
 
 Parameter | Description
 --------- | -----------
-ID | The unique identifier of the user to retrieve
+id | The unique identifier of the user to retrieve

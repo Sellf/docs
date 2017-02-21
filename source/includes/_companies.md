@@ -165,7 +165,7 @@ This endpoint retrieves a specific company.
 
 Parameter | Description
 --------- | -----------
-ID | The unique identifier of the company to retrieve
+id | The unique identifier of the company to retrieve
 
 
 
@@ -216,7 +216,7 @@ This endpoint allows to update a specific company.
 
 Parameter | Description
 --------- | -----------
-ID | The unique identifier of the company to retrieve
+id | The unique identifier of the company to retrieve
 
 
 
@@ -243,4 +243,4 @@ This endpoint deletes a specific company. Deleting a company implies that even a
 
 Parameter | Description
 --------- | -----------
-ID | The unique identifier of the company to be deleted
+id | The unique identifier of the company to be deleted

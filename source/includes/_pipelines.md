@@ -89,4 +89,4 @@ This endpoint retrieves a specific pipeline according to the ID provided.
 
 Parameter | Description
 --------- | -----------
-ID | The unique identifier of the pipeline to retrieve
+id | The unique identifier of the pipeline to retrieve
