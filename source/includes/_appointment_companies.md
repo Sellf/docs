@@ -48,7 +48,7 @@ appointment_id | The unique identifier of the chosen appointment
 
 
 
-## Add a Person to an Appointment
+## Add a Company to an Appointment
 
 ```shell
 # Add a company to an appointment
@@ -83,7 +83,7 @@ appointment_id | The unique identifier of the chosen appointment
 
 
 
-## Remove a Person from an Appointment
+## Remove a Company from an Appointment
 
 ```shell
 # Remove the company with ID 15 from the appointment with ID 4
