@@ -407,6 +407,7 @@ curl https://api.sellf.io/v1/users/2 -H <span class="s2">"Api-Key: {YOUR_API_KEY
 <th>Parameter</th>
 <th>Type</th>
 <th>Permission</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -414,120 +415,140 @@ curl https://api.sellf.io/v1/users/2 -H <span class="s2">"Api-Key: {YOUR_API_KEY
 <td>id</td>
 <td>integer</td>
 <td>read</td>
+<td></td>
 <td>Unique identifier of the person</td>
 </tr>
 <tr>
 <td>first_name</td>
 <td>string</td>
 <td>write</td>
+<td>yes</td>
 <td>First name of the person</td>
 </tr>
 <tr>
 <td>last_name</td>
 <td>string</td>
 <td>write</td>
+<td>yes</td>
 <td>Last name of the person</td>
 </tr>
 <tr>
 <td>title</td>
 <td>string</td>
 <td>write</td>
+<td></td>
 <td>Role in the company</td>
 </tr>
 <tr>
 <td>website</td>
 <td>string</td>
 <td>write</td>
+<td></td>
 <td>writeebsite</td>
 </tr>
 <tr>
 <td>email</td>
 <td>string</td>
 <td>write</td>
+<td></td>
 <td>Primary email</td>
 </tr>
 <tr>
 <td>email_secondary</td>
 <td>string</td>
 <td>write</td>
+<td></td>
 <td>Secondary email</td>
 </tr>
 <tr>
 <td>phone</td>
 <td>string</td>
 <td>write</td>
+<td></td>
 <td>Office or home number</td>
 </tr>
 <tr>
 <td>mobile</td>
 <td>string</td>
 <td>write</td>
+<td></td>
 <td>Mobile phone number</td>
 </tr>
 <tr>
 <td>fax</td>
 <td>string</td>
 <td>write</td>
+<td></td>
 <td>Fax number</td>
 </tr>
 <tr>
 <td>skype</td>
 <td>string</td>
 <td>write</td>
+<td></td>
 <td>Skype nickname</td>
 </tr>
 <tr>
 <td>address</td>
 <td>string</td>
 <td>write</td>
+<td></td>
 <td>Office or home address of the person</td>
 </tr>
 <tr>
 <td>latitude</td>
 <td>float</td>
 <td>write</td>
+<td></td>
 <td>Geographic coordinate of the person</td>
 </tr>
 <tr>
 <td>longitude</td>
 <td>float</td>
 <td>write</td>
+<td></td>
 <td>Geographic coordinate of the person</td>
 </tr>
 <tr>
 <td>description</td>
 <td>string</td>
 <td>write</td>
+<td></td>
 <td>A description of the person</td>
 </tr>
 <tr>
 <td>tags</td>
 <td>array</td>
 <td>write</td>
+<td></td>
 <td>An array of tags for a person</td>
 </tr>
 <tr>
 <td>company_id</td>
 <td>integer</td>
 <td>write</td>
+<td></td>
 <td>Unique identifier of the person&rsquo;s company</td>
 </tr>
 <tr>
 <td>user_id</td>
 <td>integer</td>
 <td>write</td>
+<td>yes</td>
 <td>Unique identifier of the user that the person is assigned to</td>
 </tr>
 <tr>
 <td>created_at</td>
 <td>datetime</td>
 <td>read</td>
+<td></td>
 <td>Date of creation</td>
 </tr>
 <tr>
 <td>updated_at</td>
 <td>datetime</td>
 <td>read</td>
+<td></td>
 <td>Date of last edit</td>
 </tr>
 </tbody></table>
@@ -813,6 +834,7 @@ curl https://api.sellf.io/v1/people/3 <span class="se">\</span>
 <th>Parameter</th>
 <th>Type</th>
 <th>Permission</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -820,96 +842,112 @@ curl https://api.sellf.io/v1/people/3 <span class="se">\</span>
 <td>id</td>
 <td>integer</td>
 <td>read</td>
+<td></td>
 <td>Unique identifier of the company</td>
 </tr>
 <tr>
 <td>name</td>
 <td>string</td>
 <td>write</td>
+<td>yes</td>
 <td>Name of the company</td>
 </tr>
 <tr>
 <td>industry</td>
 <td>string</td>
 <td>write</td>
+<td></td>
 <td>Industry sector of the company</td>
 </tr>
 <tr>
 <td>website</td>
 <td>string</td>
 <td>write</td>
+<td></td>
 <td>writeebsite</td>
 </tr>
 <tr>
 <td>email</td>
 <td>string</td>
 <td>write</td>
+<td></td>
 <td>Primary email</td>
 </tr>
 <tr>
 <td>email_secondary</td>
 <td>string</td>
 <td>write</td>
+<td></td>
 <td>Secondary email</td>
 </tr>
 <tr>
 <td>phone</td>
 <td>string</td>
 <td>write</td>
+<td></td>
 <td>Office or home number</td>
 </tr>
 <tr>
 <td>fax</td>
 <td>string</td>
 <td>write</td>
+<td></td>
 <td>Fax number</td>
 </tr>
 <tr>
 <td>address</td>
 <td>string</td>
 <td>write</td>
+<td></td>
 <td>Office or home address of the company</td>
 </tr>
 <tr>
 <td>latitude</td>
 <td>float</td>
 <td>write</td>
+<td></td>
 <td>Geographic coordinate of the company</td>
 </tr>
 <tr>
 <td>longitude</td>
 <td>float</td>
 <td>write</td>
+<td></td>
 <td>Geographic coordinate of the company</td>
 </tr>
 <tr>
 <td>description</td>
 <td>string</td>
 <td>write</td>
+<td></td>
 <td>A description of the company</td>
 </tr>
 <tr>
 <td>tags</td>
 <td>array</td>
 <td>write</td>
+<td></td>
 <td>An array of tags for a company</td>
 </tr>
 <tr>
 <td>user_id</td>
 <td>integer</td>
 <td>write</td>
+<td>yes</td>
 <td>Unique identifier of the user that the company is assigned to</td>
 </tr>
 <tr>
 <td>created_at</td>
 <td>datetime</td>
 <td>read</td>
+<td></td>
 <td>Date of creation</td>
 </tr>
 <tr>
 <td>updated_at</td>
 <td>datetime</td>
 <td>read</td>
+<td></td>
 <td>Date of last edit</td>
 </tr>
 </tbody></table>
@@ -1163,6 +1201,7 @@ curl https://api.sellf.io/v1/companies/3 <span class="se">\</span>
 <th>Parameter</th>
 <th>Type</th>
 <th>Permission</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -1170,102 +1209,119 @@ curl https://api.sellf.io/v1/companies/3 <span class="se">\</span>
 <td>id</td>
 <td>integer</td>
 <td>read</td>
+<td></td>
 <td>Unique identifier of the deal</td>
 </tr>
 <tr>
 <td>name</td>
 <td>string</td>
 <td>write</td>
+<td>yes</td>
 <td>Brief description of the deal</td>
 </tr>
 <tr>
 <td>value</td>
 <td>float</td>
 <td>write</td>
+<td></td>
 <td>(Estimated) value of the deal, with decimal part if needed</td>
 </tr>
 <tr>
 <td>is_hot</td>
 <td>boolean</td>
 <td>write</td>
+<td></td>
 <td>To point if the deal is important or not</td>
 </tr>
 <tr>
 <td>win_probability</td>
 <td>integer</td>
 <td>write</td>
+<td></td>
 <td>Probability of closing the deal successfully</td>
 </tr>
 <tr>
 <td>estimated_close_at</td>
 <td>datetime</td>
 <td>write</td>
+<td></td>
 <td>Estimated close date of the deal</td>
 </tr>
 <tr>
 <td>started_at</td>
 <td>datetime</td>
 <td>read</td>
+<td></td>
 <td>Date in which the deal has been opened</td>
 </tr>
 <tr>
 <td>stage_changed_at</td>
 <td>datetime</td>
 <td>read</td>
+<td></td>
 <td>Last date in which the deal has been moved into a stage</td>
 </tr>
 <tr>
 <td>tags</td>
 <td>array</td>
 <td>write</td>
+<td></td>
 <td>An array of tags for a deal</td>
 </tr>
 <tr>
 <td>person_id</td>
 <td>integer</td>
 <td>write</td>
+<td></td>
 <td>Unique identifier of a primary person</td>
 </tr>
 <tr>
 <td>company_id</td>
 <td>integer</td>
 <td>write</td>
+<td></td>
 <td>Unique identifier of a primary company</td>
 </tr>
 <tr>
 <td>stage_id</td>
 <td>integer</td>
 <td>write</td>
+<td>yes</td>
 <td>Unique identifier of the deal&rsquo;s current stage in the pipeline</td>
 </tr>
 <tr>
 <td>source_id</td>
 <td>integer</td>
 <td>write</td>
+<td></td>
 <td>Unique identifier of the deal source</td>
 </tr>
 <tr>
 <td>product_id</td>
 <td>integer</td>
 <td>write</td>
+<td></td>
 <td>Unique identifier of the product (i.e. margin) associated to the deal</td>
 </tr>
 <tr>
 <td>user_id</td>
 <td>integer</td>
 <td>write</td>
+<td>yes</td>
 <td>Unique identifier of the user that the person is assigned to</td>
 </tr>
 <tr>
 <td>created_at</td>
 <td>datetime</td>
 <td>read</td>
+<td></td>
 <td>Date of creation</td>
 </tr>
 <tr>
 <td>updated_at</td>
 <td>datetime</td>
 <td>read</td>
+<td></td>
 <td>Date of last edit</td>
 </tr>
 </tbody></table>
@@ -2223,6 +2279,7 @@ curl https://api.sellf.io/v1/products/2 -H <span class="s2">"Api-Key: {YOUR_API_
 <th>Parameter</th>
 <th>Type</th>
 <th>Permission</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -2230,78 +2287,91 @@ curl https://api.sellf.io/v1/products/2 -H <span class="s2">"Api-Key: {YOUR_API_
 <td>id</td>
 <td>integer</td>
 <td>read</td>
+<td></td>
 <td>Unique identifier of the appointment</td>
 </tr>
 <tr>
 <td>name</td>
 <td>string</td>
 <td>write</td>
+<td>yes</td>
 <td>Name of the appointment</td>
 </tr>
 <tr>
 <td>action</td>
 <td>string</td>
 <td>write</td>
+<td></td>
 <td>Type of appointment</td>
 </tr>
 <tr>
 <td>start_at</td>
 <td>datetime</td>
+<td>write</td>
+<td>yes</td>
 <td>Moment in which the appointment starts</td>
-<td></td>
 </tr>
 <tr>
 <td>end_at</td>
 <td>datetime</td>
+<td>write</td>
+<td>yes</td>
 <td>Moment in which the appointment ends</td>
-<td></td>
 </tr>
 <tr>
 <td>remind_at</td>
 <td>datetime</td>
-<td>At what time the user needs to be notified of the upcoming appointment</td>
+<td>write</td>
 <td></td>
+<td>At what time the user needs to be notified of the upcoming appointment</td>
 </tr>
 <tr>
 <td>is_all_day</td>
 <td>boolean</td>
-<td>It determines whether the appointment lasts all day or less</td>
+<td>write</td>
 <td></td>
+<td>It determines whether the appointment lasts all day or less</td>
 </tr>
 <tr>
 <td>address</td>
 <td>string</td>
 <td>write</td>
+<td></td>
 <td>Place in which the appointment occurs</td>
 </tr>
 <tr>
 <td>description</td>
 <td>string</td>
 <td>write</td>
+<td></td>
 <td>Appointment&rsquo;s notes</td>
 </tr>
 <tr>
 <td>deal_id</td>
 <td>integer</td>
 <td>write</td>
+<td></td>
 <td>Unique identifier of the deal concerning the appointment</td>
 </tr>
 <tr>
 <td>user_id</td>
 <td>integer</td>
 <td>write</td>
+<td>yes</td>
 <td>Unique identifier of the user that the appointment is assigned to</td>
 </tr>
 <tr>
 <td>created_at</td>
 <td>datetime</td>
 <td>read</td>
+<td></td>
 <td>Date of creation</td>
 </tr>
 <tr>
 <td>updated_at</td>
 <td>datetime</td>
 <td>read</td>
+<td></td>
 <td>Date of last edit</td>
 </tr>
 </tbody></table>
@@ -2547,6 +2617,7 @@ curl https://api.sellf.io/v1/appointments/7 <span class="se">\</span>
 <th>Parameter</th>
 <th>Type</th>
 <th>Permission</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -2554,12 +2625,14 @@ curl https://api.sellf.io/v1/appointments/7 <span class="se">\</span>
 <td>person_id</td>
 <td>integer</td>
 <td>write</td>
+<td>yes</td>
 <td>Unique identifier of the person related to the appointment</td>
 </tr>
 <tr>
 <td>updated_at</td>
 <td>datetime</td>
 <td>read</td>
+<td></td>
 <td>Date of last edit</td>
 </tr>
 </tbody></table>
@@ -2689,6 +2762,7 @@ curl https://api.sellf.io/v1/appointments/4/people/15 <span class="se">\</span>
 <th>Parameter</th>
 <th>Type</th>
 <th>Permission</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -2696,12 +2770,14 @@ curl https://api.sellf.io/v1/appointments/4/people/15 <span class="se">\</span>
 <td>company_id</td>
 <td>integer</td>
 <td>write</td>
+<td>yes</td>
 <td>Unique identifier of the company related to the appointment</td>
 </tr>
 <tr>
 <td>updated_at</td>
 <td>datetime</td>
 <td>read</td>
+<td></td>
 <td>Date of last edit</td>
 </tr>
 </tbody></table>
@@ -2831,6 +2907,7 @@ curl https://api.sellf.io/v1/appointments/4/companies/15 <span class="se">\</spa
 <th>Parameter</th>
 <th>Type</th>
 <th>Permission</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -2838,12 +2915,14 @@ curl https://api.sellf.io/v1/appointments/4/companies/15 <span class="se">\</spa
 <td>user_id</td>
 <td>integer</td>
 <td>write</td>
+<td>yes</td>
 <td>Unique identifier of the user related to the appointment</td>
 </tr>
 <tr>
 <td>updated_at</td>
 <td>datetime</td>
 <td>read</td>
+<td></td>
 <td>Date of last edit</td>
 </tr>
 </tbody></table>
