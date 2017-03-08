@@ -4,24 +4,24 @@ The Companies API allows you to get, create, update and delete your companies. E
 
 ### Attributes
 
-Parameter | Type | Permission | Description
---------- | ------- | ------- | -----------
-id | integer | read | Unique identifier of the company
-name | string | write | Name of the company
-industry | string | write |  Industry sector of the company
-website | string | write |  writeebsite
-email | string | write | Primary email
-email_secondary | string | write | Secondary email
-phone | string | write | Office or home number
-fax | string | write | Fax number
-address | string | write | Office or home address of the company
-latitude | float | write | Geographic coordinate of the company
-longitude | float | write | Geographic coordinate of the company
-description | string | write | A description of the company
-tags | array | write | An array of tags for a company
-user_id | integer | write | Unique identifier of the user that the company is assigned to
-created_at | datetime | read | Date of creation
-updated_at | datetime | read | Date of last edit
+Parameter | Type | Permission | Required | Description
+--------- | ------- | ------- | ------- | -----------
+id | integer | read | | Unique identifier of the company
+name | string | write | yes | Name of the company
+industry | string | write | |  Industry sector of the company
+website | string | write | |  writeebsite
+email | string | write | | Primary email
+email_secondary | string | write | | Secondary email
+phone | string | write | | Office or home number
+fax | string | write | | Fax number
+address | string | write | | Office or home address of the company
+latitude | float | write | | Geographic coordinate of the company
+longitude | float | write | | Geographic coordinate of the company
+description | string | write | | A description of the company
+tags | array | write | | An array of tags for a company
+user_id | integer | write | yes | Unique identifier of the user that the company is assigned to
+created_at | datetime | read | | Date of creation
+updated_at | datetime | read | | Date of last edit
 
 
 ## Get All Companies

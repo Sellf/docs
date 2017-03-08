@@ -1,5 +1,4 @@
 # Start server
-
 	bundle exec middleman server
 
 # Deploy

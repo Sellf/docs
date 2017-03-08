@@ -4,10 +4,10 @@ The Appointment Users API allows you to get, add or remove users associated to y
 
 ### Attributes
 
-Parameter | Type | Permission | Description
---------- | ------- | ------- | -----------
-user_id | integer | write | Unique identifier of the user related to the appointment
-updated_at | datetime | read | Date of last edit
+Parameter | Type | Permission | Required | Description
+--------- | ------- | ------- | ------- | -----------
+user_id | integer | write | yes | Unique identifier of the user related to the appointment
+updated_at | datetime | read | | Date of last edit
 
 
 ## Get All Appointment's Users
