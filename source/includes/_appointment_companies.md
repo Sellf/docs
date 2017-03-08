@@ -4,10 +4,10 @@ The Appointment Companies API allows you to get, add or remove companies associa
 
 ### Attributes
 
-Parameter | Type | Permission | Required | Description
---------- | ------- | ------- | ------- | -----------
-company_id | integer | write | yes | Unique identifier of the company related to the appointment
-updated_at | datetime | read | | Date of last edit
+Parameter | Type | Permission | Description
+--------- | ------- | ------- | -----------
+**company_id** | integer | write | Unique identifier of the company related to the appointment
+updated_at | datetime | read | Date of last edit
 
 
 ## Get All Appointment's Companies

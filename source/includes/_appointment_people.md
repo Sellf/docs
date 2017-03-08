@@ -4,10 +4,10 @@ The Appointment People API allows you to get, add or remove people associated to
 
 ### Attributes
 
-Parameter | Type | Permission | Required | Description
---------- | ------- | ------- | ------- | -----------
-person_id | integer | write | yes | Unique identifier of the person related to the appointment
-updated_at | datetime | read | | Date of last edit
+Parameter | Type | Permission | Description
+--------- | ------- | ------- | -----------
+**person_id** | integer | write | Unique identifier of the person related to the appointment
+updated_at | datetime | read | Date of last edit
 
 
 ## Get All Appointment's People

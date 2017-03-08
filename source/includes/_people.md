@@ -6,26 +6,26 @@ The People API allows you to get, create, update and delete your people. Each pe
 
 Parameter | Type | Permission | Required | Description
 --------- | ------- | ------- | ------- | -----------
-id | integer | read | | Unique identifier of the person
-first_name | string | write | yes | First name of the person
-last_name | string | write | yes | Last name of the person
-title | string | write | | Role in the company
-website | string | write | |  writeebsite
-email | string | write | | Primary email
-email_secondary | string | write | | Secondary email
-phone | string | write | | Office or home number
-mobile | string | write | | Mobile phone number
-fax | string | write | | Fax number
-skype  | string | write | | Skype nickname
-address | string | write | | Office or home address of the person
-latitude | float | write | | Geographic coordinate of the person
-longitude | float | write | | Geographic coordinate of the person
-description | string | write | |  A description of the person
-tags | array | write | | An array of tags for a person
-company_id | integer | write | | Unique identifier of the person's company
-user_id | integer | write | yes | Unique identifier of the user that the person is assigned to
-created_at | datetime | read | | Date of creation
-updated_at | datetime | read | | Date of last edit
+id | integer | read | Unique identifier of the person
+**first_name** | string | write | First name of the person
+**last_name** | string | write | Last name of the person
+title | string | write | Role in the company
+website | string | write |  writeebsite
+email | string | write | Primary email
+email_secondary | string | write | Secondary email
+phone | string | write | Office or home number
+mobile | string | write | Mobile phone number
+fax | string | write | Fax number
+skype  | string | write | Skype nickname
+address | string | write | Office or home address of the person
+latitude | float | write | Geographic coordinate of the person
+longitude | float | write | Geographic coordinate of the person
+description | string | write |  A description of the person
+tags | array | write | An array of tags for a person
+company_id | integer | write | Unique identifier of the person's company
+**user_id** | integer | write | Unique identifier of the user that the person is assigned to
+created_at | datetime | read | Date of creation
+updated_at | datetime | read | Date of last edit
 
 
 ## Get All People

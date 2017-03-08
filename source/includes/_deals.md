@@ -6,23 +6,23 @@ The Deals API allows you to get, create, update and delete your deals.
 
 Parameter | Type | Permission | Required | Description
 --------- | ------- | ------- | ------- | -----------
-id | integer | read | | Unique identifier of the deal
-name | string | write | yes | Brief description of the deal
-value | float | write | | (Estimated) value of the deal, with decimal part if needed
-is_hot | boolean | write | | To point if the deal is important or not
-win_probability | integer | write | | Probability of closing the deal successfully
-estimated_close_at | datetime | write | | Estimated close date of the deal
-started_at | datetime | read | | Date in which the deal has been opened
-stage_changed_at | datetime | read | | Last date in which the deal has been moved into a stage
-tags | array | write | | An array of tags for a deal
-person_id | integer | write | | Unique identifier of a primary person
-company_id | integer | write | | Unique identifier of a primary company
-stage_id | integer | write | yes | Unique identifier of the deal's current stage in the pipeline
-source_id | integer | write | | Unique identifier of the deal source
-product_id | integer | write | | Unique identifier of the product (i.e. margin) associated to the deal
-user_id | integer | write | yes | Unique identifier of the user that the person is assigned to
-created_at | datetime | read | | Date of creation
-updated_at | datetime | read | | Date of last edit
+id | integer | read | Unique identifier of the deal
+**name** | string | write | Brief description of the deal
+value | float | write | (Estimated) value of the deal, with decimal part if needed
+is_hot | boolean | write | To point if the deal is important or not
+win_probability | integer | write | Probability of closing the deal successfully
+estimated_close_at | datetime | write | Estimated close date of the deal
+started_at | datetime | read | Date in which the deal has been opened
+stage_changed_at | datetime | read | Last date in which the deal has been moved into a stage
+tags | array | write | An array of tags for a deal
+person_id | integer | write | Unique identifier of a primary person
+company_id | integer | write | Unique identifier of a primary company
+**stage_id** | integer | write | Unique identifier of the deal's current stage in the pipeline
+source_id | integer | write | Unique identifier of the deal source
+product_id | integer | write | Unique identifier of the product (i.e. margin) associated to the deal
+**user_id** | integer | write | Unique identifier of the user that the person is assigned to
+created_at | datetime | read | Date of creation
+updated_at | datetime | read | Date of last edit
 
 
 

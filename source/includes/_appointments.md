@@ -14,21 +14,21 @@ presentation | Presentation
 
 ### Attributes
 
-Parameter | Type | Permission | Required | Description
---------- | ------- | ------- | ------- | -----------
-id | integer | read | | Unique identifier of the appointment
-name | string | write | yes | Name of the appointment
-action | string | write | | Type of appointment
-start_at | datetime | write | yes | Moment in which the appointment starts
-end_at | datetime | write | yes | Moment in which the appointment ends
-remind_at | datetime | write | | At what time the user needs to be notified of the upcoming appointment
-is_all_day | boolean | write | | It determines whether the appointment lasts all day or less
-address | string | write | | Place in which the appointment occurs
-description | string | write | | Appointment's notes
-deal_id | integer | write | | Unique identifier of the deal concerning the appointment
-user_id | integer | write | yes | Unique identifier of the user that the appointment is assigned to
-created_at | datetime | read | | Date of creation
-updated_at | datetime | read | | Date of last edit
+Parameter | Type | Permission | Description
+--------- | ------- | ------- | -----------
+id | integer | read | Unique identifier of the appointment
+**name** | string | write | Name of the appointment
+action | string | write | Type of appointment
+**start_at** | datetime | write | Moment in which the appointment starts
+**end_at** | datetime | write | Moment in which the appointment ends
+remind_at | datetime | write | At what time the user needs to be notified of the upcoming appointment
+is_all_day | boolean | write | It determines whether the appointment lasts all day or less
+address | string | write | Place in which the appointment occurs
+description | string | write | Appointment's notes
+deal_id | integer | write | Unique identifier of the deal concerning the appointment
+**user_id** | integer | write | Unique identifier of the user that the appointment is assigned to
+created_at | datetime | read | Date of creation
+updated_at | datetime | read | Date of last edit
 
 
 ## Get All Appointments
