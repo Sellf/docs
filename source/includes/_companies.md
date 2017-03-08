@@ -4,8 +4,8 @@ The Companies API allows you to get, create, update and delete your companies. E
 
 ### Attributes
 
-Parameter | Type | Permission | Required | Description
---------- | ------- | ------- | ------- | -----------
+Parameter | Type | Permission | Description
+--------- | ------- | ------- | -----------
 id | integer | read | Unique identifier of the company
 **name** | string | write | Name of the company
 industry | string | write |  Industry sector of the company

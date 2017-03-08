@@ -4,8 +4,8 @@ The Deals API allows you to get, create, update and delete your deals.
 
 ### Attributes
 
-Parameter | Type | Permission | Required | Description
---------- | ------- | ------- | ------- | -----------
+Parameter | Type | Permission | Description
+--------- | ------- | ------- | -----------
 id | integer | read | Unique identifier of the deal
 **name** | string | write | Brief description of the deal
 value | float | write | (Estimated) value of the deal, with decimal part if needed

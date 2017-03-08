@@ -4,8 +4,8 @@ The People API allows you to get, create, update and delete your people. Each pe
 
 ### Attributes
 
-Parameter | Type | Permission | Required | Description
---------- | ------- | ------- | ------- | -----------
+Parameter | Type | Permission | Description
+--------- | ------- | ------- | -----------
 id | integer | read | Unique identifier of the person
 **first_name** | string | write | First name of the person
 **last_name** | string | write | Last name of the person
