@@ -94,7 +94,7 @@ curl https://api.sellf.io/v1/appointments \
   -X POST -d "{"name": "Debriefing",
               "start_at": "2016-09-08T16:25:00",
               "end_at": "2016-09-08T16:50:00",
-              "deal_id": 9
+              "deal_id": 9,
               "user_id": 4}"
 ```
 
