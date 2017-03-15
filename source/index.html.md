@@ -25,6 +25,7 @@ includes:
   - appointment_people
   - appointment_companies
   - appointment_users
+  - notes
 
 search: true
 ---
