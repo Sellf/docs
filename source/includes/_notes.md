@@ -33,19 +33,15 @@ curl https://api.sellf.io/v1/notes?sort_by=-title -H "Api-Key: {YOUR_API_KEY}"
   },
   "data": [
     {
-      "start_at": "2016-09-15T01:13:15.608045",
-      "name": "Contract negotiation",
+      "title": "Contract negotiation",
+      "body": "",
+      "person_id": null,
+      "company_id": 32,
       "deal_id": null,
       "created_at": "2016-09-23T13:43:30.826603",
-      "address": "via Sile 41, 31056, Roncade (TV)",
       "updated_at": "2016-09-23T13:43:30.826603",
-      "end_at": "2016-09-23T14:10:45.787592",
-      "remind_at": null,
-      "is_all_day": true,
-      "action": "meeting",
       "user_id": 4,
       "id": 3,
-      "description": null
     }
   ]
 }
