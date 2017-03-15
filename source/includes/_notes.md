@@ -77,8 +77,8 @@ curl https://api.sellf.io/v1/notes \
   -H 'Accept: application/json' \
   -X POST -d "{"title": "Debriefing",
               "body": "Lorem ipsum dolor sit amet, consectetur adipisci elit...",
-              "person_id": "15",
-              "deal_id": 9
+              "person_id": 15,
+              "deal_id": 9,
               "user_id": 4}"
 ```
 
@@ -88,7 +88,7 @@ curl https://api.sellf.io/v1/notes \
 {
   "title": "Debriefing",
   "body": "Lorem ipsum dolor sit amet, consectetur adipisci elit...",
-  "person_id": "15",
+  "person_id": 15,
   "company_id": null,
   "deal_id": 9,
   "created_at": "2017-02-21T10:32:49.000000",
@@ -120,7 +120,7 @@ curl https://api.sellf.io/v1/notes/7 -H "Api-Key: {YOUR_API_KEY}"
 {
   "title": "Debriefing",
   "body": "Lorem ipsum dolor sit amet, consectetur adipisci elit...",
-  "person_id": "15",
+  "person_id": 15,
   "company_id": null,
   "deal_id": 9,
   "created_at": "2017-02-21T10:32:49.000000",
@@ -162,7 +162,7 @@ curl https://api.sellf.io/v1/notes/7 \
 {
   "title": "Debriefing with teammates",
   "body": "Lorem ipsum dolor sit amet, consectetur adipisci elit...",
-  "person_id": "15",
+  "person_id": 15,
   "company_id": null,
   "deal_id": 9,
   "created_at": "2017-02-21T10:32:49.000000",
