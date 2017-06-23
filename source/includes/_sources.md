@@ -30,16 +30,12 @@ curl https://api.sellf.io/v1/sources -H "Api-Key: {YOUR_API_KEY}"
   },
   "data": [
     {
-      "created_at": "2016-03-23T11:09:04.239262",
       "id": 1,
-      "name": "Referral",
-      "updated_at": "2016-05-11T15:29:36.390240"
+      "name": "Referral"
     },
     {
-      "created_at": "2016-03-23T11:09:04.257173",
       "id": 2,
-      "name": "Word of mouth",
-      "updated_at": "2016-03-29T12:22:20.922757"
+      "name": "Word of mouth"
     }
   ]
 }
@@ -71,10 +67,8 @@ curl https://api.sellf.io/v1/sources/2 -H "Api-Key: {YOUR_API_KEY}"
 
 ```json
 {
-  "created_at": "2016-03-23T11:09:04.257173",
   "id": 2,
-  "name": "Word of mouth",
-  "updated_at": "2016-03-29T12:22:20.922757"
+  "name": "Word of mouth"
 }
 ```
 

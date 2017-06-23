@@ -57,8 +57,6 @@ curl https://api.sellf.io/v1/stages -H "Api-Key: {YOUR_API_KEY}"
   "data": [
     {
       "name": "Qualified",
-      "created_at": "2015-11-26T15:25:30.399687",
-      "updated_at": "2016-04-28T10:40:00.508475",
       "pipeline_id": 1,
       "win_probability": 20,
       "position": 1,
@@ -67,8 +65,6 @@ curl https://api.sellf.io/v1/stages -H "Api-Key: {YOUR_API_KEY}"
     },
     {
       "name": "Negotiation",
-      "created_at": "2015-11-26T15:25:30.409568",
-      "updated_at": "2016-05-11T11:58:02.441383",
       "pipeline_id": 1,
       "win_probability": 80,
       "position": 6,
@@ -108,8 +104,6 @@ curl https://api.sellf.io/v1/stages/9 -H "Api-Key: {YOUR_API_KEY}"
 ```json
 {
   "name": "Negotiation",
-  "created_at": "2015-11-26T15:25:30.409568",
-  "updated_at": "2016-05-11T11:58:02.441383",
   "pipeline_id": 1,
   "win_probability": 80,
   "position": 6,

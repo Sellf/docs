@@ -29,18 +29,14 @@ curl https://api.sellf.io/v1/pipelines -H "Api-Key: {YOUR_API_KEY}"
   },
   "data": [
     {
-      "created_at": "2015-11-26T15:25:30.389544",
       "type": "cash",
       "id": 1,
-      "name": "Sales Pipeline",
-      "updated_at": "2016-05-03T14:19:53.605326"
+      "name": "Sales Pipeline"
     },
     {
-      "created_at": "2016-01-04T09:29:12.960430",
       "type": "quantity",
       "id": 2,
-      "name": "Sold Items",
-      "updated_at": "2016-01-25T10:55:13.818873"
+      "name": "Sold Items"
     }
   ]
 }
@@ -71,11 +67,9 @@ curl https://api.sellf.io/v1/pipelines/2 -H "Api-Key: {YOUR_API_KEY}"
 
 ```json
 {
-  "created_at": "2016-01-04T09:29:12.960430",
   "type": "quantity",
   "id": 2,
-  "name": "Sold Items",
-  "updated_at": "2016-01-25T10:55:13.818873"
+  "name": "Sold Items"
 }
 ```
 
