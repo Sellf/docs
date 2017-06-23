@@ -7,8 +7,10 @@ The Companies API allows you to get, create, update and delete your companies. E
 Parameter | Type | Permission | Description
 --------- | ------- | ------- | -----------
 id | integer | read | Unique identifier of the company
+code | string | write | Custom identifier of the company
 **name** | string | write | Name of the company
-industry | string | write |  Industry sector of the company
+industry | string | write | Industry sector of the company
+prospect_status | integer | write | Status of the company
 vat | string | write | Value-added tax of the company
 website | string | write |  writeebsite
 email | string | write | Primary email
@@ -47,10 +49,13 @@ curl https://api.sellf.io/v2/companies?sort_by=-name -H "Api-Key: {YOUR_API_KEY}
       "description": null,
       "tags": [],
       "industry": "Mobile CRM",
+      "prospect_status": 0,
+      "vat": "IT1234567890",
       "created_at": "2015-11-26T15:25:30.940731",
       "updated_at": "2016-07-05T12:17:47",
       "longitude": 12.4274592,
       "id": 20991,
+      "code": null,
       "phone": "+39 0422 789611",
       "address": "Via Sile, 41, 31056 Roncade TV, Italia",
       "latitude": 45.5648361,
@@ -104,10 +109,13 @@ curl https://api.sellf.io/v2/companies \
   "description": null,
   "tags": [],
   "industry": "Semiconductor",
+  "prospect_status": 2,
+  "vat": null,
   "created_at": "2016-09-08T16:54:37",
   "updated_at": "2016-09-08T16:54:37",
   "longitude": null,
   "id": 3,
+  "code": null,
   "phone": null,
   "address": "Via Thomas Alva Edison, Padova, PD",
   "latitude": null,
@@ -143,10 +151,13 @@ curl https://api.sellf.io/v2/companies/3 -H "Api-Key: {YOUR_API_KEY}"
   "description": null,
   "tags": [],
   "industry": "Semiconductor",
+  "prospect_status": 2,
+  "vat": null,
   "created_at": "2016-09-08T16:54:37",
   "updated_at": "2016-09-08T16:54:37",
   "longitude": null,
   "id": 3,
+  "code": null,
   "phone": null,
   "address": "Via Thomas Alva Edison, Padova, PD",
   "latitude": null,
@@ -194,10 +205,13 @@ curl https://api.sellf.io/v2/companies/3 \
   "description": null,
   "tags": [],
   "industry": "Semiconductor & Devices",
+  "prospect_status": 2,
+  "vat": null,
   "created_at": "2016-09-08T16:54:37",
   "updated_at": "2016-09-08T17:02:18",
   "longitude": null,
   "id": 3,
+  "code": null,
   "phone": null,
   "address": "Via Thomas Alva Edison, Padova, PD",
   "latitude": null,

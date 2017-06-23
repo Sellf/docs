@@ -7,9 +7,11 @@ The People API allows you to get, create, update and delete your people. Each pe
 Parameter | Type | Permission | Description
 --------- | ------- | ------- | -----------
 id | integer | read | Unique identifier of the person
+code | string | write | Custom identifier of the person
 **first_name** | string | write | First name of the person
 **last_name** | string | write | Last name of the person
 title | string | write | Role in the company
+prospect_status | integer | write | Status of the person
 vat | string | write | Value-added tax of the person
 birthday | datetime | write | Birthday of the person
 website | string | write |  writeebsite
@@ -53,12 +55,16 @@ curl https://api.sellf.io/v2/people?sort_by=-name -H "Api-Key: {YOUR_API_KEY}"
       "user_id": 4,
       "description": "Hi! I'm Alessia, head of Customer Support at Sellf",
       "title": "Head of Customer Happiness",
+      "prospect_status": 0,
+      "vat": "IT1234567890",
+      "birthday": "1983-02-04T14:57:54.707662",
       "mobile": null,
       "created_at": "2015-11-27T14:57:54.707662",
       "skype": "sellfapp",
       "updated_at": "2016-07-05T12:19:20",
       "longitude": 12.4274592,
       "id": 1,
+      "code": null,
       "phone": null,
       "last_name": "Bellon",
       "address": "Via Sile, 41, 31056 Roncade (TV) Italia",
@@ -119,12 +125,16 @@ curl https://api.sellf.io/v2/people \
   "user_id": 4,
   "description": null,
   "title": "Founder of Sellf",
+  "prospect_status": 2,
+  "vat": null,
+  "birthday": null,
   "mobile": null,
   "created_at": "2016-09-08T16:36:52",
   "skype": null,
   "updated_at": "2016-09-08T16:36:52",
   "longitude": null,
   "id": 3,
+  "code": null
   "phone": null,
   "last_name": "Zanella",
   "address": null,
@@ -165,12 +175,16 @@ curl https://api.sellf.io/v2/people/3 -H "Api-Key: {YOUR_API_KEY}"
   "user_id": 4,
   "description": null,
   "title": "Founder of Sellf",
+  "prospect_status": 2,
+  "vat": null,
+  "birthday": null,
   "mobile": null,
   "created_at": "2016-09-08T16:36:52",
   "skype": null,
   "updated_at": "2016-09-08T16:36:52",
   "longitude": null,
   "id": 3,
+  "code": null,
   "phone": null,
   "last_name": "Zanella",
   "address": null,
@@ -222,12 +236,16 @@ curl https://api.sellf.io/v2/people/3 \
   "user_id": 4,
   "description": null,
   "title": "Ruby on Rails Developer",
+  "prospect_status": 2,
+  "vat": null,
+  "birthday": null,
   "mobile": null,
   "created_at": "2016-09-08T16:36:52",
   "skype": null,
   "updated_at": "2016-09-08T16:42:30",
   "longitude": null,
   "id": 3,
+  "code": null,
   "phone": null,
   "last_name": "Zanella",
   "address": null,
