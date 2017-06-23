@@ -10,6 +10,8 @@ id | integer | read | Unique identifier of the person
 **first_name** | string | write | First name of the person
 **last_name** | string | write | Last name of the person
 title | string | write | Role in the company
+vat | string | write | Value-added tax of the person
+birthday | datetime | write | Birthday of the person
 website | string | write |  writeebsite
 email | string | write | Primary email
 email_secondary | string | write | Secondary email

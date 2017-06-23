@@ -9,6 +9,7 @@ Parameter | Type | Permission | Description
 id | integer | read | Unique identifier of the company
 **name** | string | write | Name of the company
 industry | string | write |  Industry sector of the company
+vat | string | write | Value-added tax of the company
 website | string | write |  writeebsite
 email | string | write | Primary email
 email_secondary | string | write | Secondary email
