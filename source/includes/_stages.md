@@ -43,7 +43,7 @@ updated_at | datetime | read | Date of last edit
 ## Get All Stages
 
 ```shell
-curl https://api.sellf.io/v1/stages -H "Api-Key: {YOUR_API_KEY}"
+curl https://api.sellf.io/v2/stages -H "Api-Key: {YOUR_API_KEY}"
 ```
 
 > The above command returns JSON structured like this:
@@ -96,7 +96,7 @@ type | Unique identifier of stage type (i.e. `0`, `1`, `2`, `3`)
 
 ```shell
 # Retrieve a stage with ID 9
-curl https://api.sellf.io/v1/stages/9 -H "Api-Key: {YOUR_API_KEY}"
+curl https://api.sellf.io/v2/stages/9 -H "Api-Key: {YOUR_API_KEY}"
 ```
 
 > The above command returns JSON structured like this:

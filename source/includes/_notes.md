@@ -20,7 +20,7 @@ updated_at | datetime | read | Date of last edit
 ## Get All Notes
 
 ```shell
-curl https://api.sellf.io/v1/notes?sort_by=-title -H "Api-Key: {YOUR_API_KEY}"
+curl https://api.sellf.io/v2/notes?sort_by=-title -H "Api-Key: {YOUR_API_KEY}"
 ```
 
 > The above command returns JSON structured like this:
@@ -71,7 +71,7 @@ title | A string containing or matching the title of the note
 
 ```shell
 # Create a new note
-curl https://api.sellf.io/v1/notes \
+curl https://api.sellf.io/v2/notes \
   -H "Api-Key: {YOUR_API_KEY}" \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
@@ -111,7 +111,7 @@ This endpoint allows to create an note.
 
 ```shell
 # Retrieve a note with ID 7
-curl https://api.sellf.io/v1/notes/7 -H "Api-Key: {YOUR_API_KEY}"
+curl https://api.sellf.io/v2/notes/7 -H "Api-Key: {YOUR_API_KEY}"
 ```
 
 > The above command returns JSON structured like this:
@@ -149,7 +149,7 @@ id | The unique identifier of the note to retrieve
 
 ```shell
 # Update a note with ID 7
-curl https://api.sellf.io/v1/notes/7 \
+curl https://api.sellf.io/v2/notes/7 \
   -H "Api-Key: {YOUR_API_KEY}" \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
@@ -191,7 +191,7 @@ id | The unique identifier of the note to retrieve
 
 ```shell
 # Delete the note with ID 7
-curl https://api.sellf.io/v1/notes/7 \
+curl https://api.sellf.io/v2/notes/7 \
   -H "Api-Key: {YOUR_API_KEY}" \
   -X DELETE
 ```

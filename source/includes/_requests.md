@@ -5,7 +5,7 @@ As stated before, the Sellf API is accessed from the secure domain `https://api.
 ### Pagination
 
 ```shell
-curl https://api.sellf.io/v1/deals?page=3 \
+curl https://api.sellf.io/v2/deals?page=3 \
 	-H "Api-Key: {YOUR_API_KEY}"
 ```
 
@@ -18,7 +18,7 @@ The depicted example shows how to get the third page of all the team deals.
 
 ```shell
 # To get a list of deals sorted by estimated value in descending order
-curl https://api.sellf.io/v1/deals?sort_by=-estimated_value \
+curl https://api.sellf.io/v2/deals?sort_by=-estimated_value \
 	-H "Api-Key: {YOUR_API_KEY}"
 ```
 

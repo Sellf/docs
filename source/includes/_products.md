@@ -19,7 +19,7 @@ updated_at | datetime | read | Date of last edit
 ## Get All Products
 
 ```shell
-curl https://api.sellf.io/v1/products -H "Api-Key: {YOUR_API_KEY}"
+curl https://api.sellf.io/v2/products -H "Api-Key: {YOUR_API_KEY}"
 ```
 
 > The above command returns JSON structured like this:
@@ -62,7 +62,7 @@ sort_by | Column to sort by <br> (i.e. `id`, `name`, `created_at`, `updated_at`)
 
 ```shell
 # Retrieve a product with ID 2
-curl https://api.sellf.io/v1/products/2 -H "Api-Key: {YOUR_API_KEY}"
+curl https://api.sellf.io/v2/products/2 -H "Api-Key: {YOUR_API_KEY}"
 ```
 
 > The above command returns JSON structured like this:

@@ -17,7 +17,7 @@ created_at | datetime | read | Date of creation
 ## Get All Users
 
 ```shell
-curl https://api.sellf.io/v1/users -H "Api-Key: {YOUR_API_KEY}"
+curl https://api.sellf.io/v2/users -H "Api-Key: {YOUR_API_KEY}"
 ```
 
 > The above command returns JSON structured like this:
@@ -58,7 +58,7 @@ This endpoint retrieves all users.
 
 ```shell
 # Retrieve a user with ID 2
-curl https://api.sellf.io/v1/users/2 -H "Api-Key: {YOUR_API_KEY}"
+curl https://api.sellf.io/v2/users/2 -H "Api-Key: {YOUR_API_KEY}"
 ```
 
 > The above command returns JSON structured like this:

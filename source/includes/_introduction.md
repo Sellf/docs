@@ -24,7 +24,7 @@ Each entity has a unique integer ID.
 
 
 <aside class="notice">
-All API calls must be made to `https://api.sellf.io/v1`, where `v1` is the (current) version of the APIs.
+All API calls must be made to `https://api.sellf.io/v2`, where `v2` is the (current) version of the APIs.
 </aside>
 
 Please report any issues to <a href="mailto:support@sellfapp.com">support@sellfapp.com</a> or leave any feedback [here](https://sellf.uservoice.com).

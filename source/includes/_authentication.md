@@ -7,7 +7,7 @@ An API key can be obtained by (registering or) signing in to [sellf.io](https://
 Sellf expects for the API key to be included in all API requests to the server in a header that looks like the example in the right bar.
 
 ```shell
-curl https://api.sellf.io/v1/deals -H "Api-Key: {YOUR_API_KEY}"
+curl https://api.sellf.io/v2/deals -H "Api-Key: {YOUR_API_KEY}"
 ```
 
 > Make sure to replace `{YOUR_API_KEY}` with your API key.

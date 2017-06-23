@@ -28,7 +28,7 @@ updated_at | datetime | read | Date of last edit
 ## Get All Companies
 
 ```shell
-curl https://api.sellf.io/v1/companies?sort_by=-name -H "Api-Key: {YOUR_API_KEY}"
+curl https://api.sellf.io/v2/companies?sort_by=-name -H "Api-Key: {YOUR_API_KEY}"
 ```
 
 > The above command returns JSON structured like this:
@@ -83,7 +83,7 @@ name | A string containing or matching the name of the company
 
 ```shell
 # Create a new company
-curl https://api.sellf.io/v1/companies \
+curl https://api.sellf.io/v2/companies \
   -H "Api-Key: {YOUR_API_KEY}" \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
@@ -130,7 +130,7 @@ This endpoint allows to create a company.
 
 ```shell
 # Retrieve a company with ID 3
-curl https://api.sellf.io/v1/companies/3 -H "Api-Key: {YOUR_API_KEY}"
+curl https://api.sellf.io/v2/companies/3 -H "Api-Key: {YOUR_API_KEY}"
 ```
 
 > The above command returns JSON structured like this:
@@ -175,7 +175,7 @@ id | The unique identifier of the company to retrieve
 
 ```shell
 # Update the company with ID 3
-curl https://api.sellf.io/v1/companies/3 \
+curl https://api.sellf.io/v2/companies/3 \
   -H "Api-Key: {YOUR_API_KEY}" \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
@@ -226,7 +226,7 @@ id | The unique identifier of the company to retrieve
 
 ```shell
 # Delete the company with ID 3
-curl https://api.sellf.io/v1/companies/3 \
+curl https://api.sellf.io/v2/companies/3 \
   -H "Api-Key: {YOUR_API_KEY}" \
   -X DELETE
 ```

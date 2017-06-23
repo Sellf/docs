@@ -30,7 +30,7 @@ updated_at | datetime | read | Date of last edit
 ## Get All Deals
 
 ```shell
-curl https://api.sellf.io/v1/deals -H "Api-Key: {YOUR_API_KEY}"
+curl https://api.sellf.io/v2/deals -H "Api-Key: {YOUR_API_KEY}"
 ```
 
 > The above command returns JSON structured like this:
@@ -112,7 +112,7 @@ product_id | Unique identifier of the product related to the deal
 
 ```shell
 # Create a new deal
-curl https://api.sellf.io/v1/deals \
+curl https://api.sellf.io/v2/deals \
   -H "Api-Key: {YOUR_API_KEY}" \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
@@ -164,7 +164,7 @@ This endpoint allows to create a deal.
 
 ```shell
 # Retrieve a deal with ID 12
-curl https://api.sellf.io/v1/deals/12 -H "Api-Key: {YOUR_API_KEY}"
+curl https://api.sellf.io/v2/deals/12 -H "Api-Key: {YOUR_API_KEY}"
 ```
 
 > The above command returns JSON structured like this:
@@ -212,7 +212,7 @@ id | The unique identifier of the deal to retrieve
 
 ```shell
 # Update the deal with ID 12
-curl https://api.sellf.io/v1/deals/12 \
+curl https://api.sellf.io/v2/deals/12 \
   -H "Api-Key: {YOUR_API_KEY}" \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
@@ -266,7 +266,7 @@ id | The unique identifier of the deal to retrieve
 
 ```shell
 # Delete the deal with ID 3
-curl https://api.sellf.io/v1/deals/3 \
+curl https://api.sellf.io/v2/deals/3 \
   -H "Api-Key: {YOUR_API_KEY}" \
   -X DELETE
 ```

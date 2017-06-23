@@ -16,7 +16,7 @@ type | string | read | Pipeline type <br> (i.e. `money`, `quantity`)
 ## Get All Pipelines
 
 ```shell
-curl https://api.sellf.io/v1/pipelines -H "Api-Key: {YOUR_API_KEY}"
+curl https://api.sellf.io/v2/pipelines -H "Api-Key: {YOUR_API_KEY}"
 ```
 
 > The above command returns JSON structured like this:
@@ -60,7 +60,7 @@ type | Type of pipeline in terms of being monetary or quantitative <br> (i.e. `c
 
 ```shell
 # Retrieve a pipeline with ID 2
-curl https://api.sellf.io/v1/pipelines/2 -H "Api-Key: {YOUR_API_KEY}"
+curl https://api.sellf.io/v2/pipelines/2 -H "Api-Key: {YOUR_API_KEY}"
 ```
 
 > The above command returns JSON structured like this:

@@ -13,7 +13,7 @@ updated_at | datetime | read | Date of last edit
 ## Get All Appointment's Companies
 
 ```shell
-curl https://api.sellf.io/v1/appointments/4 -H "Api-Key: {YOUR_API_KEY}"
+curl https://api.sellf.io/v2/appointments/4 -H "Api-Key: {YOUR_API_KEY}"
 ```
 
 > The above command returns JSON structured like this:
@@ -52,7 +52,7 @@ appointment_id | The unique identifier of the chosen appointment
 
 ```shell
 # Add a company to an appointment
-curl https://api.sellf.io/v1/appointments/4/companies \
+curl https://api.sellf.io/v2/appointments/4/companies \
   -H "Api-Key: {YOUR_API_KEY}" \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
@@ -87,7 +87,7 @@ appointment_id | The unique identifier of the chosen appointment
 
 ```shell
 # Remove the company with ID 15 from the appointment with ID 4
-curl https://api.sellf.io/v1/appointments/4/companies/15 \
+curl https://api.sellf.io/v2/appointments/4/companies/15 \
   -H "Api-Key: {YOUR_API_KEY}" \
   -X DELETE
 ```

@@ -34,7 +34,7 @@ updated_at | datetime | read | Date of last edit
 ## Get All Appointments
 
 ```shell
-curl https://api.sellf.io/v1/appointments?sort_by=-name -H "Api-Key: {YOUR_API_KEY}"
+curl https://api.sellf.io/v2/appointments?sort_by=-name -H "Api-Key: {YOUR_API_KEY}"
 ```
 
 > The above command returns JSON structured like this:
@@ -87,7 +87,7 @@ name | A string containing or matching the name of the appointment
 
 ```shell
 # Create a new appointment
-curl https://api.sellf.io/v1/appointments \
+curl https://api.sellf.io/v2/appointments \
   -H "Api-Key: {YOUR_API_KEY}" \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
@@ -131,7 +131,7 @@ This endpoint allows to create an appointment.
 
 ```shell
 # Retrieve a appointment with ID 7
-curl https://api.sellf.io/v1/appointments/7 -H "Api-Key: {YOUR_API_KEY}"
+curl https://api.sellf.io/v2/appointments/7 -H "Api-Key: {YOUR_API_KEY}"
 ```
 
 > The above command returns JSON structured like this:
@@ -173,7 +173,7 @@ id | The unique identifier of the appointment to retrieve
 
 ```shell
 # Update a appointment with ID 7
-curl https://api.sellf.io/v1/appointments/7 \
+curl https://api.sellf.io/v2/appointments/7 \
   -H "Api-Key: {YOUR_API_KEY}" \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
@@ -221,7 +221,7 @@ id | The unique identifier of the appointment to retrieve
 
 ```shell
 # Delete the appointment with ID 7
-curl https://api.sellf.io/v1/appointments/7 \
+curl https://api.sellf.io/v2/appointments/7 \
   -H "Api-Key: {YOUR_API_KEY}" \
   -X DELETE
 ```
