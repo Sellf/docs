@@ -7,6 +7,7 @@ The Deals API allows you to get, create, update and delete your deals.
 Parameter | Type | Permission | Description
 --------- | ------- | ------- | -----------
 id | integer | read | Unique identifier of the deal
+code | string | write | Custom identifier of the deal
 **name** | string | write | Brief description of the deal
 value | float | write | (Estimated) value of the deal, with decimal part if needed
 is_hot | boolean | write | To point if the deal is important or not
@@ -59,9 +60,11 @@ curl https://api.sellf.io/v2/deals -H "Api-Key: {YOUR_API_KEY}"
       "win_probability": 100,
       "estimated_close_at": "2015-11-30T11:59:59",
       "source_id": null,
+      "loss_reason_id": null,
       "is_hot": true,
       "started_at": "2015-11-27T14:57:55",
-      "id": 2
+      "id": 2,
+      "code": null
     },
     {
       "stage_id": 10,
@@ -77,9 +80,11 @@ curl https://api.sellf.io/v2/deals -H "Api-Key: {YOUR_API_KEY}"
       "win_probability": 100,
       "estimated_close_at": null,
       "source_id": null,
+      "loss_reason_id": null,
       "is_hot": false,
       "started_at": "2016-03-30T13:08:49",
-      "id": 3
+      "id": 3,
+      "code": null
     }
   ]
 }
@@ -142,9 +147,11 @@ curl https://api.sellf.io/v2/deals \
   "win_probability": 100,
   "estimated_close_at": "2016-12-05T12:00:23",
   "source_id": null,
+  "loss_reason_id": null,
   "is_hot": true,
   "started_at": "2016-09-08T18:14:06",
-  "id": 12
+  "id": 12,
+  "code": null
 }
 ```
 
@@ -183,9 +190,11 @@ curl https://api.sellf.io/v2/deals/12 -H "Api-Key: {YOUR_API_KEY}"
   "win_probability": 100,
   "estimated_close_at": "2016-12-05T12:00:23",
   "source_id": null,
+  "loss_reason_id": null,
   "is_hot": true,
   "started_at": "2016-09-08T18:14:06",
-  "id": 12
+  "id": 12,
+  "code": null
 }
 ```
 
@@ -236,9 +245,11 @@ curl https://api.sellf.io/v2/deals/12 \
   "win_probability": 95,
   "estimated_close_at": "2016-12-23T01:45:00",
   "source_id": null,
+  "loss_reason_id": null,
   "is_hot": true,
   "started_at": "2016-09-08T18:14:06",
-  "id": 12
+  "id": 12,
+  "code": null
 }
 ```
 
