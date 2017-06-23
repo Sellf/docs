@@ -20,7 +20,8 @@ includes:
   - pipelines
   - stages
   - sources
-  - margins
+  - loss_reasons
+  - products
   - appointments
   - appointment_people
   - appointment_companies
