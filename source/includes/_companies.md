@@ -31,6 +31,8 @@ When you want to update the tags of a company be aware to include any existing t
 </aside>
 
 
+
+
 ## Get All Companies
 
 ```shell
