@@ -26,6 +26,10 @@ tags | array | write | An array of tags for a company
 created_at | datetime | read | Date of creation
 updated_at | datetime | read | Date of last edit
 
+<aside class="warning">
+When you want to update the tags of a company be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request.
+</aside>
+
 
 ## Get All Companies
 
@@ -232,6 +236,10 @@ This endpoint allows to update a specific company.
 Parameter | Description
 --------- | -----------
 id | The unique identifier of the company to retrieve
+
+<aside class="warning">
+When you want to update the tags of a company be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request.
+</aside>
 
 
 

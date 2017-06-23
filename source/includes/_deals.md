@@ -25,6 +25,10 @@ loss_reason_id | integer | write | Unique identifier of the deal loss reason
 created_at | datetime | read | Date of creation
 updated_at | datetime | read | Date of last edit
 
+<aside class="warning">
+When you want to update the tags of a deal be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request.
+</aside>
+
 
 
 
@@ -264,6 +268,10 @@ This endpoint allows to update a specific deal.
 Parameter | Description
 --------- | -----------
 id | The unique identifier of the deal to retrieve
+
+<aside class="warning">
+When you want to update the tags of a deal be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request.
+</aside>
 
 
 
