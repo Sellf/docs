@@ -78,7 +78,7 @@ Parameter| Description
 sort_by | Column to sort by <br> (i.e. `id`, `name`, `start_at`, `end_at`, `created_at`, `updated_at`)
 user_id | Unique identifier of the user the appointment is owned by
 deal_id | Unique identifier of the deal with whom the appointment is associated
-name | A string containing or matching the name of the appointment
+name | A string matching the name of the appointment
 
 
 

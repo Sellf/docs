@@ -46,22 +46,21 @@ One or more attributes are usually required when creating or updating an entity.
 
 Each entity in Sellf has some attributes that can be queried to apply filters on retrieval requests. The allowed operators related to the Sellf query language are listed below:
 
-| Operator | Description | Comparison |
+| Operator | Description | Term |
 | --- | --- | --- |
-| eq | query for *value equal to* | single term |
-| neq | query for *value differs from* | single term |
-| lt | query for *value less than* | single term |
-| gt | query for *value greater than* | single term |
-| lte | query for *value less than or equal to* | single term |
-| gte | query for *value greater than or equal to* | single term |
-| in | query for *value is contained into* | array of terms |
-| contains | query for *value contains* | array of terms |
+| eq | query for *value equal to* | single |
+| neq | query for *value differs from* | single |
+| lt | query for *value less than* | single |
+| gt | query for *value greater than* | single |
+| lte | query for *value less than or equal to* | single |
+| gte | query for *value greater than or equal to* | single |
+| in | query for *value is contained into* | list |
 
 The rule to apply the above mentioned operators is the following:
 
-`<attribute>:<operator>=<comparison>`
+`<attribute>:<operator>=<term>`
 
-where `<comparison>` can be a single value or an array of values (e.g. `user_id:neq=12` or `tags:contains=["customer", "insolvent"]`).
+where `<term>` can be a single value or a list of values (e.g. `user_id:neq=12` or `user_id:in=12,13`).
 
 <aside class="notice">
 Note that the system implicitly use `and` connection between queries, and `eq` operator as default argument if not specified (e.g. `user_id:23` is the implicit form of `user_id:eq=23`).

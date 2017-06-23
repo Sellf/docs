@@ -99,7 +99,9 @@ Parameter| Description
 sort_by | Column to sort by <br> (i.e. `id`, `name`, `first_name`, `last_name`, `created_at`, `updated_at`)
 user_id | Unique identifier of the user the person is owned by
 company_id | Unique identifier of the company with whom the person is associated
-name | A string containing or matching the name of the person
+first_name | A string matching the first name of the person
+last_name | A string matching the last name of the person
+code | A string matching the custom code of the person
 
 
 

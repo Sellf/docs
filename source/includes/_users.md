@@ -51,7 +51,11 @@ This endpoint retrieves all users.
 
 `GET /users`
 
+### Query Parameters
 
+Parameter| Description
+--------- | -----------
+email | A string matching the email of the user
 
 
 ## Get a Specific User

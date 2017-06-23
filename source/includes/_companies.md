@@ -85,7 +85,8 @@ Parameter | Description
 --------- | -----------
 sort_by | Column to sort by <br> (i.e. `id`, `name`, `created_at`, `updated_at`)
 user_id | Unique identifier of the user the company is owned by
-name | A string containing or matching the name of the company
+name | A string matching the name of the company
+code | A string matching the custom code of the company
 
 
 
