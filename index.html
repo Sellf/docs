@@ -193,6 +193,68 @@ curl https://api.sellf.io/v2/deals?sort_by<span class="o">=</span>-estimated_val
 
 <p>One or more attributes are usually required when creating or updating an entity. These required fields are highlighted with a bold font within each attributes table that you can find at the beginning of each entity section.</p>
 
+<h3 id="query-language">Query language</h3>
+
+<p>Each entity in Sellf has some attributes that can be queried to apply filters on retrieval requests. The allowed operators related to the Sellf query language are listed below:</p>
+
+<table><thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+<th>Term</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>eq</td>
+<td>query for <em>value equal to</em></td>
+<td>single</td>
+</tr>
+<tr>
+<td>neq</td>
+<td>query for <em>value differs from</em></td>
+<td>single</td>
+</tr>
+<tr>
+<td>lt</td>
+<td>query for <em>value less than</em></td>
+<td>single</td>
+</tr>
+<tr>
+<td>gt</td>
+<td>query for <em>value greater than</em></td>
+<td>single</td>
+</tr>
+<tr>
+<td>lte</td>
+<td>query for <em>value less than or equal to</em></td>
+<td>single</td>
+</tr>
+<tr>
+<td>gte</td>
+<td>query for <em>value greater than or equal to</em></td>
+<td>single</td>
+</tr>
+<tr>
+<td>in</td>
+<td>query for <em>value is contained into</em></td>
+<td>list</td>
+</tr>
+</tbody></table>
+
+<p>The rule to apply the above mentioned operators is the following:</p>
+
+<p><code class="prettyprint">&lt;attribute&gt;:&lt;operator&gt;=&lt;term&gt;</code></p>
+
+<p>where <code class="prettyprint">&lt;term&gt;</code> can be a single value or a list of values (e.g. <code class="prettyprint">user_id:neq=12</code> or <code class="prettyprint">user_id:in=12,13</code>).</p>
+
+<aside class="notice">
+Note that the system implicitly use `and` connection between queries, and `eq` operator as default argument if not specified (e.g. `user_id:23` is the implicit form of `user_id:eq=23`).
+</aside>
+
+<p>For entities which have <em>nested</em> objects (if queries are allowed) you should use the dot notation, (e.g. <code class="prettyprint">custom_fields.&lt;key&gt;</code>).</p>
+
+<p>Be aware that some operators applies to specific attributes&rsquo; types (e.g. you cannot use numeric operators on string types).</p>
+
           <h1 id="rate-limits">Rate limits</h1>
 
 <p>To prevent API abuse or overload, Sellf APIs are rate limited. The rate limit is considered per API token. The Sellf API has different rates depending on your Sellf plan, as stated in the table below.</p>
@@ -358,6 +420,20 @@ curl https://api.sellf.io/v2/deals?sort_by<span class="o">=</span>-estimated_val
 
 <p><code class="prettyprint">GET /users</code></p>
 
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>A string matching the email of the user</td>
+</tr>
+</tbody></table>
+
 <h2 id="get-a-specific-user">Get a Specific User</h2>
 <pre class="highlight shell tab-shell"><code><span class="c"># Retrieve a user with ID 2</span>
 curl https://api.sellf.io/v2/users/2 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
@@ -413,6 +489,12 @@ curl https://api.sellf.io/v2/users/2 -H <span class="s2">"Api-Key: {YOUR_API_KEY
 <td>Unique identifier of the person</td>
 </tr>
 <tr>
+<td>code</td>
+<td>string</td>
+<td>write</td>
+<td>Custom identifier of the person</td>
+</tr>
+<tr>
 <td><strong>first_name</strong></td>
 <td>string</td>
 <td>write</td>
@@ -429,6 +511,12 @@ curl https://api.sellf.io/v2/users/2 -H <span class="s2">"Api-Key: {YOUR_API_KEY
 <td>string</td>
 <td>write</td>
 <td>Role in the company</td>
+</tr>
+<tr>
+<td>prospect_status</td>
+<td>integer</td>
+<td>write</td>
+<td>Status of the person</td>
 </tr>
 <tr>
 <td>vat</td>
@@ -540,6 +628,10 @@ curl https://api.sellf.io/v2/users/2 -H <span class="s2">"Api-Key: {YOUR_API_KEY
 </tr>
 </tbody></table>
 
+<aside class="warning">
+When you want to update the tags of a person be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request.
+</aside>
+
 <h2 id="get-all-people">Get All People</h2>
 <pre class="highlight shell tab-shell"><code>curl https://api.sellf.io/v2/people?sort_by<span class="o">=</span>-name -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
 </code></pre>
@@ -560,12 +652,16 @@ curl https://api.sellf.io/v2/users/2 -H <span class="s2">"Api-Key: {YOUR_API_KEY
       </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hi! I'm Alessia, head of Customer Support at Sellf"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Head of Customer Happiness"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"prospect_status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"vat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT1234567890"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1983-02-04T14:57:54.707662"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-27T14:57:54.707662"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"skype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sellfapp"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-05T12:19:20"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.4274592</span><span class="p">,</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bellon"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Via Sile, 41, 31056 Roncade (TV) Italia"</span><span class="p">,</span><span class="w">
@@ -607,8 +703,16 @@ curl https://api.sellf.io/v2/users/2 -H <span class="s2">"Api-Key: {YOUR_API_KEY
 <td>Unique identifier of the company with whom the person is associated</td>
 </tr>
 <tr>
-<td>name</td>
-<td>A string containing or matching the name of the person</td>
+<td>first_name</td>
+<td>A string matching the first name of the person</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>A string matching the last name of the person</td>
+</tr>
+<tr>
+<td>code</td>
+<td>A string matching the custom code of the person</td>
 </tr>
 </tbody></table>
 
@@ -636,12 +740,16 @@ curl https://api.sellf.io/v2/people <span class="se">\</span>
   </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Founder of Sellf"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"prospect_status"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"vat"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T16:36:52"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"skype"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T16:36:52"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
   </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zanella"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -675,12 +783,16 @@ curl https://api.sellf.io/v2/people/3 -H <span class="s2">"Api-Key: {YOUR_API_KE
   </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Founder of Sellf"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"prospect_status"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"vat"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T16:36:52"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"skype"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T16:36:52"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zanella"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -733,12 +845,16 @@ curl https://api.sellf.io/v2/people/3 <span class="se">\</span>
   </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ruby on Rails Developer"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"prospect_status"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"vat"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T16:36:52"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"skype"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T16:42:30"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zanella"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -770,6 +886,10 @@ curl https://api.sellf.io/v2/people/3 <span class="se">\</span>
 <td>The unique identifier of the person to retrieve</td>
 </tr>
 </tbody></table>
+
+<aside class="warning">
+When you want to update the tags of a person be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request.
+</aside>
 
 <h2 id="delete-a-specific-person">Delete a Specific Person</h2>
 <pre class="highlight shell tab-shell"><code><span class="c"># Delete the person with ID 3</span>
@@ -822,6 +942,12 @@ curl https://api.sellf.io/v2/people/3 <span class="se">\</span>
 <td>Unique identifier of the company</td>
 </tr>
 <tr>
+<td>code</td>
+<td>string</td>
+<td>write</td>
+<td>Custom identifier of the company</td>
+</tr>
+<tr>
 <td><strong>name</strong></td>
 <td>string</td>
 <td>write</td>
@@ -832,6 +958,12 @@ curl https://api.sellf.io/v2/people/3 <span class="se">\</span>
 <td>string</td>
 <td>write</td>
 <td>Industry sector of the company</td>
+</tr>
+<tr>
+<td>prospect_status</td>
+<td>integer</td>
+<td>write</td>
+<td>Status of the company</td>
 </tr>
 <tr>
 <td>vat</td>
@@ -919,6 +1051,10 @@ curl https://api.sellf.io/v2/people/3 <span class="se">\</span>
 </tr>
 </tbody></table>
 
+<aside class="warning">
+When you want to update the tags of a company be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request.
+</aside>
+
 <h2 id="get-all-companies">Get All Companies</h2>
 <pre class="highlight shell tab-shell"><code>curl https://api.sellf.io/v2/companies?sort_by<span class="o">=</span>-name -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
 </code></pre>
@@ -938,10 +1074,13 @@ curl https://api.sellf.io/v2/people/3 <span class="se">\</span>
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
       </span><span class="s2">"industry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mobile CRM"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"prospect_status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"vat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT1234567890"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-26T15:25:30.940731"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-05T12:17:47"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.4274592</span><span class="p">,</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20991</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+39 0422 789611"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Via Sile, 41, 31056 Roncade TV, Italia"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">45.5648361</span><span class="p">,</span><span class="w">
@@ -976,7 +1115,11 @@ curl https://api.sellf.io/v2/people/3 <span class="se">\</span>
 </tr>
 <tr>
 <td>name</td>
-<td>A string containing or matching the name of the company</td>
+<td>A string matching the name of the company</td>
+</tr>
+<tr>
+<td>code</td>
+<td>A string matching the custom code of the company</td>
 </tr>
 </tbody></table>
 
@@ -1002,10 +1145,13 @@ curl https://api.sellf.io/v2/companies <span class="se">\</span>
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="s2">"industry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Semiconductor"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"prospect_status"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"vat"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T16:54:37"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T16:54:37"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Via Thomas Alva Edison, Padova, PD"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -1034,10 +1180,13 @@ curl https://api.sellf.io/v2/companies/3 -H <span class="s2">"Api-Key: {YOUR_API
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="s2">"industry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Semiconductor"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"prospect_status"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"vat"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T16:54:37"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T16:54:37"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Via Thomas Alva Edison, Padova, PD"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -1086,10 +1235,13 @@ curl https://api.sellf.io/v2/companies/3 <span class="se">\</span>
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="s2">"industry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Semiconductor &amp; Devices"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"prospect_status"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"vat"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T16:54:37"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T17:02:18"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Via Thomas Alva Edison, Padova, PD"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -1117,6 +1269,10 @@ curl https://api.sellf.io/v2/companies/3 <span class="se">\</span>
 <td>The unique identifier of the company to retrieve</td>
 </tr>
 </tbody></table>
+
+<aside class="warning">
+When you want to update the tags of a company be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request.
+</aside>
 
 <h2 id="delete-a-specific-company">Delete a Specific Company</h2>
 <pre class="highlight shell tab-shell"><code><span class="c"># Delete the company with ID 3</span>
@@ -1167,6 +1323,12 @@ curl https://api.sellf.io/v2/companies/3 <span class="se">\</span>
 <td>integer</td>
 <td>read</td>
 <td>Unique identifier of the deal</td>
+</tr>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>write</td>
+<td>Custom identifier of the deal</td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
@@ -1266,6 +1428,10 @@ curl https://api.sellf.io/v2/companies/3 <span class="se">\</span>
 </tr>
 </tbody></table>
 
+<aside class="warning">
+When you want to update the tags of a deal be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request.
+</aside>
+
 <h2 id="get-all-deals">Get All Deals</h2>
 <pre class="highlight shell tab-shell"><code>curl https://api.sellf.io/v2/deals -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
 </code></pre>
@@ -1295,9 +1461,11 @@ curl https://api.sellf.io/v2/companies/3 <span class="se">\</span>
       </span><span class="s2">"win_probability"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
       </span><span class="s2">"estimated_close_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-30T11:59:59"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"source_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"loss_reason_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"is_hot"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-27T14:57:55"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"stage_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
@@ -1313,9 +1481,11 @@ curl https://api.sellf.io/v2/companies/3 <span class="se">\</span>
       </span><span class="s2">"win_probability"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
       </span><span class="s2">"estimated_close_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"source_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"loss_reason_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"is_hot"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-30T13:08:49"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1362,6 +1532,14 @@ curl https://api.sellf.io/v2/companies/3 <span class="se">\</span>
 <td>loss_reason_id</td>
 <td>Unique identifier of the deal loss reason</td>
 </tr>
+<tr>
+<td>name</td>
+<td>A string matching the description of the deal</td>
+</tr>
+<tr>
+<td>code</td>
+<td>A string matching the custom code of the deal</td>
+</tr>
 </tbody></table>
 
 <h2 id="create-a-deal">Create a Deal</h2>
@@ -1397,9 +1575,11 @@ curl https://api.sellf.io/v2/deals <span class="se">\</span>
   </span><span class="s2">"win_probability"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
   </span><span class="s2">"estimated_close_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-05T12:00:23"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"source_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"loss_reason_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"is_hot"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T18:14:06"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint allows to create a deal.</p>
@@ -1431,9 +1611,11 @@ curl https://api.sellf.io/v2/deals/12 -H <span class="s2">"Api-Key: {YOUR_API_KE
   </span><span class="s2">"win_probability"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
   </span><span class="s2">"estimated_close_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-05T12:00:23"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"source_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"loss_reason_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"is_hot"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T18:14:06"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a specific deal.</p>
@@ -1485,9 +1667,11 @@ curl https://api.sellf.io/v2/deals/12 <span class="se">\</span>
   </span><span class="s2">"win_probability"</span><span class="p">:</span><span class="w"> </span><span class="mi">95</span><span class="p">,</span><span class="w">
   </span><span class="s2">"estimated_close_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-23T01:45:00"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"source_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"loss_reason_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"is_hot"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"started_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-08T18:14:06"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint allows to update a specific deal.</p>
@@ -1509,6 +1693,10 @@ curl https://api.sellf.io/v2/deals/12 <span class="se">\</span>
 <td>The unique identifier of the deal to retrieve</td>
 </tr>
 </tbody></table>
+
+<aside class="warning">
+When you want to update the tags of a deal be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request.
+</aside>
 
 <h2 id="delete-a-specific-deal">Delete a Specific Deal</h2>
 <pre class="highlight shell tab-shell"><code><span class="c"># Delete the deal with ID 3</span>
@@ -2423,7 +2611,7 @@ curl https://api.sellf.io/v2/products/2 -H <span class="s2">"Api-Key: {YOUR_API_
 </tr>
 <tr>
 <td>name</td>
-<td>A string containing or matching the name of the appointment</td>
+<td>A string matching the name of the appointment</td>
 </tr>
 </tbody></table>
 
