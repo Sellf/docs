@@ -19,7 +19,7 @@ person_id | integer | write | Unique identifier of a primary person
 company_id | integer | write | Unique identifier of a primary company
 **stage_id** | integer | write | Unique identifier of the deal's current stage in the pipeline
 source_id | integer | write | Unique identifier of the deal source
-product_id | integer | write | Unique identifier of the product (i.e. margin) associated to the deal
+loss_reason_id | integer | write | Unique identifier of the deal loss reason
 **user_id** | integer | write | Unique identifier of the user that the person is assigned to
 created_at | datetime | read | Date of creation
 updated_at | datetime | read | Date of last edit
@@ -61,8 +61,7 @@ curl https://api.sellf.io/v2/deals -H "Api-Key: {YOUR_API_KEY}"
       "source_id": null,
       "is_hot": true,
       "started_at": "2015-11-27T14:57:55",
-      "id": 2,
-      "product_id": null
+      "id": 2
     },
     {
       "stage_id": 10,
@@ -80,8 +79,7 @@ curl https://api.sellf.io/v2/deals -H "Api-Key: {YOUR_API_KEY}"
       "source_id": null,
       "is_hot": false,
       "started_at": "2016-03-30T13:08:49",
-      "id": 3,
-      "product_id": null
+      "id": 3
     }
   ]
 }
@@ -100,10 +98,10 @@ Parameter| Description
 sort_by | Column to sort by <br> (i.e. `id`, `name`, `value`, `estimated_close_at`, `stage_changed_at`, `created_at`, `updated_at`)
 user_id | Unique identifier of the user the deal is owned by
 stage_id | Unique identifier of the stage in which the deal is placed
-contact_id | Unique identifier of the main deal with whom the deal is associated
+person_id | Unique identifier of the main deal with whom the deal is associated
 company_id | Unique identifier of the main company with whom the deal is associated
 source_id | Unique identifier of the deal source
-product_id | Unique identifier of the product related to the deal
+loss_reason_id | Unique identifier of the deal loss reason
 
 
 
@@ -146,8 +144,7 @@ curl https://api.sellf.io/v2/deals \
   "source_id": null,
   "is_hot": true,
   "started_at": "2016-09-08T18:14:06",
-  "id": 12,
-  "product_id": null
+  "id": 12
 }
 ```
 
@@ -188,8 +185,7 @@ curl https://api.sellf.io/v2/deals/12 -H "Api-Key: {YOUR_API_KEY}"
   "source_id": null,
   "is_hot": true,
   "started_at": "2016-09-08T18:14:06",
-  "id": 12,
-  "product_id": null
+  "id": 12
 }
 ```
 
@@ -242,8 +238,7 @@ curl https://api.sellf.io/v2/deals/12 \
   "source_id": null,
   "is_hot": true,
   "started_at": "2016-09-08T18:14:06",
-  "id": 12,
-  "product_id": null
+  "id": 12
 }
 ```
 

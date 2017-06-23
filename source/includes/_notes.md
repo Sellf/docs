@@ -9,7 +9,7 @@ Parameter | Type | Permission | Description
 id | integer | read | Unique identifier of the note
 **title** | string | write | Title of the note
 body | string | write | Content of the note
-contact_id | integer | write | Unique identifier of the person related to the note
+person_id | integer | write | Unique identifier of the person related to the note
 company_id | integer | write | Unique identifier of the company related to the note
 deal_id | integer | write | Unique identifier of the deal concerning the note
 **user_id** | integer | write | Unique identifier of the user that the note is assigned to
