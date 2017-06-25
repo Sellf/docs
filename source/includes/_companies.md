@@ -2,6 +2,14 @@
 
 The Companies API allows you to get, create, update and delete your companies. Each company can be associated to a [Company](#companies) and one or more [Deals](#deals).
 
+Sellf identify people status with an integer that determines their type: *lead*, *prospect*, *customer*. The match between the two follows the table below:
+
+Type | Description
+--------- | -------
+0 | Lead
+1 | Prospect
+2 | Customer
+
 ### Attributes
 
 Parameter | Type | Permission | Description
@@ -26,8 +34,12 @@ tags | array | write | An array of tags for a company
 created_at | datetime | read | Date of creation
 updated_at | datetime | read | Date of last edit
 
+<aside class="notice">
+Custom fields are also attributes that can be attached to create or update actions, as explained in the <a href="#custom_fields">requests</a> section. The can be also used as filters following the rules of the <a href="#query_language">query language</a>.
+</aside>
+
 <aside class="warning">
-When you want to update the tags of a company be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request.
+When you want to update the tags of a person be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request. This behaviour will be applied to all fields that can accept multiple values, custom fields included.
 </aside>
 
 

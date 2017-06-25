@@ -25,8 +25,12 @@ loss_reason_id | integer | write | Unique identifier of the deal loss reason
 created_at | datetime | read | Date of creation
 updated_at | datetime | read | Date of last edit
 
+<aside class="notice">
+Custom fields are also attributes that can be attached to create or update actions, as explained in the <a href="#custom_fields">requests</a> section. The can be also used as filters following the rules of the <a href="#query_language">query language</a>.
+</aside>
+
 <aside class="warning">
-When you want to update the tags of a deal be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request.
+When you want to update the tags of a person be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request. This behaviour will be applied to all fields that can accept multiple values, custom fields included.
 </aside>
 
 

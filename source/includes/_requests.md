@@ -42,7 +42,7 @@ Each entity in Sellf has some attributes that are read-only and attributes that 
 One or more attributes are usually required when creating or updating an entity. These required fields are highlighted with a bold font within each attributes table that you can find at the beginning of each entity section.
 
 
-### Custom fields
+### <a name="custom_fields"></a>Custom fields
 
 [People](#people), [Companies](#companies) and [Deals](#deals) can be enriched with custom attributes. In the `Settings > Custom Fields` section of Sellf web app you can add whatever custom field is needed by your team. Once you have added your custom fields, they can be set or update via the APIs using the following notation:
 
@@ -53,7 +53,7 @@ where `<key>` (without <> signs) is the key listed in the row of each custom fie
 Custom fields can also be queried. Please refer to the following paragraph to see how the Sellf query language works.
 
 
-### Query language
+### <a name="query_language"></a>Query language
 
 Each entity in Sellf has some attributes that can be queried to apply filters on retrieval requests. The allowed operators related to the Sellf query language are listed below:
 
