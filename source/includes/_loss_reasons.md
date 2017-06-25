@@ -10,8 +10,6 @@ Parameter | Type | Permission | Description
 --------- | ------- | ------- | -----------
 id | integer | read | Unique identifier of the loss reason
 name | string | read | Name of the loss reason
-created_at | datetime | read | Date of creation
-updated_at | datetime | read | Date of last edit
 
 
 ## Get All Loss Reasons

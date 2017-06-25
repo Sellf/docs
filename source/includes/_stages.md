@@ -36,8 +36,6 @@ win_probability | integer | read | The likelihood that a deal will be won, as pe
 position | integer | read | The position of the stage in the pipeline
 pipeline_id | integer | read | Unique identifier of the associated pipeline
 type | integer | read | Stage type (i.e. active, won, lost, abandoned)
-created_at | datetime | read | Date of creation
-updated_at | datetime | read | Date of last edit
 
 
 ## Get All Stages

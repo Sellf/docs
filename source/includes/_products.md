@@ -1,20 +1,21 @@
 # <a name="products"></a>Products
 
-The Products API gives you access to your team's [products](https://app.sellf.io/settings/products), in read-only mode. You can retrieve a single margin as well as list of all products associated with your team. Margins are useful when you want to monitor not only the estimated value of a deal but also the profit that is going to be generated when the deal is successfully closed.
+The Products API gives you access to your team's [products](https://app.sellf.io/settings/products), in read-only mode. You can retrieve a single product as well as list of all products associated with your team.
 
-Margins can be associated with any number of [Deals](#deals). In the `Settings > Deal > Margins` [section](https://app.sellf.io/settings/products) of Sellf web app you can turn on the possibility of creating a new margin, associating to it a label and a *net value*. The *net value* is the percentage of a deal's estimated value that is considered a net profit.
-
-Since products are identified by labels and we want to extend it to let you manage products in Sellf, hereafter, as well in the API, we use the term *products* referring to the aforementioned products.
+Products can be associated with any number of [Deals](#deals). In the `Settings > Deal > Products` [section](https://app.sellf.io/settings/products) of Sellf web app you can turn on the possibility of using products, giving them a *name* and a *unit price*.
 
 ### Attributes
 
 Parameter | Type | Permission | Description
 --------- | ------- | ------- | -----------
 id | integer | read | Unique identifier of the product
-name | string | read |Name of the product
-net_rate | integer | read | A percentage applied to the estimated value of a deal
-created_at | datetime | read | Date of creation
-updated_at | datetime | read | Date of last edit
+code | string | read | Custom identifier of the product
+**name** | string | read | Name of the product
+**unit_price** | integer | read | Price of the product per unit
+unit_cost | integer | read | Cost of the product per unit
+max_discount | integer | read | Max discount that can be applied to the product
+max_markup | integer | read | Max markup that can be applied to the product
+
 
 ## Get All Products
 
@@ -32,14 +33,22 @@ curl https://api.sellf.io/v2/products -H "Api-Key: {YOUR_API_KEY}"
   },
   "data": [
     {
-      "net_rate": 80,
-      "id": 1,
+      "code": "LI456",
       "name": "Life insurance"
+      "unit_price": 10,
+      "max_discount": 100,
+      "max_markup": null,
+      "unit_cost": 0,
+      "id": 1,
     },
     {
-      "net_rate": 60,
-      "id": 2,
-      "name": "Car insurance"
+      "code": "HI789",
+      "name": "Home insurance",
+      "unit_price": 12,
+      "max_discount": 100,
+      "max_markup": null,
+      "unit_cost": 234,
+      "id": 2
     }
   ]
 }
@@ -69,9 +78,13 @@ curl https://api.sellf.io/v2/products/2 -H "Api-Key: {YOUR_API_KEY}"
 
 ```json
 {
-  "net_rate": 60,
-  "id": 2,
-  "name": "Car insurance"
+  "code": "HI789",
+  "name": "Home insurance",
+  "unit_price": 12,
+  "max_discount": 100,
+  "max_markup": null,
+  "unit_cost": 234,
+  "id": 2
 }
 ```
 
