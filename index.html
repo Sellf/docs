@@ -245,13 +245,20 @@ curl https://api.sellf.io/v2/deals?sort_by<span class="o">=</span>-estimated_val
 <td>single</td>
 </tr>
 <tr>
+<td>in</td>
+<td>query for <em>value is contained into</em></td>
+<td>multiple</td>
+</tr>
+<tr>
 <td>contains</td>
-<td>query for <em>value contains</em></td>
-<td>array of terms</td>
+<td>query for <em>value contains all</em></td>
+<td>single or multiple</td>
 </tr>
 </tbody></table>
 
-<!-- | in | query for *value is contained into* | list | -->
+<aside class="notice">
+The `contains` operator works only on custom fields.
+</aside>
 
 <p>The rule to apply the above mentioned operators is the following:</p>
 
