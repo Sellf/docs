@@ -257,7 +257,7 @@ curl https://api.sellf.io/v2/deals?sort_by<span class="o">=</span>-estimated_val
 </tbody></table>
 
 <aside class="notice">
-The `contains` operator works only on custom fields.
+The `contains` operator works only on custom fields that have the multiple option enabled.
 </aside>
 
 <p>The rule to apply the above mentioned operators is the following:</p>
@@ -267,7 +267,7 @@ The `contains` operator works only on custom fields.
 <p>where <code class="prettyprint">&lt;term&gt;</code> can be a single value or a list of values (e.g. <code class="prettyprint">user_id:neq=12</code> or <code class="prettyprint">user_id:in=12,13</code>).</p>
 
 <aside class="notice">
-Note that the system implicitly use `and` connection between queries, and `eq` operator as default argument if not specified (e.g. `user_id:23` is the implicit form of `user_id:eq=23`).
+Note that the system implicitly use `and` connection between queries, and `eq` operator as default argument if not specified (e.g. `user_id=23` is the implicit form of `user_id:eq=23`).
 </aside>
 
 <p>It is trivial to say that some operators applies only to specific attributes&rsquo; types (e.g. you cannot use numeric operators like comparators on string types).</p>
