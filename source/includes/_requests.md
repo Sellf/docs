@@ -65,10 +65,12 @@ Each entity in Sellf has some attributes that can be queried to apply filters on
 | gt | query for *value greater than* | single |
 | lte | query for *value less than or equal to* | single |
 | gte | query for *value greater than or equal to* | single |
-| contains | query for *value contains* | array of terms |
+| in | query for *value is contained into* | multiple |
+| contains | query for *value contains all* | single or multiple |
 
-<!-- | in | query for *value is contained into* | list | -->
-
+<aside class="notice">
+The `contains` operator works only on custom fields.
+</aside>
 
 The rule to apply the above mentioned operators is the following:
 
