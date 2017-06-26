@@ -69,7 +69,7 @@ Each entity in Sellf has some attributes that can be queried to apply filters on
 | contains | query for *value contains all* | single or multiple |
 
 <aside class="notice">
-The `contains` operator works only on custom fields.
+The `contains` operator works only on custom fields that have the multiple option enabled.
 </aside>
 
 The rule to apply the above mentioned operators is the following:
@@ -79,7 +79,7 @@ The rule to apply the above mentioned operators is the following:
 where `<term>` can be a single value or a list of values (e.g. `user_id:neq=12` or `user_id:in=12,13`).
 
 <aside class="notice">
-Note that the system implicitly use `and` connection between queries, and `eq` operator as default argument if not specified (e.g. `user_id:23` is the implicit form of `user_id:eq=23`).
+Note that the system implicitly use `and` connection between queries, and `eq` operator as default argument if not specified (e.g. `user_id=23` is the implicit form of `user_id:eq=23`).
 </aside>
 
 It is trivial to say that some operators applies only to specific attributes' types (e.g. you cannot use numeric operators like comparators on string types).
