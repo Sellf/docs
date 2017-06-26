@@ -193,7 +193,7 @@ curl https://api.sellf.io/v2/deals?sort_by<span class="o">=</span>-estimated_val
 
 <p>One or more attributes are usually required when creating or updating an entity. These required fields are highlighted with a bold font within each attributes table that you can find at the beginning of each entity section.</p>
 
-<h3 id="custom-fields">Custom fields</h3>
+<h3 id="custom-fields"><a name="custom_fields"></a>Custom fields</h3>
 
 <p><a href="#people">People</a>, <a href="#companies">Companies</a> and <a href="#deals">Deals</a> can be enriched with custom attributes. In the <code class="prettyprint">Settings &gt; Custom Fields</code> section of Sellf web app you can add whatever custom field is needed by your team. Once you have added your custom fields, they can be set or update via the APIs using the following notation:</p>
 
@@ -203,7 +203,7 @@ curl https://api.sellf.io/v2/deals?sort_by<span class="o">=</span>-estimated_val
 
 <p>Custom fields can also be queried. Please refer to the following paragraph to see how the Sellf query language works.</p>
 
-<h3 id="query-language">Query language</h3>
+<h3 id="query-language"><a name="query_language"></a>Query language</h3>
 
 <p>Each entity in Sellf has some attributes that can be queried to apply filters on retrieval requests. The allowed operators related to the Sellf query language are listed below:</p>
 
@@ -484,6 +484,28 @@ curl https://api.sellf.io/v2/users/2 -H <span class="s2">"Api-Key: {YOUR_API_KEY
 
 <p>The People API allows you to get, create, update and delete your people. Each person can be associated to a <a href="#companies">Company</a> and one or more <a href="#deals">Deals</a>.</p>
 
+<p>Sellf identify people status with an integer that determines their type: <em>lead</em>, <em>prospect</em>, <em>customer</em>. The match between the two follows the table below:</p>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>Lead</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Prospect</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Customer</td>
+</tr>
+</tbody></table>
+
 <h3 id="attributes">Attributes</h3>
 
 <table><thead>
@@ -640,8 +662,12 @@ curl https://api.sellf.io/v2/users/2 -H <span class="s2">"Api-Key: {YOUR_API_KEY
 </tr>
 </tbody></table>
 
+<aside class="notice">
+Custom fields are also attributes that can be attached to create or update actions, as explained in the <a href="#custom_fields">requests</a> section. The can be also used as filters following the rules of the <a href="#query_language">query language</a>.
+</aside>
+
 <aside class="warning">
-When you want to update the tags of a person be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request.
+When you want to update the tags of a person be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request. This behaviour will be applied to all fields that can accept multiple values, custom fields included.
 </aside>
 
 <h2 id="get-all-people">Get All People</h2>
@@ -937,6 +963,28 @@ curl https://api.sellf.io/v2/people/3 <span class="se">\</span>
 
 <p>The Companies API allows you to get, create, update and delete your companies. Each company can be associated to a <a href="#companies">Company</a> and one or more <a href="#deals">Deals</a>.</p>
 
+<p>Sellf identify people status with an integer that determines their type: <em>lead</em>, <em>prospect</em>, <em>customer</em>. The match between the two follows the table below:</p>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>Lead</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Prospect</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Customer</td>
+</tr>
+</tbody></table>
+
 <h3 id="attributes">Attributes</h3>
 
 <table><thead>
@@ -1063,8 +1111,12 @@ curl https://api.sellf.io/v2/people/3 <span class="se">\</span>
 </tr>
 </tbody></table>
 
+<aside class="notice">
+Custom fields are also attributes that can be attached to create or update actions, as explained in the <a href="#custom_fields">requests</a> section. The can be also used as filters following the rules of the <a href="#query_language">query language</a>.
+</aside>
+
 <aside class="warning">
-When you want to update the tags of a company be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request.
+When you want to update the tags of a person be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request. This behaviour will be applied to all fields that can accept multiple values, custom fields included.
 </aside>
 
 <h2 id="get-all-companies">Get All Companies</h2>
@@ -1440,8 +1492,12 @@ curl https://api.sellf.io/v2/companies/3 <span class="se">\</span>
 </tr>
 </tbody></table>
 
+<aside class="notice">
+Custom fields are also attributes that can be attached to create or update actions, as explained in the <a href="#custom_fields">requests</a> section. The can be also used as filters following the rules of the <a href="#query_language">query language</a>.
+</aside>
+
 <aside class="warning">
-When you want to update the tags of a deal be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request.
+When you want to update the tags of a person be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request. This behaviour will be applied to all fields that can accept multiple values, custom fields included.
 </aside>
 
 <h2 id="get-all-deals">Get All Deals</h2>
@@ -1972,18 +2028,6 @@ curl https://api.sellf.io/v2/pipelines/2 -H <span class="s2">"Api-Key: {YOUR_API
 <td>read</td>
 <td>Stage type (i.e. active, won, lost, abandoned)</td>
 </tr>
-<tr>
-<td>created_at</td>
-<td>datetime</td>
-<td>read</td>
-<td>Date of creation</td>
-</tr>
-<tr>
-<td>updated_at</td>
-<td>datetime</td>
-<td>read</td>
-<td>Date of last edit</td>
-</tr>
 </tbody></table>
 
 <h2 id="get-all-stages">Get All Stages</h2>
@@ -2226,18 +2270,6 @@ curl https://api.sellf.io/v2/sources/2 -H <span class="s2">"Api-Key: {YOUR_API_K
 <td>read</td>
 <td>Name of the loss reason</td>
 </tr>
-<tr>
-<td>created_at</td>
-<td>datetime</td>
-<td>read</td>
-<td>Date of creation</td>
-</tr>
-<tr>
-<td>updated_at</td>
-<td>datetime</td>
-<td>read</td>
-<td>Date of last edit</td>
-</tr>
 </tbody></table>
 
 <h2 id="get-all-loss-reasons">Get All Loss Reasons</h2>
@@ -2317,11 +2349,9 @@ curl https://api.sellf.io/v2/loss_reasons/2 -H <span class="s2">"Api-Key: {YOUR_
 
           <h1 id="products"><a name="products"></a>Products</h1>
 
-<p>The Products API gives you access to your team&rsquo;s <a href="https://app.sellf.io/settings/products">products</a>, in read-only mode. You can retrieve a single margin as well as list of all products associated with your team. Margins are useful when you want to monitor not only the estimated value of a deal but also the profit that is going to be generated when the deal is successfully closed.</p>
+<p>The Products API gives you access to your team&rsquo;s <a href="https://app.sellf.io/settings/products">products</a>, in read-only mode. You can retrieve a single product as well as list of all products associated with your team.</p>
 
-<p>Margins can be associated with any number of <a href="#deals">Deals</a>. In the <code class="prettyprint">Settings &gt; Deal &gt; Margins</code> <a href="https://app.sellf.io/settings/products">section</a> of Sellf web app you can turn on the possibility of creating a new margin, associating to it a label and a <em>net value</em>. The <em>net value</em> is the percentage of a deal&rsquo;s estimated value that is considered a net profit.</p>
-
-<p>Since products are identified by labels and we want to extend it to let you manage products in Sellf, hereafter, as well in the API, we use the term <em>products</em> referring to the aforementioned products.</p>
+<p>Products can be associated with any number of <a href="#deals">Deals</a>. In the <code class="prettyprint">Settings &gt; Deal &gt; Products</code> <a href="https://app.sellf.io/settings/products">section</a> of Sellf web app you can turn on the possibility of using products, giving them a <em>name</em> and a <em>unit price</em>.</p>
 
 <h3 id="attributes">Attributes</h3>
 
@@ -2340,28 +2370,40 @@ curl https://api.sellf.io/v2/loss_reasons/2 -H <span class="s2">"Api-Key: {YOUR_
 <td>Unique identifier of the product</td>
 </tr>
 <tr>
-<td>name</td>
+<td>code</td>
+<td>string</td>
+<td>read</td>
+<td>Custom identifier of the product</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
 <td>string</td>
 <td>read</td>
 <td>Name of the product</td>
 </tr>
 <tr>
-<td>net_rate</td>
+<td><strong>unit_price</strong></td>
 <td>integer</td>
 <td>read</td>
-<td>A percentage applied to the estimated value of a deal</td>
+<td>Price of the product per unit</td>
 </tr>
 <tr>
-<td>created_at</td>
-<td>datetime</td>
+<td>unit_cost</td>
+<td>integer</td>
 <td>read</td>
-<td>Date of creation</td>
+<td>Cost of the product per unit</td>
 </tr>
 <tr>
-<td>updated_at</td>
-<td>datetime</td>
+<td>max_discount</td>
+<td>integer</td>
 <td>read</td>
-<td>Date of last edit</td>
+<td>Max discount that can be applied to the product</td>
+</tr>
+<tr>
+<td>max_markup</td>
+<td>integer</td>
+<td>read</td>
+<td>Max markup that can be applied to the product</td>
 </tr>
 </tbody></table>
 
@@ -2378,14 +2420,22 @@ curl https://api.sellf.io/v2/loss_reasons/2 -H <span class="s2">"Api-Key: {YOUR_
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"net_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LI456"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Life insurance"</span><span class="w">
+      </span><span class="s2">"unit_price"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"max_discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"max_markup"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"unit_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"net_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Car insurance"</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HI789"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Home insurance"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"unit_price"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"max_discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"max_markup"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"unit_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">234</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2416,9 +2466,13 @@ curl https://api.sellf.io/v2/products/2 -H <span class="s2">"Api-Key: {YOUR_API_
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"net_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Car insurance"</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HI789"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Home insurance"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"unit_price"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"max_discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"max_markup"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"unit_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">234</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a specific product according to the ID provided.</p>
