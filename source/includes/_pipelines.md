@@ -48,6 +48,8 @@ This endpoint retrieves all pipelines.
 
 `GET /pipelines`
 
+### Query Parameters
+
 Parameter | Description
 --------- | -----------
 sort_by | Column to sort by <br> (i.e. `id`, `name`, `created_at`, `updated_at`)

@@ -9,12 +9,17 @@ Products can be associated with any number of [Deals](#deals). In the `Settings 
 Parameter | Type | Permission | Description
 --------- | ------- | ------- | -----------
 id | integer | read | Unique identifier of the product
-code | string | read | Custom identifier of the product
-**name** | string | read | Name of the product
-**unit_price** | integer | read | Price of the product per unit
-unit_cost | integer | read | Cost of the product per unit
-max_discount | integer | read | Max discount that can be applied to the product
-max_markup | integer | read | Max markup that can be applied to the product
+**name** | string | write | Name of the product
+**unit_price** | float | write | Price of the product per unit
+unit_cost | float | write | Cost of the product per unit
+max_discount | integer | write | Max discount (percentage) that can be applied to the product
+max_markup | integer | write | Max markup (percentage) that can be applied to the product
+code | string | write | Custom identifier of the product
+goal_rate | integer | write | Incentive (percentage) for the user computed on the price of the product
+rep_rate | integer | write | Representative commission (percentage) computed on the price of the product
+is_enabled | boolean | write | Availability of the product
+
+
 
 
 ## Get All Products
@@ -39,6 +44,8 @@ curl https://api.sellf.io/v2/products -H "Api-Key: {YOUR_API_KEY}"
       "max_discount": 100,
       "max_markup": null,
       "unit_cost": 0,
+      "goal_rate": 110,
+      "rep_rate": 80,
       "id": 1,
     },
     {
@@ -48,6 +55,8 @@ curl https://api.sellf.io/v2/products -H "Api-Key: {YOUR_API_KEY}"
       "max_discount": 100,
       "max_markup": null,
       "unit_cost": 234,
+      "goal_rate": null,
+      "rep_rate": null,
       "id": 2
     }
   ]
@@ -60,9 +69,56 @@ This endpoint retrieves all products of the team.
 
 `GET /products`
 
+### Query Parameters
+
 Parameter | Description
 --------- | -----------
 sort_by | Column to sort by <br> (i.e. `id`, `name`, `created_at`, `updated_at`)
+
+
+
+
+## Create a Product
+
+```shell
+# Create a new product
+curl https://api.sellf.io/v2/products \
+  -H "Api-Key: {YOUR_API_KEY}" \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -X POST -d "{"code": "LI455",
+               "name": "Life insurance"
+               "unit_price": 100,
+               "max_discount": 15,
+               "max_markup": null,
+               "unit_cost": 0,
+               "goal_rate": 90,
+               "rep_rate": 20,
+               "is_enabled": true}"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "code": "LI455",
+  "name": "Life insurance"
+  "unit_price": 100,
+  "max_discount": 15,
+  "max_markup": null,
+  "unit_cost": 0,
+  "goal_rate": 90,
+  "rep_rate": 20,
+  "is_enabled": true,
+  "id": 7
+}
+```
+
+This endpoint allows to create an product.
+
+### HTTP Request
+
+`POST /products`
 
 
 
@@ -84,6 +140,9 @@ curl https://api.sellf.io/v2/products/2 -H "Api-Key: {YOUR_API_KEY}"
   "max_discount": 100,
   "max_markup": null,
   "unit_cost": 234,
+  "goal_rate": null,
+  "rep_rate": null,
+  "is_enabled": true,
   "id": 2
 }
 ```
@@ -93,6 +152,49 @@ This endpoint retrieves a specific product according to the ID provided.
 ### HTTP Request
 
 `GET /products/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The unique identifier of the product to retrieve
+
+
+
+
+## Update a Specific Product
+
+```shell
+# Update a product with ID 7
+curl https://api.sellf.io/v2/products/7 \
+  -H "Api-Key: {YOUR_API_KEY}" \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -X PUT -d "{"is_enabled": false, "code": "LI451"}"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "code": "LI451",
+  "name": "Life insurance"
+  "unit_price": 100,
+  "max_discount": 15,
+  "max_markup": null,
+  "unit_cost": 0,
+  "goal_rate": 90,
+  "rep_rate": 20,
+  "is_enabled": false,
+  "id": 7
+}
+```
+
+This endpoint allows to update a specific product.
+
+### HTTP Request
+
+`PUT /products/:id`
 
 ### URL Parameters
 
