@@ -6,7 +6,7 @@ Plan | Rate
 ---------- | -------
 Free | n/a
 Pro | n/a
-Starter | 3/sec (100/min)
+Starter | n/a
 Performance | 20/sec (600/min)
 Enterprise | Dedicated
 
