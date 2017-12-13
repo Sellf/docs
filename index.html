@@ -496,6 +496,113 @@ curl https://api.sellf.io/v2/users/2 -H <span class="s2">"Api-Key: {YOUR_API_KEY
 </tr>
 </tbody></table>
 
+          <h1 id="custom-fields"><a name="custom_fields"></a>Custom Fields</h1>
+
+<p>The Custom Fields API gives you access to your team&rsquo;s custom fields for <a href="#people">People</a>, <a href="#companies">Companies</a> and <a href="#deals">Deals</a>, in read-only mode. You can retrieve a list of all custom fields of your team for a specific entity.</p>
+
+<h3 id="attributes">Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Permission</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>entity_type</td>
+<td>string</td>
+<td>read</td>
+<td>Entity type that the custom field belongs to</td>
+</tr>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>read</td>
+<td>Unique identifier of the custom field (used for APIs calls)</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>read</td>
+<td>Data type of the custom field</td>
+</tr>
+<tr>
+<td>label</td>
+<td>string</td>
+<td>read</td>
+<td>Personalized name of the custom field</td>
+</tr>
+<tr>
+<td>is_multiple</td>
+<td>boolean</td>
+<td>read</td>
+<td>Determine if the custom field allows multiple selections</td>
+</tr>
+<tr>
+<td>extras</td>
+<td>string</td>
+<td>read</td>
+<td>Any extra informations (e.g. the values of a dropdown field)</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-all-custom-fields">Get All Custom Fields</h2>
+<pre class="highlight shell tab-shell"><code>curl https://api.sellf.io/v2/custom_fields?entity_type<span class="o">=</span>contact -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"has_more"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"entity_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"contact"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Category"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"is_multiple"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"extras"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"category"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"entity_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"contact"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Policy expiration date"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"is_multiple"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"extras"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"policy_expiration_date"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"date"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all deals&rsquo; custom fields.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /custom_fields</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sort_by</td>
+<td>Column to sort by <br> (i.e. <code class="prettyprint">id</code>, <code class="prettyprint">key</code>, <code class="prettyprint">created_at</code>, <code class="prettyprint">updated_at</code>)</td>
+</tr>
+<tr>
+<td>entity_type</td>
+<td>Entity to filter by <br> (i.e. <code class="prettyprint">contact</code>, <code class="prettyprint">company</code>, <code class="prettyprint">deal</code>)</td>
+</tr>
+</tbody></table>
+
           <h1 id="people"><a name="people"></a>People</h1>
 
 <p>The People API allows you to get, create, update and delete your people. Each person can be associated to a <a href="#companies">Company</a> and one or more <a href="#deals">Deals</a>.</p>
