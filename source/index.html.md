@@ -14,6 +14,7 @@ includes:
   - rates
   - errors
   - users
+  - custom_fields
   - people
   - companies
   - deals
