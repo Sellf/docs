@@ -111,6 +111,8 @@ company_id | Unique identifier of the company with whom the person is associated
 first_name | A string matching the first name of the person
 last_name | A string matching the last name of the person
 code | A string matching the custom code of the person
+created_at | A date to be compared with the creation of the person
+updated_at | A date to be compared with the last edit of the person
 
 
 

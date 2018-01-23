@@ -117,6 +117,8 @@ source_id | Unique identifier of the deal source
 loss_reason_id | Unique identifier of the deal loss reason
 name | A string matching the description of the deal
 code | A string matching the custom code of the deal
+created_at | A date to be compared with the creation of the deal
+updated_at | A date to be compared with the last edit of the deal
 
 
 
