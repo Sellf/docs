@@ -14,7 +14,7 @@ is_hot | boolean | write | To point if the deal is important or not
 win_probability | integer | write | Probability of closing the deal successfully
 estimated_close_at | datetime | write | Estimated close date of the deal
 started_at | datetime | read | Date in which the deal has been opened
-stage_changed_at | datetime | read | Last date in which the deal has been moved into a stage
+stage_changed_at | datetime | write | Last date in which the deal has been moved into a stage
 tags | array | write | An array of tags for a deal
 person_id | integer | write | Unique identifier of a primary person
 company_id | integer | write | Unique identifier of a primary company
