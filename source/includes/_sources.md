@@ -10,8 +10,6 @@ Parameter | Type | Permission | Description
 --------- | ------- | ------- | -----------
 id | integer | read | Unique identifier of the source
 name | string | read | Name of the source
-created_at | datetime | read | Date of creation
-updated_at | datetime | read | Date of last edit
 
 
 ## Get All Sources
@@ -51,7 +49,7 @@ This endpoint retrieves all deals' sources.
 
 Parameter | Description
 --------- | -----------
-sort_by | Column to sort by <br> (i.e. `id`, `name`, `created_at`, `updated_at`)
+sort_by | Column to sort by <br> (i.e. `id`, `name`)
 
 
 

@@ -52,7 +52,7 @@ This endpoint retrieves all pipelines.
 
 Parameter | Description
 --------- | -----------
-sort_by | Column to sort by <br> (i.e. `id`, `name`, `created_at`, `updated_at`)
+sort_by | Column to sort by <br> (i.e. `id`, `name`)
 type | Type of pipeline in terms of being monetary or quantitative <br> (i.e. `cash`, `quantity`)
 
 

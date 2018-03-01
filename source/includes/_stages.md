@@ -83,7 +83,7 @@ This endpoint retrieves all stages of all pipelines. If you want to get the stag
 
 Parameter | Description
 --------- | -----------
-sort_by | Column to sort by <br> (i.e. `id`, `name`, `position`, `win_probability`, `created_at`, `updated_at`)
+sort_by | Column to sort by <br> (i.e. `id`, `name`, `position`, `win_probability`)
 pipeline_id | Unique identifier of the pipeline to which stages belongs
 type | Unique identifier of stage type (i.e. `0`, `1`, `2`, `3`)
 

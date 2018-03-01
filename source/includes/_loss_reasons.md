@@ -49,7 +49,7 @@ This endpoint retrieves all deals' loss reasons.
 
 Parameter | Description
 --------- | -----------
-sort_by | Column to sort by <br> (i.e. `id`, `name`, `created_at`, `updated_at`)
+sort_by | Column to sort by <br> (i.e. `id`, `name`)
 
 
 
