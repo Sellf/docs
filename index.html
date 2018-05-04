@@ -168,7 +168,7 @@ You must replace <code>{YOUR_API_KEY}</code> with your personal API key.
 <pre class="highlight shell tab-shell"><code>curl https://api.sellf.io/v2/deals?page<span class="o">=</span>3 <span class="se">\</span>
     -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
 </code></pre>
-<p>Most of the list operations are paginated. You can control it with the <code class="prettyprint">page</code> parameter. Pages start at <code class="prettyprint">1</code> and the first page will be returned if no page is specified. Data is limited to <code class="prettyprint">20</code> entities per page.</p>
+<p>Most of the list operations are paginated. You can control it with the <code class="prettyprint">page</code> parameter. Pages start at <code class="prettyprint">1</code> and the first page will be returned if no page is specified. Data is limited to <code class="prettyprint">50</code> entities per page.</p>
 
 <p>The depicted example shows how to get the third page of all the team deals.</p>
 
@@ -883,6 +883,10 @@ When you want to update the tags of a person be aware to include any existing ta
 <td>updated_at</td>
 <td>A date to be compared with the last edit of the person</td>
 </tr>
+<tr>
+<td>tags</td>
+<td>One or more tags associated to the deal</td>
+</tr>
 </tbody></table>
 
 <h2 id="create-a-person">Create a Person</h2>
@@ -1057,7 +1061,8 @@ curl https://api.sellf.io/v2/people/3 <span class="se">\</span>
 </tbody></table>
 
 <aside class="warning">
-When you want to update the tags of a person be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request.
+When you want to update the tags of a person be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request. In fact, the `tags` attributes acts like the `rtags` (phantom) attribute, which replace any existing tag associated with the person.<br>
+If you want to explicitly add tags to a person instead of replacing the existing ones, use the `atags` (phantom) attribute instead of the `tags` one.
 </aside>
 
 <h2 id="delete-a-specific-person">Delete a Specific Person</h2>
@@ -1324,6 +1329,10 @@ When you want to update the tags of a person be aware to include any existing ta
 <td>updated_at</td>
 <td>A date to be compared with the last edit of the company</td>
 </tr>
+<tr>
+<td>tags</td>
+<td>One or more tags associated to the deal</td>
+</tr>
 </tbody></table>
 
 <h2 id="create-a-company">Create a Company</h2>
@@ -1474,7 +1483,8 @@ curl https://api.sellf.io/v2/companies/3 <span class="se">\</span>
 </tbody></table>
 
 <aside class="warning">
-When you want to update the tags of a company be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request.
+When you want to update the tags of a company be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request. In fact, the `tags` attributes acts like the `rtags` (phantom) attribute, which replace any existing tag associated with the company.<br>
+If you want to explicitly add tags to a company instead of replacing the existing ones, use the `atags` (phantom) attribute instead of the `tags` one.
 </aside>
 
 <h2 id="delete-a-specific-company">Delete a Specific Company</h2>
@@ -1755,6 +1765,10 @@ When you want to update the tags of a person be aware to include any existing ta
 <td>updated_at</td>
 <td>A date to be compared with the last edit of the deal</td>
 </tr>
+<tr>
+<td>tags</td>
+<td>One or more tags associated to the deal</td>
+</tr>
 </tbody></table>
 
 <h2 id="create-a-deal">Create a Deal</h2>
@@ -1910,7 +1924,8 @@ curl https://api.sellf.io/v2/deals/12 <span class="se">\</span>
 </tbody></table>
 
 <aside class="warning">
-When you want to update the tags of a deal be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request.
+When you want to update the tags of a deal be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request. In fact, the `tags` attributes acts like the `rtags` (phantom) attribute, which replace any existing tag associated with the deal.<br>
+If you want to explicitly add tags to a deal instead of replacing the existing ones, use the `atags` (phantom) attribute instead of the `tags` one.
 </aside>
 
 <h2 id="delete-a-specific-deal">Delete a Specific Deal</h2>
