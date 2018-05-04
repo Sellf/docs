@@ -292,8 +292,8 @@ Parameter | Description
 id | The unique identifier of the person to retrieve
 
 <aside class="warning">
-When you want to update the tags of a person be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request. In fact, the `tags` attributes acts like the `rtags` (phantom) attribute, which replace any existing tag associated with the person.<br>
-If you want to explicitly add tags to a person instead of replacing the existing ones, use the `atags` (phantom) attribute instead of the `tags` one.
+When you want to update the tags of a person be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request. In fact, the <em>tags</em> attribute acts like the <em>rtags</em> (phantom) attribute, which replace any existing tag associated with the person.<br>
+If you want to explicitly add tags to a person instead of replacing the existing ones, use the <em>atags</em> (phantom) attribute instead of the <em>tags</em> one.
 </aside>
 
 
