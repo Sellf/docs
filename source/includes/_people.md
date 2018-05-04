@@ -113,6 +113,7 @@ last_name | A string matching the last name of the person
 code | A string matching the custom code of the person
 created_at | A date to be compared with the creation of the person
 updated_at | A date to be compared with the last edit of the person
+tags | One or more tags associated to the deal
 
 
 
@@ -291,7 +292,8 @@ Parameter | Description
 id | The unique identifier of the person to retrieve
 
 <aside class="warning">
-When you want to update the tags of a person be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request.
+When you want to update the tags of a person be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request. In fact, the `tags` attributes acts like the `rtags` (phantom) attribute, which replace any existing tag associated with the person.<br>
+If you want to explicitly add tags to a person instead of replacing the existing ones, use the `atags` (phantom) attribute instead of the `tags` one.
 </aside>
 
 

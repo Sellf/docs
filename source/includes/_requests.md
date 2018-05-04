@@ -9,7 +9,7 @@ curl https://api.sellf.io/v2/deals?page=3 \
 	-H "Api-Key: {YOUR_API_KEY}"
 ```
 
-Most of the list operations are paginated. You can control it with the `page` parameter. Pages start at `1` and the first page will be returned if no page is specified. Data is limited to `20` entities per page.
+Most of the list operations are paginated. You can control it with the `page` parameter. Pages start at `1` and the first page will be returned if no page is specified. Data is limited to `50` entities per page.
 
 The depicted example shows how to get the third page of all the team deals.
 

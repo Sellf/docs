@@ -101,6 +101,7 @@ name | A string matching the name of the company
 code | A string matching the custom code of the company
 created_at | A date to be compared with the creation of the company
 updated_at | A date to be compared with the last edit of the company
+tags | One or more tags associated to the deal
 
 
 
@@ -255,9 +256,9 @@ Parameter | Description
 id | The unique identifier of the company to retrieve
 
 <aside class="warning">
-When you want to update the tags of a company be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request.
+When you want to update the tags of a company be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request. In fact, the `tags` attributes acts like the `rtags` (phantom) attribute, which replace any existing tag associated with the company.<br>
+If you want to explicitly add tags to a company instead of replacing the existing ones, use the `atags` (phantom) attribute instead of the `tags` one.
 </aside>
-
 
 
 
