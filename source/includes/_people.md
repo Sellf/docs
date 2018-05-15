@@ -45,7 +45,8 @@ Custom fields are also attributes that can be attached to create or update actio
 
 <aside class="warning">
 <!-- When you want to update the tags of a person be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request. This behaviour will be applied to all fields that can accept multiple values, custom fields included. -->
-When you want to update the tags of a person be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request. In fact, the <em>tags</em> attribute acts like the <em>rtags</em> (phantom) attribute, which replace any existing tag associated with the person.
+When you want to update the tags of a person be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request. In fact, the <em>tags</em> attribute acts like the <em>rtags</em> (phantom) attribute, which replace any existing tag associated with the person.<br>
+If you want to explicitly add tags to a person instead of replacing the existing ones, use the <em>atags</em> (phantom) attribute instead of the <em>tags</em> one.
 </aside>
 
 ## Get All People
