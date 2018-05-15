@@ -789,9 +789,10 @@ curl https://api.sellf.io/v2/users/2 -H <span class="s2">"Api-Key: {YOUR_API_KEY
 Custom fields are also attributes that can be attached to create or update actions, as explained in the <a href="#custom_fields">requests</a> section. The can be also used as filters following the rules of the <a href="#query_language">query language</a>.
 </aside>
 
-<!-- <aside class="warning">
-When you want to update the tags of a person be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request. This behaviour will be applied to all fields that can accept multiple values, custom fields included.
-</aside> &ndash;>
+<aside class="warning">
+<!-- When you want to update the tags of a person be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request. This behaviour will be applied to all fields that can accept multiple values, custom fields included. -->
+When you want to update the tags of a person be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request. In fact, the <em>tags</em> attribute acts like the <em>rtags</em> (phantom) attribute, which replace any existing tag associated with the person.
+</aside>
 
 <h2 id="get-all-people">Get All People</h2>
 <pre class="highlight shell tab-shell"><code>curl https://api.sellf.io/v2/people?sort_by<span class="o">=</span>-name -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
@@ -1251,9 +1252,10 @@ curl https://api.sellf.io/v2/people/3 <span class="se">\</span>
 Custom fields are also attributes that can be attached to create or update actions, as explained in the <a href="#custom_fields">requests</a> section. The can be also used as filters following the rules of the <a href="#query_language">query language</a>.
 </aside>
 
-<!-- <aside class="warning">
-When you want to update the tags of a company be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request. This behaviour will be applied to all fields that can accept multiple values, custom fields included.
-</aside> &ndash;>
+<aside class="warning">
+<!-- When you want to update the tags of a company be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request. This behaviour will be applied to all fields that can accept multiple values, custom fields included. -->
+When you want to update the tags of a company be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request. In fact, the <em>tags</em> attribute acts like the <em>rtags</em> (phantom) attribute, which replace any existing tag associated with the company.
+</aside>
 
 <h2 id="get-all-companies">Get All Companies</h2>
 <pre class="highlight shell tab-shell"><code>curl https://api.sellf.io/v2/companies?sort_by<span class="o">=</span>-name -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
@@ -1645,9 +1647,10 @@ curl https://api.sellf.io/v2/companies/3 <span class="se">\</span>
 Custom fields are also attributes that can be attached to create or update actions, as explained in the <a href="#custom_fields">requests</a> section. The can be also used as filters following the rules of the <a href="#query_language">query language</a>.
 </aside>
 
-<!-- <aside class="warning">
-When you want to update the tags of a deal be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request. This behaviour will be applied to all fields that can accept multiple values, custom fields included.
-</aside> &ndash;>
+<aside class="warning">
+<!-- When you want to update the tags of a deal be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request. This behaviour will be applied to all fields that can accept multiple values, custom fields included. -->
+When you want to update the tags of a deal be aware to include any existing tag, otherwise they will be fully replaced by the tags specified in the update request. In fact, the <em>tag</em> attributes acts like the <em>rtags</em> (phantom) attribute, which replace any existing tag associated with the deal.
+</aside>
 
 <h2 id="get-all-deals">Get All Deals</h2>
 <pre class="highlight shell tab-shell"><code>curl https://api.sellf.io/v2/deals -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
