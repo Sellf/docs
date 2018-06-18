@@ -3799,6 +3799,616 @@ curl https://api.sellf.io/v2/notes/7 <span class="se">\</span>
 </tr>
 </tbody></table>
 
+          <h1 id="calls-coming-soon"><a name="calls"></a>Calls (COMING SOON)</h1>
+
+<p>The Calls API allows you to get, create, update and delete your phone calls. Each call can be associated to one <a href="#companies">Company</a>, one <a href="#people">Person</a>, one <a href="#users">User</a> and one <a href="#deals">Deal</a>.</p>
+
+<p>Sellf identify incoming/outgoing calls with an integer that determines their type: <em>outgoing</em>, <em>incoming</em>. The match between the two follows the table below:</p>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>Outgoing</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Incoming</td>
+</tr>
+</tbody></table>
+
+<h3 id="attributes">Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Permission</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>read</td>
+<td>Unique identifier of the call</td>
+</tr>
+<tr>
+<td><strong>log_at</strong></td>
+<td>string</td>
+<td>write</td>
+<td>Date of made/received call</td>
+</tr>
+<tr>
+<td><strong>duration</strong></td>
+<td>integer</td>
+<td>write</td>
+<td>Duration of the call (in seconds)</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>write</td>
+<td>Content of the call</td>
+</tr>
+<tr>
+<td>type</td>
+<td>integer</td>
+<td>write</td>
+<td>Call type (i.e. outgoing, incoming)</td>
+</tr>
+<tr>
+<td>person_id</td>
+<td>integer</td>
+<td>write</td>
+<td>Unique identifier of the person related to the call</td>
+</tr>
+<tr>
+<td>company_id</td>
+<td>integer</td>
+<td>write</td>
+<td>Unique identifier of the company related to the call</td>
+</tr>
+<tr>
+<td>deal_id</td>
+<td>integer</td>
+<td>write</td>
+<td>Unique identifier of the deal concerning the call</td>
+</tr>
+<tr>
+<td><strong>user_id</strong></td>
+<td>integer</td>
+<td>write</td>
+<td>Unique identifier of the user that the call is assigned to</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>datetime</td>
+<td>read</td>
+<td>Date of creation</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>datetime</td>
+<td>read</td>
+<td>Date of last edit</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-all-calls">Get All Calls</h2>
+<pre class="highlight shell tab-shell"><code>curl https://api.sellf.io/v2/calls?sort_by<span class="o">=</span>-title -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"has_more"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Contract negotiation"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"log_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-23T13:43:30.826603"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lorem ipsum..."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"person_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deal_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-23T13:43:30.826603"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-23T13:43:30.826603"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all calls.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /calls</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sort_by</td>
+<td>Column to sort by <br> (i.e. <code class="prettyprint">id</code>, <code class="prettyprint">log_at</code>, <code class="prettyprint">created_at</code>, <code class="prettyprint">updated_at</code>)</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>Unique identifier of the user the call is owned by</td>
+</tr>
+<tr>
+<td>person_id</td>
+<td>Unique identifier of the person with whom the call is associated</td>
+</tr>
+<tr>
+<td>company_id</td>
+<td>Unique identifier of the company with whom the call is associated</td>
+</tr>
+<tr>
+<td>deal_id</td>
+<td>Unique identifier of the deal with whom the call is associated</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Unique identifier of call type (i.e. <code class="prettyprint">0</code>, <code class="prettyprint">1</code>)</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-a-call">Create a Call</h2>
+<pre class="highlight shell tab-shell"><code><span class="c"># Create a new call</span>
+curl https://api.sellf.io/v2/calls <span class="se">\</span>
+  -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -X POST -d <span class="s2">"{"</span>log_at<span class="s2">": "</span>2016-09-23T13:43:30.826603<span class="s2">",
+              "</span>duration<span class="s2">": 60,
+              "</span>description<span class="s2">": "</span>Lorem ipsum dolor sit amet, consectetur adipisci elit...<span class="s2">",
+              "</span><span class="nb">type</span><span class="s2">": 1,
+              "</span>person_id<span class="s2">": 15,
+              "</span>deal_id<span class="s2">": 9,
+              "</span>user_id<span class="s2">": 4}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"log_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-23T13:43:30.826603"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lorem ipsum dolor sit amet, consectetur adipisci elit..."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"person_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deal_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-21T10:32:49.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-21T10:32:49.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint allows to create an call.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /calls</code></p>
+
+<h2 id="get-a-specific-call">Get a Specific Call</h2>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve a call with ID 7</span>
+curl https://api.sellf.io/v2/calls/7 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"log_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-23T13:43:30.826603"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lorem ipsum dolor sit amet, consectetur adipisci elit..."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"person_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deal_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-21T10:32:49.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-21T10:32:49.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific call.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /calls/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The unique identifier of the call to retrieve</td>
+</tr>
+</tbody></table>
+
+<h2 id="update-a-specific-call">Update a Specific Call</h2>
+<pre class="highlight shell tab-shell"><code><span class="c"># Update a call with ID 7</span>
+curl https://api.sellf.io/v2/calls/7 <span class="se">\</span>
+  -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -X PUT -d <span class="s2">"{"</span>description<span class="s2">": "</span>Debriefing with teammates<span class="s2">"}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"log_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-23T13:43:30.826603"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Debriefing with teammates"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"person_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deal_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-21T10:32:49.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-21T10:32:49.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint allows to update a specific call.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT /calls/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The unique identifier of the call to retrieve</td>
+</tr>
+</tbody></table>
+
+<h2 id="delete-a-specific-call">Delete a Specific Call</h2>
+<pre class="highlight shell tab-shell"><code><span class="c"># Delete the call with ID 7</span>
+curl https://api.sellf.io/v2/calls/7 <span class="se">\</span>
+  -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
+  -X DELETE
+</code></pre>
+<blockquote>
+<p>The above command returns 200 with no content.</p>
+</blockquote>
+
+<p>This endpoint deletes a specific call.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE /calls/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The unique identifier of the call to be deleted</td>
+</tr>
+</tbody></table>
+
+          <h1 id="checkins-coming-soon"><a name="checkins"></a>Checkins (COMING SOON)</h1>
+
+<p>The checkins API allows you to get, create, update and delete your phone checkins. Each checkin can be associated to one <a href="#companies">Company</a>, one <a href="#people">Person</a>, one <a href="#users">User</a> and one <a href="#deals">Deal</a>.</p>
+
+<h3 id="attributes">Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Permission</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>read</td>
+<td>Unique identifier of the checkin</td>
+</tr>
+<tr>
+<td><strong>checkin_at</strong></td>
+<td>string</td>
+<td>write</td>
+<td>Date of the checkin</td>
+</tr>
+<tr>
+<td><strong>address</strong></td>
+<td>integer</td>
+<td>write</td>
+<td>Place of the checkin</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>write</td>
+<td>Content of the checkin</td>
+</tr>
+<tr>
+<td>person_id</td>
+<td>integer</td>
+<td>write</td>
+<td>Unique identifier of the person related to the checkin</td>
+</tr>
+<tr>
+<td>company_id</td>
+<td>integer</td>
+<td>write</td>
+<td>Unique identifier of the company related to the checkin</td>
+</tr>
+<tr>
+<td>deal_id</td>
+<td>integer</td>
+<td>write</td>
+<td>Unique identifier of the deal concerning the checkin</td>
+</tr>
+<tr>
+<td><strong>user_id</strong></td>
+<td>integer</td>
+<td>write</td>
+<td>Unique identifier of the user that the checkin is assigned to</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>datetime</td>
+<td>read</td>
+<td>Date of creation</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>datetime</td>
+<td>read</td>
+<td>Date of last edit</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-all-checkins">Get All Checkins</h2>
+<pre class="highlight shell tab-shell"><code>curl https://api.sellf.io/v2/checkins?sort_by<span class="o">=</span>-title -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"has_more"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Via Thomas Alva Edison, Padova, PD"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"checkin_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-23T13:43:30.826603"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lorem ipsum..."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"person_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deal_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-23T13:43:30.826603"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-23T13:43:30.826603"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all checkins.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /checkins</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sort_by</td>
+<td>Column to sort by <br> (i.e. <code class="prettyprint">id</code>, <code class="prettyprint">checkin_at</code>, <code class="prettyprint">created_at</code>, <code class="prettyprint">updated_at</code>)</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>Unique identifier of the user the checkin is owned by</td>
+</tr>
+<tr>
+<td>person_id</td>
+<td>Unique identifier of the person with whom the checkin is associated</td>
+</tr>
+<tr>
+<td>company_id</td>
+<td>Unique identifier of the company with whom the checkin is associated</td>
+</tr>
+<tr>
+<td>deal_id</td>
+<td>Unique identifier of the deal with whom the checkin is associated</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-a-checkin">Create a Checkin</h2>
+<pre class="highlight shell tab-shell"><code><span class="c"># Create a new checkin</span>
+curl https://api.sellf.io/v2/checkins <span class="se">\</span>
+  -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -X POST -d <span class="s2">"{"</span>address<span class="s2">": "</span>Via Thomas Alva Edison, Padova, PD<span class="s2">",
+              "</span>checkin_at<span class="s2">": "</span>2016-09-23T13:43:30.826603<span class="s2">",
+              "</span>description<span class="s2">": "</span>Lorem ipsum...<span class="s2">",
+              "</span>person_id<span class="s2">": 15,
+              "</span>deal_id<span class="s2">": 9,
+              "</span>user_id<span class="s2">": 4}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Via Thomas Alva Edison, Padova, PD"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"checkin_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-23T13:43:30.826603"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lorem ipsum..."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"person_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deal_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-21T10:32:49.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-21T10:32:49.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint allows to create an checkin.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /checkins</code></p>
+
+<h2 id="get-a-specific-checkin">Get a Specific Checkin</h2>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve a checkin with ID 7</span>
+curl https://api.sellf.io/v2/checkins/7 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Via Thomas Alva Edison, Padova, PD"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"checkin_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-23T13:43:30.826603"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lorem ipsum..."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"person_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deal_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-21T10:32:49.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-21T10:32:49.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific checkin.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /checkins/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The unique identifier of the checkin to retrieve</td>
+</tr>
+</tbody></table>
+
+<h2 id="update-a-specific-checkin">Update a Specific Checkin</h2>
+<pre class="highlight shell tab-shell"><code><span class="c"># Update a checkin with ID 7</span>
+curl https://api.sellf.io/v2/checkins/7 <span class="se">\</span>
+  -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -X PUT -d <span class="s2">"{"</span>address<span class="s2">": "</span>Via Sile, 41, 31056 Roncade <span class="o">(</span>TV<span class="o">)</span> Italia<span class="s2">"}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Via Sile, 41, 31056 Roncade (TV) Italia"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"checkin_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-23T13:43:30.826603"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lorem ipsum..."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"person_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deal_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-21T10:32:49.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-21T10:32:49.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint allows to update a specific checkin.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT /checkins/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The unique identifier of the checkin to retrieve</td>
+</tr>
+</tbody></table>
+
+<h2 id="delete-a-specific-checkin">Delete a Specific Checkin</h2>
+<pre class="highlight shell tab-shell"><code><span class="c"># Delete the checkin with ID 7</span>
+curl https://api.sellf.io/v2/checkins/7 <span class="se">\</span>
+  -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
+  -X DELETE
+</code></pre>
+<blockquote>
+<p>The above command returns 200 with no content.</p>
+</blockquote>
+
+<p>This endpoint deletes a specific checkin.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE /checkins/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The unique identifier of the checkin to be deleted</td>
+</tr>
+</tbody></table>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
