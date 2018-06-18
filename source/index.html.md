@@ -28,6 +28,8 @@ includes:
   - appointment_companies
   - appointment_users
   - notes
+  - calls
+  - checkins
 
 search: true
 ---
