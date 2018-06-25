@@ -9,6 +9,8 @@ Parameter | Type | Permission | Description
 id | integer | read | Unique identifier of the checkin
 **checkin_at** | string | write | Date of the checkin
 **address** | integer | write | Place of the checkin
+latitude | float | read | Latitude of the checkin address
+longitude | float | read | Longitude of the checkin address
 description | string | write | Content of the checkin
 person_id | integer | write | Unique identifier of the person related to the checkin
 company_id | integer | write | Unique identifier of the company related to the checkin
