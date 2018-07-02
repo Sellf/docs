@@ -1,4 +1,4 @@
-# <a name="checkins"></a>Checkins (COMING SOON)
+# <a name="checkins"></a>Checkins
 
 The checkins API allows you to get, create, update and delete your phone checkins. Each checkin can be associated to one [Company](#companies), one [Person](#people), one [User](#users) and one [Deal](#deals).
 

@@ -1,4 +1,4 @@
-# <a name="calls"></a>Calls (COMING SOON)
+# <a name="calls"></a>Calls
 
 The Calls API allows you to get, create, update and delete your phone calls. Each call can be associated to one [Company](#companies), one [Person](#people), one [User](#users) and one [Deal](#deals).
 
