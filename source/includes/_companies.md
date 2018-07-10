@@ -101,6 +101,7 @@ sort_by | Column to sort by <br> (i.e. `id`, `name`, `created_at`, `updated_at`)
 user_id | Unique identifier of the user the company is owned by
 name | A string matching the name of the company
 code | A string matching the custom code of the company
+vat | A string matching the vat of the company
 created_at | A date to be compared with the creation of the company
 updated_at | A date to be compared with the last edit of the company
 tags | One or more tags associated to the deal
