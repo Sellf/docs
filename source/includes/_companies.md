@@ -276,7 +276,7 @@ curl https://api.sellf.io/v2/companies/3 \
 
 > The above command returns 200 with no content.
 
-This endpoint deletes a specific company. Deleting a company implies that even all the associated entities are deleted, except for the associated company.
+This endpoint deletes a specific company. Deleting a company implies that even all the associated entities are deleted.
 
 
 ### HTTP Request

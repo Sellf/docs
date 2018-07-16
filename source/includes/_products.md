@@ -1,6 +1,6 @@
 # <a name="products"></a>Products
 
-The Products API gives you access to your team's [products](https://app.sellf.io/settings/products), in read-only mode. You can retrieve a single product as well as list of all products associated with your team.
+The Products API gives you access to your team's [products](https://app.sellf.io/settings/products). You can retrieve a single product as well as list of all products associated with your team. You can also create new products and update existing ones.
 
 Products can be associated with any number of [Deals](#deals). In the `Settings > Deal > Products` [section](https://app.sellf.io/settings/products) of Sellf web app you can turn on the possibility of using products, giving them a *name* and a *unit price*.
 
