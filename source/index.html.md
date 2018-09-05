@@ -30,6 +30,7 @@ includes:
   - notes
   - calls
   - checkins
+  - todos
 
 search: true
 ---

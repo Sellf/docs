@@ -2,7 +2,7 @@
 
 The Calls API allows you to get, create, update and delete your phone calls. Each call can be associated to one [Company](#companies), one [Person](#people), one [User](#users) and one [Deal](#deals).
 
-Sellf identify incoming/outgoing calls with an integer that determines their type: *outgoing*, *incoming*. The match between the two follows the table below:
+Sellf identifies incoming/outgoing calls with an integer that determines their type: *outgoing*, *incoming*. The match between the two follows the table below:
 
 Type | Description
 --------- | -------

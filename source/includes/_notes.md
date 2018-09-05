@@ -98,7 +98,7 @@ curl https://api.sellf.io/v2/notes \
 }
 ```
 
-This endpoint allows to create an note.
+This endpoint allows to create a note.
 
 ### HTTP Request
 

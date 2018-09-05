@@ -103,7 +103,7 @@ curl https://api.sellf.io/v2/checkins \
 }
 ```
 
-This endpoint allows to create an checkin.
+This endpoint allows to create a checkin.
 
 ### HTTP Request
 

@@ -114,7 +114,7 @@ curl https://api.sellf.io/v2/products \
 }
 ```
 
-This endpoint allows to create an product.
+This endpoint allows to create a product.
 
 ### HTTP Request
 
