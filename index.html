@@ -2680,7 +2680,7 @@ curl https://api.sellf.io/v2/products <span class="se">\</span>
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint allows to create an product.</p>
+<p>This endpoint allows to create a product.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -3689,7 +3689,7 @@ curl https://api.sellf.io/v2/notes <span class="se">\</span>
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint allows to create an note.</p>
+<p>This endpoint allows to create a note.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -3811,7 +3811,7 @@ curl https://api.sellf.io/v2/notes/7 <span class="se">\</span>
 
 <p>The Calls API allows you to get, create, update and delete your phone calls. Each call can be associated to one <a href="#companies">Company</a>, one <a href="#people">Person</a>, one <a href="#users">User</a> and one <a href="#deals">Deal</a>.</p>
 
-<p>Sellf identify incoming/outgoing calls with an integer that determines their type: <em>outgoing</em>, <em>incoming</em>. The match between the two follows the table below:</p>
+<p>Sellf identifies incoming/outgoing calls with an integer that determines their type: <em>outgoing</em>, <em>incoming</em>. The match between the two follows the table below:</p>
 
 <table><thead>
 <tr>
@@ -4309,7 +4309,7 @@ curl https://api.sellf.io/v2/checkins <span class="se">\</span>
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint allows to create an checkin.</p>
+<p>This endpoint allows to create a checkin.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -4426,6 +4426,395 @@ curl https://api.sellf.io/v2/checkins/7 <span class="se">\</span>
 <tr>
 <td>id</td>
 <td>The unique identifier of the checkin to be deleted</td>
+</tr>
+</tbody></table>
+
+          <h1 id="todos-coming-soon"><a name="todos"></a>Todos (coming soon&hellip;)</h1>
+
+<p>The Todos API allows you to get, create, update and delete your todos. Each todo can be associated to one <a href="#companies">Company</a>, one <a href="#people">Person</a>, one <a href="#users">User</a> and one <a href="#deals">Deal</a>.</p>
+
+<p>Sellf identifies the type of the todo with a string that determines a corresponding action: <em>call</em>, <em>meeting</em>, <em>email</em>. The match between the two follows the table below:</p>
+
+<table><thead>
+<tr>
+<th>Action</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>call</td>
+<td>Phone call</td>
+</tr>
+<tr>
+<td>email</td>
+<td>Email</td>
+</tr>
+<tr>
+<td>meeting</td>
+<td>Meeting</td>
+</tr>
+</tbody></table>
+
+<h3 id="attributes">Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Permission</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>read</td>
+<td>Unique identifier of the todo</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td>string</td>
+<td>write</td>
+<td>Name of the todo</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>write</td>
+<td>Content of the todo</td>
+</tr>
+<tr>
+<td>person_id</td>
+<td>integer</td>
+<td>write</td>
+<td>Unique identifier of the person related to the todo</td>
+</tr>
+<tr>
+<td>company_id</td>
+<td>integer</td>
+<td>write</td>
+<td>Unique identifier of the company related to the todo</td>
+</tr>
+<tr>
+<td>deal_id</td>
+<td>integer</td>
+<td>write</td>
+<td>Unique identifier of the deal concerning the todo</td>
+</tr>
+<tr>
+<td>assignee_id</td>
+<td>integer</td>
+<td>write</td>
+<td>Unique identifier of the user to whom the todo is assigned</td>
+</tr>
+<tr>
+<td>assignator_id</td>
+<td>integer</td>
+<td>write</td>
+<td>Unique identifier of the user that assignes the todo</td>
+</tr>
+<tr>
+<td>completer_id</td>
+<td>integer</td>
+<td>write</td>
+<td>Unique identifier of the user that completed the todo</td>
+</tr>
+<tr>
+<td>action</td>
+<td>integer</td>
+<td>write</td>
+<td>Type of todo</td>
+</tr>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>write</td>
+<td>Place linked to the todo</td>
+</tr>
+<tr>
+<td>done</td>
+<td>boolean</td>
+<td>write</td>
+<td>Completion of the todo</td>
+</tr>
+<tr>
+<td>done_at</td>
+<td>datetime</td>
+<td>write</td>
+<td>Date of completion</td>
+</tr>
+<tr>
+<td>is_overdue</td>
+<td>boolean</td>
+<td>read</td>
+<td>It indicates wether the todo is overdue or not</td>
+</tr>
+<tr>
+<td>overdue_at</td>
+<td>datetime</td>
+<td>write</td>
+<td>Date of overdue</td>
+</tr>
+<tr>
+<td>overdue_frequency</td>
+<td>datetime</td>
+<td>write</td>
+<td>Frequency of recurring overdue</td>
+</tr>
+<tr>
+<td>stop_overdue_at</td>
+<td>datetime</td>
+<td>write</td>
+<td>Final date for recurrency</td>
+</tr>
+<tr>
+<td><strong>user_id</strong></td>
+<td>integer</td>
+<td>write</td>
+<td>Unique identifier of the user that ownes the todo</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>datetime</td>
+<td>read</td>
+<td>Date of creation</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>datetime</td>
+<td>read</td>
+<td>Date of last edit</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-all-todos">Get All Todos</h2>
+<pre class="highlight shell tab-shell"><code>curl https://api.sellf.io/v2/todos?sort_by<span class="o">=</span>-name -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"has_more"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">   
+        </span><span class="s2">"assignator_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"assignee_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"is_overdue"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-24T14:46:47.000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"done_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-27T07:55:06.000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"deal_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"person_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"overdue_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-28T08:00:00.000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"completer_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"done"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"meeting"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"overdue_frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"never"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"stop_overdue_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My todo"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all todos.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /todos</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sort_by</td>
+<td>Column to sort by <br> (i.e. <code class="prettyprint">id</code>, <code class="prettyprint">name</code>, <code class="prettyprint">done_at</code>, <code class="prettyprint">overdue_at</code>, <code class="prettyprint">done</code>, <code class="prettyprint">created_at</code>, <code class="prettyprint">updated_at</code>)</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>Unique identifier of the user the todo is owned by</td>
+</tr>
+<tr>
+<td>person_id</td>
+<td>Unique identifier of the person with whom the todo is associated</td>
+</tr>
+<tr>
+<td>company_id</td>
+<td>Unique identifier of the company with whom the todo is associated</td>
+</tr>
+<tr>
+<td>deal_id</td>
+<td>Unique identifier of the deal with whom the todo is associated</td>
+</tr>
+<tr>
+<td>assignator_id</td>
+<td>Unique identifier of the user that assignes the todo</td>
+</tr>
+<tr>
+<td>assignee_id</td>
+<td>Unique identifier of the user to whom the todo is assigned</td>
+</tr>
+<tr>
+<td>name</td>
+<td>A string containing or matching the name of the todo</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-a-todo">Create a todo</h2>
+<pre class="highlight shell tab-shell"><code><span class="c"># Create a new todo</span>
+curl https://api.sellf.io/v2/todos <span class="se">\</span>
+  -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -X POST -d <span class="s2">"{"</span>name<span class="s2">": "</span>Attend meeting<span class="s2">",
+                "</span>action<span class="s2">": "</span>meeting<span class="s2">",
+                "</span>description<span class="s2">": "</span>Lorem ipsum dolor sit amet, consectetur adipisci elit...<span class="s2">",
+                "</span>person_id<span class="s2">": 15,
+                "</span>deal_id<span class="s2">": 9,
+                "</span>user_id<span class="s2">": 4}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Attend meeting"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lorem ipsum dolor sit amet, consectetur adipisci elit..."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"person_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deal_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-21T10:32:49.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-21T10:32:49.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint allows to create a todo.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /todos</code></p>
+
+<h2 id="get-a-specific-todo">Get a Specific Todo</h2>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve a todo with ID 7</span>
+curl https://api.sellf.io/v2/todos/7 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample todo"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lorem ipsum dolor sit amet, consectetur adipisci elit..."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"person_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deal_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-21T10:32:49.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-21T10:32:49.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific todo.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /todos/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The unique identifier of the todo to retrieve</td>
+</tr>
+</tbody></table>
+
+<h2 id="update-a-specific-todo">Update a Specific Todo</h2>
+<pre class="highlight shell tab-shell"><code><span class="c"># Update a todo with ID 7</span>
+curl https://api.sellf.io/v2/todos/7 <span class="se">\</span>
+  -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -X PUT -d <span class="s2">"{"</span>name<span class="s2">": "</span>Debriefing with teammates<span class="s2">"}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Debriefing with teammates"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lorem ipsum dolor sit amet, consectetur adipisci elit..."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"person_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deal_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-21T10:32:49.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-21T10:32:49.000000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint allows to update a specific todo.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT /todos/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The unique identifier of the todo to retrieve</td>
+</tr>
+</tbody></table>
+
+<h2 id="delete-a-specific-note">Delete a Specific Note</h2>
+<pre class="highlight shell tab-shell"><code><span class="c"># Delete the todo with ID 7</span>
+curl https://api.sellf.io/v2/todos/7 <span class="se">\</span>
+  -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
+  -X DELETE
+</code></pre>
+<blockquote>
+<p>The above command returns 200 with no content.</p>
+</blockquote>
+
+<p>This endpoint deletes a specific todo.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE /todos/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The unique identifier of the todo to be deleted</td>
 </tr>
 </tbody></table>
 
