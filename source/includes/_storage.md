@@ -1,6 +1,6 @@
 # <a name="files"></a>Files
 
-The FIles API allows you to get, create, update and delete files in Sellf.
+The Files API allows you to get, create, update and delete files in Sellf.
 
 ### Attributes
 
@@ -323,7 +323,7 @@ This endpoint allows to create a folder.
 
 
 
-## Get a Specific Folders
+## Get a Specific Folder
 
 ```shell
 # Retrieve a file with ID 3
