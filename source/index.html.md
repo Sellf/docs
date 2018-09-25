@@ -31,6 +31,7 @@ includes:
   - calls
   - checkins
   - todos
+  - storage
 
 search: true
 ---
