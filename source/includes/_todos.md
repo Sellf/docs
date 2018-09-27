@@ -1,4 +1,4 @@
-# <a name="todos"></a>
+# <a name="todos"></a>Todos
 
 The Todos API allows you to get, create, update and delete your todos. Each todo can be associated to one [Company](#companies), one [Person](#people), one [User](#users) and one [Deal](#deals).
 
