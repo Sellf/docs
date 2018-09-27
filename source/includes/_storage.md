@@ -224,7 +224,7 @@ id | The unique identifier of the file to be deleted
 
 # <a name="files"></a>Folders
 
-The FIles API allows you to get, create, update and delete folders in Sellf.
+The Folders API allows you to get, create, update and delete folders in Sellf.
 
 ### Attributes
 
