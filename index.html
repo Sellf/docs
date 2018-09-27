@@ -4429,7 +4429,7 @@ curl https://api.sellf.io/v2/checkins/7 <span class="se">\</span>
 </tr>
 </tbody></table>
 
-          <h1 id="todos-coming-soon"><a name="todos"></a>Todos (coming soon&hellip;)</h1>
+          <h1 id="part-f94676b755f6cf75"><a name="todos"></a></h1>
 
 <p>The Todos API allows you to get, create, update and delete your todos. Each todo can be associated to one <a href="#companies">Company</a>, one <a href="#people">Person</a>, one <a href="#users">User</a> and one <a href="#deals">Deal</a>.</p>
 
@@ -4815,6 +4815,556 @@ curl https://api.sellf.io/v2/todos/7 <span class="se">\</span>
 <tr>
 <td>id</td>
 <td>The unique identifier of the todo to be deleted</td>
+</tr>
+</tbody></table>
+
+          <h1 id="files"><a name="files"></a>Files</h1>
+
+<p>The Files API allows you to get, create, update and delete files in Sellf.</p>
+
+<h3 id="attributes">Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Permission</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>read</td>
+<td>Unique identifier of the file</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td>string</td>
+<td>write</td>
+<td>Name of the file</td>
+</tr>
+<tr>
+<td><strong>is_public</strong></td>
+<td>boolean</td>
+<td>write</td>
+<td>File permissions</td>
+</tr>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>write</td>
+<td>Url of the file</td>
+</tr>
+<tr>
+<td>size</td>
+<td>integer</td>
+<td>read</td>
+<td>File size</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>read</td>
+<td>File type</td>
+</tr>
+<tr>
+<td>parent_id</td>
+<td>integer</td>
+<td>write</td>
+<td>Unique identifier of the parent folder (if none is specified the team&rsquo;s main folder is automatically set)</td>
+</tr>
+<tr>
+<td><strong>user_id</strong></td>
+<td>integer</td>
+<td>write</td>
+<td>Unique identifier of the user that ownes the file</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>datetime</td>
+<td>read</td>
+<td>Date of creation</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>datetime</td>
+<td>read</td>
+<td>Date of last edit</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-all-files">Get All Files</h2>
+<pre class="highlight shell tab-shell"><code>curl https://api.sellf.io/v2/files?sort_by<span class="o">=</span>-name -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"has_more"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_objects"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sellf-storage.s3.eu-central-1.amazonaws.com/1234/dd3e44fgdfr5dffe4y56r5gu/file.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-24T15:31:31.000000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-24T15:31:32.000000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"is_folder"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"is_public"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all files.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /files</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sort_by</td>
+<td>Column to sort by <br> (i.e. <code class="prettyprint">id</code>, <code class="prettyprint">name</code>, <code class="prettyprint">created_at</code>, <code class="prettyprint">updated_at</code>)</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>Unique identifier of the user the file is owned by</td>
+</tr>
+<tr>
+<td>name</td>
+<td>A string containing or matching the name of the file</td>
+</tr>
+<tr>
+<td>is_public</td>
+<td>A boolean matching the desired permission</td>
+</tr>
+<tr>
+<td>type</td>
+<td>A string matching the desired file type</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-a-file">Create a File</h2>
+<pre class="highlight shell tab-shell"><code><span class="c"># Create a new file</span>
+curl https://api.sellf.io/v2/files <span class="se">\</span>
+  -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -X POST -d <span class="s2">"{"</span>name<span class="s2">": "</span>file.jpg<span class="s2">",
+                "</span>url<span class="s2">": "</span>https://example.com/file.jpg<span class="s2">",
+                "</span>parent_id<span class="s2">": 1,
+                "</span>is_public<span class="s2">": false,
+                "</span>user_id<span class="s2">": 7}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/file.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-06T15:31:10.000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-14T10:04:10.000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_folder"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_public"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint allows to create a file.</p>
+
+<aside class="warning">
+When you create a file, the system will process the request asycronously and return a placeholder json for your file. Depending on the size of the file the system may take some time to process your request. During this time, and untill the process is complete, you won&rsquo;t be able to see your file in the file list. Once the file is successfully created it will automatically be available with the `GET /storage` API, with the definitive url of your Sellf storage container.
+</aside>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /files</code></p>
+
+<h2 id="get-a-specific-file">Get a Specific File</h2>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve a file with ID 1926</span>
+curl https://api.sellf.io/v2/files/1926 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file.jpeg"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sellf-storage-dev.s3.eu-central-1.amazonaws.com/1234/dd3e44fgdfr5dffe4y56r5gu/file.jpeg"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-20T10:36:12.000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-20T10:36:13.000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1926</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific file.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /files/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The unique identifier of the file to retrieve</td>
+</tr>
+</tbody></table>
+
+<h2 id="update-a-specific-file">Update a Specific File</h2>
+<pre class="highlight shell tab-shell"><code><span class="c"># Update a file with ID 26</span>
+curl https://api.sellf.io/v2/files/1926 <span class="se">\</span>
+  -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -X PUT -d <span class="s2">"{"</span>name<span class="s2">": "</span>FILE.jpg<span class="s2">"}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FILE.jpeg"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sellf-storage-dev.s3.eu-central-1.amazonaws.com/1234/dd3e44fgdfr5dffe4y56r5gu/file.jpeg"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-20T10:36:12.000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-20T10:36:13.000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_folder"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/jpeg"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1926</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint allows to update a specific file.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT /files/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The unique identifier of the file to update</td>
+</tr>
+</tbody></table>
+
+<h2 id="delete-a-specific-file">Delete a Specific File</h2>
+<pre class="highlight shell tab-shell"><code><span class="c"># Delete the todo with ID 7</span>
+curl https://api.sellf.io/v2/files/7 <span class="se">\</span>
+  -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
+  -X DELETE
+</code></pre>
+<blockquote>
+<p>The above command returns 200 with no content.</p>
+</blockquote>
+
+<p>This endpoint deletes a specific file.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE /files/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The unique identifier of the file to be deleted</td>
+</tr>
+</tbody></table>
+
+<h1 id="folders"><a name="files"></a>Folders</h1>
+
+<p>The FIles API allows you to get, create, update and delete folders in Sellf.</p>
+
+<h3 id="attributes">Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Permission</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>read</td>
+<td>Unique identifier of the folder</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td>string</td>
+<td>write</td>
+<td>Name of the folder</td>
+</tr>
+<tr>
+<td><strong>is_public</strong></td>
+<td>boolean</td>
+<td>write</td>
+<td>Folder permissions</td>
+</tr>
+<tr>
+<td>parent_id</td>
+<td>integer</td>
+<td>write</td>
+<td>Unique identifier of the parent folder (if none is specified the team&rsquo;s main folder is automatically set)</td>
+</tr>
+<tr>
+<td><strong>user_id</strong></td>
+<td>integer</td>
+<td>write</td>
+<td>Unique identifier of the user that ownes the folder</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>datetime</td>
+<td>read</td>
+<td>Date of creation</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>datetime</td>
+<td>read</td>
+<td>Date of last edit</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-all-folders">Get All Folders</h2>
+<pre class="highlight shell tab-shell"><code>curl https://api.sellf.io/v2/folders?sort_by<span class="o">=</span>-name -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"has_more"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_objects"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">    
+            </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Home"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-06T13:26:09.000000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-06T13:26:09.000000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"is_public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"folder"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all folders.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /folders</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sort_by</td>
+<td>Column to sort by <br> (i.e. <code class="prettyprint">id</code>, <code class="prettyprint">name</code>, <code class="prettyprint">created_at</code>, <code class="prettyprint">updated_at</code>)</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>Unique identifier of the user the folder is owned by</td>
+</tr>
+<tr>
+<td>name</td>
+<td>A string containing or matching the name of the folder</td>
+</tr>
+<tr>
+<td>is_public</td>
+<td>A boolean matching the desired permission</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-a-folder">Create a folder</h2>
+<pre class="highlight shell tab-shell"><code><span class="c"># Create a new folder</span>
+curl https://api.sellf.io/v2/folders <span class="se">\</span>
+  -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -X POST -d <span class="s2">"{"</span>name<span class="s2">": "</span>Private subfolder<span class="s2">",
+                "</span>parent_id<span class="s2">": 1,
+                "</span>is_public<span class="s2">": false,
+                "</span>user_id<span class="s2">": 7}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Private subfolder"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-06T15:31:10.000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-14T10:04:10.000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_public"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"folder"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint allows to create a folder.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /folders</code></p>
+
+<h2 id="get-a-specific-folder">Get a Specific Folder</h2>
+<pre class="highlight shell tab-shell"><code><span class="c"># Retrieve a file with ID 3</span>
+curl https://api.sellf.io/v2/folders/3 -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Folder"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-20T10:36:12.000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-20T10:36:13.000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_public"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific folder.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /folders/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The unique identifier of the folder to retrieve</td>
+</tr>
+</tbody></table>
+
+<h2 id="update-a-specific-folder">Update a Specific Folder</h2>
+<pre class="highlight shell tab-shell"><code><span class="c"># Update a file with ID 3</span>
+curl https://api.sellf.io/v2/folders/3 <span class="se">\</span>
+  -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -X PUT -d <span class="s2">"{"</span>name<span class="s2">": "</span>FOLDER<span class="s2">"}"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FOLDER"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-20T10:36:12.000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-20T10:36:13.000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint allows to update a specific folder.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT /folders/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The unique identifier of the folder to update</td>
+</tr>
+</tbody></table>
+
+<h2 id="delete-a-specific-folder">Delete a Specific Folder</h2>
+<pre class="highlight shell tab-shell"><code><span class="c"># Delete the todo with ID 3</span>
+curl https://api.sellf.io/v2/folders/3 <span class="se">\</span>
+  -H <span class="s2">"Api-Key: {YOUR_API_KEY}"</span> <span class="se">\</span>
+  -X DELETE
+</code></pre>
+<blockquote>
+<p>The above command returns 200 with no content.</p>
+</blockquote>
+
+<p>This endpoint deletes a specific folder.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE /folders/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The unique identifier of the folder to be deleted</td>
 </tr>
 </tbody></table>
 
